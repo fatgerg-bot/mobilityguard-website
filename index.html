@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MobilityGuard | Peace of mind for mobility scooter riders</title>
+<meta name="description" content="MobilityGuard watches a mobility scooter's battery and safety, and texts the family when it matters. Now in beta in Kent.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Layout: a calm, large-type single page for families and dealers — hero with a phone of real alert texts, then plain sections on a soft teal-tinted ground */
+:root{
+  --bg:#f5f9f8;
+  --surface:#ffffff;
+  --ink:#10292a;
+  --muted:#4a6463;
+  --line:#d6e4e2;
+  --teal:#0b7a75;
+  --teal-deep:#075652;
+  --leaf:#3fa34d;
+  --tint:#e3f1ee;
+  --warn:#b45309;
+  --alert:#b42318;
+  --bubble:#e9efee;
+  --font-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --font-body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c1716;--surface:#132423;--ink:#e6f2f0;--muted:#9fbab7;--line:#24403e;
+  --teal:#38c2b8;--teal-deep:#7fded5;--leaf:#6cc778;--tint:#17302e;--warn:#f0a44b;--alert:#f07a6e;--bubble:#1d3331;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1716;--surface:#132423;--ink:#e6f2f0;--muted:#9fbab7;--line:#24403e;
+  --teal:#38c2b8;--teal-deep:#7fded5;--leaf:#6cc778;--tint:#17302e;--warn:#f0a44b;--alert:#f07a6e;--bubble:#1d3331;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1.125rem;line-height:1.6}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.12;text-wrap:balance;margin:0;letter-spacing:-0.01em}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800}
+h3{font-size:1.3rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+.eyebrow{font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.lede{color:var(--muted);max-width:60ch}
+section{padding-block:72px}
+.sec-head{display:grid;gap:12px;margin-bottom:36px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{width:38px;height:38px;flex:none}
+.brand b{font-family:var(--font-display);font-size:1.35rem;font-weight:800;letter-spacing:-.01em}
+.brand b span{color:var(--teal)}
+nav{display:flex;gap:6px 20px;flex-wrap:wrap}
+nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:1rem}
+nav a:hover{color:var(--teal)}
+
+/* hero */
+.hero{padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.pill{justify-self:start;display:inline-flex;align-items:center;gap:8px;background:var(--tint);color:var(--teal-deep);font-weight:700;font-size:.95rem;padding:6px 14px;border-radius:999px}
+.pill i{width:9px;height:9px;border-radius:50%;background:var(--leaf);display:block}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);font-weight:800}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero .lede{font-size:1.25rem}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:12px;font-weight:700;font-size:1.05rem;text-decoration:none;border:2px solid var(--teal)}
+.btn.primary{background:var(--teal);color:var(--bg)}
+.btn.primary:hover{background:var(--teal-deep);border-color:var(--teal-deep)}
+.btn.ghost{color:var(--teal);background:transparent}
+.btn.ghost:hover{background:var(--tint)}
+
+/* phone */
+.phone{justify-self:center;width:100%;max-width:340px;background:var(--surface);border:1px solid var(--line);border-radius:36px;padding:14px;box-shadow:0 24px 60px -24px rgba(7,86,82,.35)}
+.phone-screen{border-radius:24px;background:var(--bg);padding:18px 14px 20px;display:grid;gap:10px}
+.phone-top{text-align:center;display:grid;gap:2px;padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.phone-top strong{font-size:1rem}
+.phone-top small{color:var(--muted);font-size:.8rem}
+.msg{max-width:88%;padding:10px 14px;border-radius:18px;font-size:.98rem;line-height:1.4}
+.msg.in{background:var(--bubble);border-bottom-left-radius:6px}
+.msg.out{justify-self:end;background:var(--teal);color:var(--bg);border-bottom-right-radius:6px;font-weight:700;letter-spacing:.03em}
+.msg .tag{display:block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.msg .tag.warn{color:var(--warn)}
+.msg .tag.ok{color:var(--leaf)}
+.time{text-align:center;color:var(--muted);font-size:.75rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{display:grid;gap:10px;align-content:start;padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:18px;counter-increment:s}
+.steps li::before{content:counter(s);font-family:var(--font-display);font-weight:800;font-size:1.1rem;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--tint);color:var(--teal-deep)}
+.steps p{color:var(--muted)}
+
+/* alerts */
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.alerts{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.alert{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:22px;border-radius:16px;background:var(--bg);min-width:0}
+.alert .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--tint);color:var(--teal)}
+.alert .ic svg{width:26px;height:26px}
+.alert div{display:grid;gap:6px;min-width:0}
+.alert p{color:var(--muted)}
+.alert.feature{grid-column:1/-1;background:var(--tint)}
+.alert.feature .ic{background:var(--teal);color:var(--bg)}
+.soon{display:inline-block;font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--warn);margin-left:6px;vertical-align:middle}
+
+/* battery meter */
+.meter{display:grid;gap:6px;margin-top:6px;max-width:440px}
+.meter-row{display:flex;justify-content:space-between;font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.meter-bar{height:14px;border-radius:7px;background:var(--line);overflow:hidden;display:flex}
+.meter-bar span{display:block;height:100%}
+
+/* texts */
+.cmds{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.cmd{padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--surface);display:grid;gap:6px}
+.cmd code{font-family:var(--font-display);font-weight:800;font-size:1.25rem;color:var(--teal);letter-spacing:.04em}
+.cmd p{color:var(--muted);font-size:1rem;line-height:1.45}
+
+/* who + privacy */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.split > div{display:grid;gap:18px;align-content:start;min-width:0}
+.ladder{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.ladder li{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.ladder b{min-width:7.5em}
+.ladder span{color:var(--muted)}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:12px}
+.checks li::before{content:"";width:24px;height:24px;margin-top:3px;border-radius:50%;background:var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b7a75' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/16px no-repeat}
+
+/* pricing */
+.price{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;padding:36px;border-radius:24px;background:var(--surface);border:2px solid var(--teal)}
+.price-figure{display:grid;gap:4px}
+.price-figure strong{font-family:var(--font-display);font-size:4rem;font-weight:800;line-height:1;color:var(--teal);font-variant-numeric:tabular-nums}
+.price-figure span{color:var(--muted)}
+.price .checks{min-width:0}
+.apps{margin-top:20px;color:var(--muted);font-size:1rem}
+
+/* dealers */
+.dealers{background:var(--teal-deep);color:var(--bg)}
+.dealers .eyebrow{color:var(--bg);opacity:.8}
+.dealers .lede{color:var(--bg);opacity:.9}
+.dealer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px}
+.dealer-grid div{display:grid;gap:8px;padding:22px;border-radius:16px;border:1px solid color-mix(in srgb,var(--bg) 30%,transparent)}
+.dealer-grid p{opacity:.88}
+.dealers .btn{background:var(--bg);color:var(--teal-deep);border-color:var(--bg)}
+
+/* contact */
+.contact{display:grid;gap:18px;justify-items:start}
+.mail{font-family:var(--font-display);font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;color:var(--teal);word-break:break-word;text-decoration:none;border-bottom:3px solid var(--tint)}
+.mail:hover{border-color:var(--teal)}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero .wrap,.split,.price{grid-template-columns:1fr}
+  .steps,.dealer-grid{grid-template-columns:1fr}
+  .alerts{grid-template-columns:1fr}
+  section{padding-block:56px}
+  .price{padding:26px;gap:24px}
+}
+@media (max-width:520px){
+  nav{width:100%;gap:6px 16px}
+  nav a{font-size:.95rem}
+  .ladder li{flex-wrap:wrap;gap:4px 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="MobilityGuard home">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 2 35 8v11c0 9.5-6.3 16.4-15 19-8.7-2.6-15-9.5-15-19V8z" fill="var(--teal)"/>
+        <path d="M20 6.5 31 11v8c0 7.3-4.6 12.7-11 14.9C13.6 31.7 9 26.3 9 19v-8z" fill="var(--leaf)" opacity=".35"/>
+        <circle cx="14" cy="27" r="3" fill="var(--bg)"/><circle cx="27" cy="27" r="3" fill="var(--bg)"/>
+        <path d="M14 27h10l3-8h-4l-2-6h-3" fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <b>Mobility<span>Guard</span></b>
+    </a>
+    <nav aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#alerts">Alerts</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#dealers">Dealers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="pill"><i></i>Now in beta in Kent</span>
+        <h1>Peace of mind for every <em>mobility scooter</em> journey.</h1>
+        <p class="lede">MobilityGuard keeps an eye on the scooter's battery and safety, then sends a simple text to the rider and the family when something needs doing. No apps to learn, no logins to forget.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#contact">Join the beta</a>
+          <a class="btn ghost" href="#dealers">I'm a dealer</a>
+        </div>
+      </div>
+
+      <div class="phone" role="img" aria-label="Example text messages from MobilityGuard on a carer's phone">
+        <div class="phone-screen">
+          <div class="phone-top"><strong>MobilityGuard</strong><small>Text message</small></div>
+          <p class="time">Today 17:30</p>
+          <p class="msg in"><span class="tag warn">Charge reminder</span>Mum's scooter is on 22% and hasn't been plugged in yet. A quick reminder might help.</p>
+          <p class="msg out">BATTERY</p>
+          <p class="msg in"><span class="tag ok">Charging</span>Now charging. 64% and rising. Battery health is good.</p>
+          <p class="time">Today 19:05</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Three steps, then it just runs.</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Your dealer fits it</h3><p>A small tracker is fitted out of sight on the scooter or powered wheelchair. It takes about the length of a normal service.</p></li>
+        <li><h3>We watch over it</h3><p>Day and night, MobilityGuard checks the battery, how it's being charged, and whether the scooter has tipped or taken a knock.</p></li>
+        <li><h3>The right people get a text</h3><p>The rider hears first. If something isn't sorted, the family are told too, in plain English.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="alerts">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">What we look out for</span>
+        <h2>The things that leave people stranded.</h2>
+        <p class="lede">Most scooter call-outs come down to a flat or worn-out battery. That's where MobilityGuard does its most careful work.</p>
+      </div>
+      <div class="alerts">
+        <div class="alert feature">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></span>
+          <div>
+            <h3>Battery health, before it fails</h3>
+            <p>We track how the batteries hold their charge over weeks and months, so a failing battery is spotted early and swapped before it lets someone down halfway to the shops.</p>
+            <div class="meter" aria-label="Example battery health reading: 82 out of 100, good">
+              <div class="meter-row"><span>Example battery health</span><span>82 / 100 · Good</span></div>
+              <div class="meter-bar"><span style="width:82%;background:var(--leaf)"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+          <div><h3>Low battery and charging reminders</h3><p>A text when it's running low, an evening nudge to plug in, and a weekly top-up reminder. If a reminder is missed, a carer is told.</p></div>
+        </div>
+        <div class="alert">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+          <div><h3>Tip-over or a hard knock</h3><p>If the scooter goes over or takes a big jolt, everyone on the list is texted at once.</p></div>
+        </div>
+        <div class="alert">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><h3>Where is it?</h3><p>Carers can ask for the last known location, but only if the rider has said yes. It's switched off until they do.</p></div>
+        </div>
+        <div class="alert">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></span>
+          <div><h3>Help button <span class="soon">In testing</span></h3><p>A small button the rider can press to let their family know they need a hand.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Ask by text</span>
+        <h2>Text one word, get an answer.</h2>
+        <p class="lede">Riders and carers can text MobilityGuard back at any time. No app needed.</p>
+      </div>
+      <div class="cmds">
+        <div class="cmd"><code>BATTERY</code><p>How much charge is left right now</p></div>
+        <div class="cmd"><code>STATUS</code><p>A quick check that all is well</p></div>
+        <div class="cmd"><code>WHERE</code><p>Last known location, if the rider allows it</p></div>
+        <div class="cmd"><code>SERVICE</code><p>Ask your dealer to get in touch</p></div>
+        <div class="cmd"><code>PAUSE</code><p>Stop charge reminders for a while</p></div>
+        <div class="cmd"><code>HELP</code><p>List every word you can send</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Who gets told</span>
+        <h2>Up to five people, in the right order.</h2>
+        <p class="lede">Everyday reminders go to the rider first. Carers only hear about it if it isn't sorted. Anything urgent goes to everyone straight away.</p>
+        <ul class="ladder">
+          <li><b>The rider</b><span>Always first</span></li>
+          <li><b>Carer 1</b><span>Main contact</span></li>
+          <li><b>Carer 2</b><span>Backup</span></li>
+          <li><b>Carer 3</b><span>Last resort</span></li>
+          <li><b>Your dealer</b><span>Servicing and battery faults only</span></li>
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">Your privacy</span>
+        <h2>Their location stays private.</h2>
+        <ul class="checks">
+          <li><span>Location history is deleted automatically after 30 days.</span></li>
+          <li><span>Dealers never see where the rider is. Only the MobilityGuard team can.</span></li>
+          <li><span>Carers can only ask for a location if the rider has agreed to it.</span></li>
+          <li><span>Riders can opt out of texts at any time by sending STOP.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Pricing</span>
+        <h2>One simple monthly price.</h2>
+      </div>
+      <div class="price">
+        <div class="price-figure"><strong>£20</strong><span>a month, VAT-free for eligible users</span></div>
+        <ul class="checks">
+          <li><span>A one-off cost for the tracker and fitting, paid through your dealer.</span></li>
+          <li><span>No contract. Cancel any time.</span></li>
+          <li><span>Works on mobility scooters and powered wheelchairs.</span></li>
+          <li><span>Free during the beta for our Kent testers.</span></li>
+        </ul>
+      </div>
+      <p class="apps">Prefer an app? There's a MobilityGuard app for Android phones and a web app for iPhone, showing battery, location and alerts in one place.</p>
+    </div>
+  </section>
+
+  <section id="dealers" class="dealers">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">For mobility dealers</span>
+        <h2>Sell it, fit it, and keep your customers.</h2>
+        <p class="lede">MobilityGuard is sold and fitted through dealers. You get a reason to stay in touch with every rider long after the sale.</p>
+      </div>
+      <div class="dealer-grid">
+        <div><h3>Battery work, flagged early</h3><p>Your portal shows which customers' batteries are weakening, so you can book the replacement before the breakdown call.</p></div>
+        <div><h3>Service requests by text</h3><p>When a rider texts SERVICE, the request lands with you, not a competitor.</p></div>
+        <div><h3>A fitting fee and a happy customer</h3><p>You charge for the tracker and fitting. Families get peace of mind and remember who gave it to them.</p></div>
+      </div>
+      <a class="btn" href="mailto:beta@mobilityguard.co.uk?subject=Dealer%20enquiry">Register dealer interest</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Want to join the beta, or just ask a question?</h2>
+      <p class="lede">We're testing with a small group of riders in Kent before launch. Drop us an email and we'll get back to you.</p>
+      <a class="mail" href="mailto:beta@mobilityguard.co.uk">beta@mobilityguard.co.uk</a>
+      <p class="lede">MobilityGuard, Dymchurch, Kent</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MobilityGuard is a trading name of Scooterdoc Ltd.</span>
+    <span>Secure Motion. Dynamic Solutions.</span>
+  </div>
+</footer>
+</body>
+</html>
