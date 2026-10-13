@@ -154,15 +154,17 @@ nav a:hover{color:var(--green)}
 .care-chart{width:100%;height:auto;display:block}
 .cc-stage{position:relative}
 .cc-month{position:absolute;right:4px;top:0;font-family:var(--font-display);font-weight:800;font-size:1rem;padding:4px 12px;border-radius:999px;background:var(--tint);color:var(--ink);font-variant-numeric:tabular-nums}
-.cc-toast{position:absolute;left:12%;top:52%;display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:center;max-width:250px;padding:9px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:0 14px 30px -16px rgba(13,43,62,.45);font-size:.86rem;line-height:1.3;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .35s,transform .4s cubic-bezier(.2,.9,.3,1.2);pointer-events:none}
+.cc-toast{position:relative;display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:center;width:fit-content;max-width:100%;margin-top:4px;padding:9px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:0 14px 30px -16px rgba(13,43,62,.45);font-size:.86rem;line-height:1.3;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .35s,transform .4s cubic-bezier(.2,.9,.3,1.2);pointer-events:none}
 .cc-toast.on{opacity:1;transform:none}
-@media (max-width:640px){.cc-month{position:static;display:inline-block;margin-bottom:4px;font-size:.85rem;padding:3px 10px}.cc-toast{position:relative;left:auto;top:auto;max-width:none;margin-top:6px;box-shadow:none}}
+@media (max-width:640px){.cc-month{position:static;display:inline-block;margin-bottom:4px;font-size:.85rem;padding:3px 10px}.cc-toast{width:auto;box-shadow:none}}
 .cc-toast i{grid-row:span 2;font-style:normal;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--tint);font-size:15px}
 .cc-toast b{font-size:.88rem}.cc-toast small{color:var(--muted);font-size:.78rem}
 .cc-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;color:var(--muted)}
 .cc-legend span{display:inline-flex;align-items:center;gap:7px}
 .cc-legend i{width:20px;height:0;border-top:3px solid var(--green);display:inline-block}
 .cc-legend .l-without{border-top:2.5px dashed var(--muted);opacity:.8}
+.cc-legend .l-flat{border-top:3px dotted var(--red)}
+.cc-flat-t{font-family:var(--font-body);font-size:12.5px;font-weight:700;fill:var(--red)}
 .cc-gain{font-family:var(--font-display);font-size:13px;font-weight:800;fill:var(--green)}
 .cc-grid{stroke:var(--line);stroke-width:1}
 .cc-ax{font-family:var(--font-body);font-size:12px;fill:var(--muted)}
@@ -693,17 +695,17 @@ nav a:hover{color:var(--green)}
           <ul class="care-list">
             <li><b>Active monitoring</b><span>Charge, range and charging, checked day and night. You and your dealer can see it any time.</span></li>
             <li><b>Health checks every month</b><span>Tested while parked, while riding, and by comparing the two batteries. That tells a worn battery apart from a soft tyre or a dragging brake.</span></li>
-            <li><b>Caught early</b><span>A battery left flat, a charger that isn't working or charging habits that shorten its life are picked up straight away, with a gentle nudge to the rider and family.</span></li>
+            <li><b>Caught early</b><span>A battery left flat, a charger that isn't working or charging habits that shorten its life are picked up straight away, with a gentle nudge to the rider and family. That matters from day one: even a brand-new battery left flat can sulphate and be ruined within months.</span></li>
           </ul>
         </div>
         <figure class="care-fig">
           <div class="cc-stage">
             <span class="cc-month" id="cc-month" aria-hidden="true">Month 21</span>
-            <svg class="care-chart" id="cc-svg" viewBox="0 0 560 320" role="img" aria-label="Example over 21 months. With MobilityGuard's care, reminders about a flat battery, a faulty charger and charging habits keep the battery healthy for longer. It reaches 83% at month 19, is flagged, and a new battery is fitted before any breakdown. Without care, the same battery wears out faster and drops below 75%, where breakdowns become likely, by month 16. Care gives about 6 extra months of battery life."></svg>
-            <div class="cc-toast" id="cc-toast" aria-hidden="true"><i id="cc-ti">🔌</i><b id="cc-tt">Left flat overnight</b><small id="cc-ts">Reminder sent to Margaret</small></div>
+            <svg class="care-chart" id="cc-svg" viewBox="0 0 560 320" role="img" aria-label="Example over 21 months. With MobilityGuard's care, reminders about a flat battery, a faulty charger and charging habits keep the battery healthy for longer. It reaches 83% at month 19, is flagged, and a new battery is fitted before any breakdown. Without care, the same battery wears out faster and drops below 75%, where breakdowns become likely, by month 16. Care gives about 6 extra months of battery life. A brand-new battery that is left flat sulphates and is dead in about 4 months."></svg>
+            <div class="cc-toast" id="cc-toast" aria-hidden="true"><i id="cc-ti">🔌</i><b id="cc-tt">Left flat overnight</b><small id="cc-ts">Margaret reminded before sulphation sets in</small></div>
           </div>
-          <div class="cc-legend"><span><i class="l-with"></i>With MobilityGuard's care</span><span><i class="l-without"></i>Without care</span></div>
-          <figcaption>Example: the same battery over 21 months, with and without care.</figcaption>
+          <div class="cc-legend"><span><i class="l-with"></i>With MobilityGuard's care</span><span><i class="l-without"></i>Without care</span><span><i class="l-flat"></i>Brand new, but left flat</span></div>
+          <figcaption>Example: the same battery over 21 months, with and without care, and a brand-new one left flat.</figcaption>
         </figure>
         <ul class="care-tags">
           <li>Batteries last longer</li><li>Fewer breakdowns</li><li>No paying for a battery you didn't need</li>
@@ -1237,6 +1239,7 @@ nav a:hover{color:var(--green)}
     var CARE=[100,99.6,99.2,98.7,98.2,97.7,97.2,96.6,96.0,95.4,94.7,94.0,93.2,92.3,91.3,90.2,89.0,87.6,85.8,83.5];   // flagged at month 19
     var NOCARE=[100,99.3,98.5,97.6,96.6,95.6,94.5,93.3,92.0,90.6,89.0,87.3,85.5,83.5,81.3,79.0,76.5,74.0];          // worn out by month 16-17
     var NEW=[100,99.8,99.6];
+    var FLAT=[100,90,77,67,61];                                                                                      // brand new, left flat: sulphated, dead by month 4
     var W=560,H=320,pl=46,pr=16,pt=40,pb=40,MAXM=21,vmin=60,vmax=100;
     var X=function(m){return pl+(W-pl-pr)*m/MAXM}, Y=function(v){return pt+(H-pt-pb)*(1-(v-vmin)/(vmax-vmin))};
     [60,70,80,90,100].forEach(function(v){ el('line',{x1:pl,x2:W-pr,y1:Y(v),y2:Y(v),'class':'cc-grid'},svg); el('text',{x:pl-8,y:Y(v)+4,'text-anchor':'end','class':'cc-ax'},svg).textContent=v+'%'; });
@@ -1252,6 +1255,12 @@ nav a:hover{color:var(--green)}
     var ghostEnd=el('g',{opacity:0},svg);
     el('circle',{cx:X(17),cy:Y(NOCARE[17]),r:6,fill:'var(--red)'},ghostEnd);
     el('text',{x:X(17)-10,y:Y(NOCARE[17])+4,'text-anchor':'end','class':'cc-note-s'},ghostEnd).textContent='Without care';
+    var flat=el('path',{fill:'none',stroke:'var(--red)','stroke-width':3,'stroke-dasharray':'1 6','stroke-linecap':'round'},svg);
+    var flatEnd=el('g',{opacity:0},svg);
+    var fx=X(4), fy=Y(FLAT[4]);
+    el('path',{d:'M'+(fx-5)+' '+(fy-5)+' L'+(fx+5)+' '+(fy+5)+' M'+(fx+5)+' '+(fy-5)+' L'+(fx-5)+' '+(fy+5),stroke:'var(--red)','stroke-width':3,'stroke-linecap':'round'},flatEnd);
+    el('text',{x:fx+12,y:fy-14,'class':'cc-flat-t'},flatEnd).textContent='Brand new, left flat:';
+    el('text',{x:fx+12,y:fy+1,'class':'cc-flat-t'},flatEnd).textContent='sulphated, dead in 4 months';
     var gain=el('g',{opacity:0},svg);   // the extra life care gives
     el('line',{x1:X(13),x2:X(19),y1:Y(83.5),y2:Y(83.5),stroke:'var(--green)','stroke-width':2,'marker-end':'url(#cc-arr)','marker-start':'url(#cc-arr)'},gain);
     var mk=el('marker',{id:'cc-arr',viewBox:'0 0 10 10',refX:5,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},defs); el('path',{d:'M0 0 L10 5 L0 10 z',fill:'var(--green)'},mk);
@@ -1263,7 +1272,7 @@ nav a:hover{color:var(--green)}
     el('text',{x:X(19)-8,y:pt+8,'text-anchor':'end','class':'cc-note'},swap).textContent='New battery fitted';
     var ring=el('circle',{cx:X(19),cy:Y(CARE[19]),r:13,fill:'none',stroke:'var(--navy)','stroke-width':2,opacity:0},svg);
     var dot=el('circle',{r:6.5,'class':'cc-dot'},svg);
-    var MOMENTS=[[3,'🔌','Left flat overnight','Reminder sent to Margaret'],[8,'⚡','Charger not charging fully','Dealer told, charger swapped'],[13,'🌙','Often left low','Evening charging reminders on']];
+    var MOMENTS=[[3,'🔌','Left flat overnight','Margaret reminded before sulphation sets in'],[8,'⚡','Charger not charging fully','Dealer told, charger swapped'],[13,'🌙','Often left low','Evening charging reminders on']];
     var mdots=MOMENTS.map(function(c){ return el('circle',{cx:X(c[0]),cy:Y(CARE[c[0]]),r:4.5,fill:'var(--surface)',stroke:'var(--green)','stroke-width':2.5,opacity:0},care); });
     var toast=document.getElementById('cc-toast'), ti=document.getElementById('cc-ti'), tt=document.getElementById('cc-tt'), ts=document.getElementById('cc-ts'), monthEl=document.getElementById('cc-month');
     var shown=null;
@@ -1276,6 +1285,8 @@ nav a:hover{color:var(--green)}
       area.setAttribute('d',path(CARE,cm)+'L'+X(cm).toFixed(1)+' '+Y(75)+' L'+X(0)+' '+Y(75)+' Z');
       ghost.setAttribute('d',path(NOCARE,Math.min(m,17)));
       ghostEnd.setAttribute('opacity',m>=17?1:0);
+      flat.setAttribute('d',path(FLAT,Math.min(m,4)));
+      flatEnd.setAttribute('opacity',m>=4?1:0);
       gain.setAttribute('opacity',flagged?1:0);
       mdots.forEach(function(d,i){ d.setAttribute('opacity',m>=MOMENTS[i][0]?1:0); });
       if(swapped){ var nm=m-19; line2.setAttribute('d','M'+X(19)+' '+Y(100)+' L'+X(m).toFixed(1)+' '+Y(interp(NEW,nm)).toFixed(1)); dot.setAttribute('cx',X(m)); dot.setAttribute('cy',Y(interp(NEW,nm))); }
