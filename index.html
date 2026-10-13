@@ -95,7 +95,7 @@ nav a:hover{color:var(--green)}
 .reassure{display:flex;gap:6px 18px;flex-wrap:wrap;color:var(--muted);font-size:1rem;list-style:none;padding:0;margin:0}
 .reassure li::before{content:"✓";color:var(--green);font-weight:700;margin-right:6px}
 
-/* day-out map */
+/* day-out map (night mode with timeline) */
 .dayout{position:relative;min-width:0;display:grid;gap:12px}
 .dayout-sec{padding-block:24px 80px}
 .hero-photo{position:relative;margin:0;min-width:0}
@@ -103,26 +103,29 @@ nav a:hover{color:var(--green)}
 .hero-toast{position:absolute;left:-18px;bottom:28px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;max-width:300px;padding:12px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:0 18px 40px -18px rgba(13,43,62,.5);font-size:.95rem;line-height:1.35;animation:pop .6s .4s cubic-bezier(.2,.9,.3,1.2) both}
 .hero-toast .ni{grid-row:span 2;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--tint);font-size:18px}
 .hero-toast small{color:var(--muted);font-size:.85rem}
-.map-card{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--map-land);aspect-ratio:10/8;max-width:100%}
-.map-card svg{display:block;width:100%;height:100%}
-.map-label{font-family:var(--font-body);font-size:15px;font-weight:700;fill:var(--ink)}
-.map-sub{font-family:var(--font-body);font-size:11px;fill:var(--muted)}
-.geo{fill:var(--green);fill-opacity:.12;stroke:var(--green);stroke-width:1.5}
-.geo.on{fill-opacity:.28;stroke-width:2.5}
-.safe{fill:none;stroke:var(--navy);stroke-width:1.6;stroke-dasharray:6 6;opacity:.7}
-.route{fill:none;stroke:var(--navy);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2 7;opacity:.55}
-.notif-stack{position:absolute;right:12px;top:12px;width:min(270px,58%);display:grid;gap:8px}
-.notif{background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:14px;padding:9px 12px;box-shadow:0 10px 24px -14px rgba(13,43,62,.45);display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:.88rem;line-height:1.35;animation:pop .45s cubic-bezier(.2,.9,.3,1.2)}
-.notif .ni{grid-row:span 2;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--tint);font-size:16px}
-.notif b{font-size:.9rem}
-.notif small{color:var(--muted);font-size:.8rem}
-.notif.rider .ni{background:var(--tint-blue)}
+.nm{position:relative;border-radius:24px;overflow:hidden;background:#06121a;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);color:#e6f1f3}
+.nm svg{display:block;width:100%;height:auto}
+.mfont{font-family:var(--font-body)}
+.nm-clock{position:absolute;left:16px;top:14px;display:grid;font-variant-numeric:tabular-nums}
+.nm-clock b{font-family:var(--font-display);font-size:30px;line-height:1;color:#f2f8f9}
+.nm-clock span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#5eead4}
+.nm-msg{position:absolute;left:14px;top:70px;max-width:min(260px,58%);padding:10px 13px;border-radius:14px;background:rgba(9,30,38,.88);border:1px solid rgba(94,234,212,.35);font-size:.86rem;line-height:1.35;backdrop-filter:blur(8px)}
+.nm-msg b{display:block;color:#f2f8f9}.nm-msg small{color:#9fbac2}
+.nm-msg.flash{animation:pop .45s cubic-bezier(.2,.9,.3,1.2)}
+.nm-tl{position:relative;padding:14px 18px 16px;border-top:1px solid rgba(255,255,255,.08);background:#081821}
+.nm-track{position:relative;height:6px;border-radius:3px;background:#173039;margin:26px 6px 34px}
+.nm-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:linear-gradient(90deg,#14b8a6,#34d399)}
+.nm-stop{position:absolute;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:#0b2029;border:2px solid #2a5260;transition:all .3s}
+.nm-stop.done{background:#34d399;border-color:#34d399;box-shadow:0 0 10px #34d399}
+.nm-stop em{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-style:normal;font-size:14px}
+.nm-stop i{position:absolute;top:20px;left:50%;transform:translateX(-50%);font-style:normal;font-size:11px;color:#8eaab3;white-space:nowrap;font-variant-numeric:tabular-nums}
+.nm-stop.done i{color:#d1fae5}
 @keyframes pop{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
 .map-key{display:flex;gap:6px 18px;flex-wrap:wrap;font-size:.9rem;color:var(--muted)}
 .map-key span{display:inline-flex;align-items:center;gap:7px}
-.k-place{width:14px;height:14px;border-radius:50%;background:color-mix(in srgb,var(--green) 30%,transparent);border:2px solid var(--green)}
-.k-safe{width:18px;height:0;border-top:2px dashed var(--navy)}
-.k-dot{width:12px;height:12px;border-radius:50%;background:var(--navy);box-shadow:0 0 0 3px color-mix(in srgb,var(--navy) 30%,transparent)}
+.k-place{width:14px;height:14px;border-radius:50%;background:rgba(52,211,153,.25);border:2px solid #34d399}
+.k-safe{width:18px;height:0;border-top:2px dashed #f59e0b}
+.k-dot{width:12px;height:12px;border-radius:50%;background:#5eead4;box-shadow:0 0 0 3px rgba(94,234,212,.3)}
 
 /* strip */
 .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -149,6 +152,18 @@ nav a:hover{color:var(--green)}
 .care-fig{margin:0;min-width:0;display:grid;gap:8px}
 .care-fig figcaption{color:var(--muted);font-size:.9rem}
 .care-chart{width:100%;height:auto;display:block}
+.cc-stage{position:relative}
+.cc-month{position:absolute;right:4px;top:0;font-family:var(--font-display);font-weight:800;font-size:1rem;padding:4px 12px;border-radius:999px;background:var(--tint);color:var(--ink);font-variant-numeric:tabular-nums}
+.cc-toast{position:absolute;left:12%;top:52%;display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:center;max-width:250px;padding:9px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);box-shadow:0 14px 30px -16px rgba(13,43,62,.45);font-size:.86rem;line-height:1.3;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .35s,transform .4s cubic-bezier(.2,.9,.3,1.2);pointer-events:none}
+.cc-toast.on{opacity:1;transform:none}
+@media (max-width:640px){.cc-month{position:static;display:inline-block;margin-bottom:4px;font-size:.85rem;padding:3px 10px}.cc-toast{position:relative;left:auto;top:auto;max-width:none;margin-top:6px;box-shadow:none}}
+.cc-toast i{grid-row:span 2;font-style:normal;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--tint);font-size:15px}
+.cc-toast b{font-size:.88rem}.cc-toast small{color:var(--muted);font-size:.78rem}
+.cc-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem;color:var(--muted)}
+.cc-legend span{display:inline-flex;align-items:center;gap:7px}
+.cc-legend i{width:20px;height:0;border-top:3px solid var(--green);display:inline-block}
+.cc-legend .l-without{border-top:2.5px dashed var(--muted);opacity:.8}
+.cc-gain{font-family:var(--font-display);font-size:13px;font-weight:800;fill:var(--green)}
 .cc-grid{stroke:var(--line);stroke-width:1}
 .cc-ax{font-family:var(--font-body);font-size:12px;fill:var(--muted)}
 .cc-risk{fill:var(--red);fill-opacity:.1}
@@ -360,6 +375,62 @@ nav a:hover{color:var(--green)}
 .carehomes{margin-top:22px;opacity:.92}
 .dealers .btn{background:var(--on-accent);color:var(--navy);border-color:var(--on-accent)}
 
+/* the unit: a deliberately dark, single-look section */
+.unit{--p:1;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 20% 30%,#0f3340 0%,#08171f 55%,#050d12 100%);color:#e6f1f3}
+.unit .eyebrow{color:#34d399}
+.unit .lede{color:#a9c2c9}
+.unit h2{color:#f2f8f9}
+.unit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px 56px;align-items:center}
+.unit-stage{position:relative;min-height:440px;display:grid;place-items:center;perspective:1300px}
+.u-glow{position:absolute;inset:8% 6%;border-radius:50%;background:radial-gradient(closest-side,rgba(45,212,191,.32),rgba(45,212,191,.08) 60%,transparent);filter:blur(10px);opacity:calc(.4 + var(--p)*.6)}
+.u-rings{position:absolute;left:50%;top:50%;width:0;height:0}
+.u-rings i{position:absolute;left:-150px;top:-150px;width:300px;height:300px;border-radius:50%;border:1.5px solid rgba(52,211,153,.5);opacity:0;animation:uring 3.6s ease-out infinite}
+.u-rings i:nth-child(2){animation-delay:1.2s}.u-rings i:nth-child(3){animation-delay:2.4s}
+@keyframes uring{0%{transform:scale(.55);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+.u-float{position:relative;z-index:1;width:min(500px,84%);animation:ufloat 6s ease-in-out infinite}
+@keyframes ufloat{50%{translate:0 -8px}}
+.u-img{display:block;width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.55));transform:rotateY(calc((1 - var(--p)) * -42deg)) rotateX(calc((1 - var(--p)) * 18deg)) rotateZ(calc((1 - var(--p)) * -8deg)) translateY(calc((1 - var(--p)) * 70px)) scale(calc(.82 + var(--p) * .18));transform-origin:50% 60%;will-change:transform}
+.u-calls{list-style:none;margin:0;padding:0;position:absolute;inset:0;z-index:2;pointer-events:none}
+.u-calls li{position:absolute;display:grid;gap:1px;max-width:190px;padding:9px 12px;border-radius:12px;background:rgba(8,23,31,.82);border:1px solid rgba(52,211,153,.35);backdrop-filter:blur(6px);font-size:.92rem;line-height:1.3;opacity:calc(.35 + var(--p)*.65);transform:translateY(calc((1 - var(--p)) * 14px))}
+.u-calls b{color:#f2f8f9;font-size:.98rem}.u-calls span{color:#9fbac2;font-size:.86rem}
+.u-calls .c1{top:2%;left:4%}.u-calls .c2{top:4%;right:2%;text-align:right}
+.u-calls .c3{bottom:4%;left:2%}.u-calls .c4{bottom:2%;right:4%;text-align:right}
+.u-line{position:absolute;width:44px;height:1.5px;background:linear-gradient(90deg,#34d399,transparent);transform:scaleX(var(--p));transform-origin:left}
+.c1 .u-line,.c3 .u-line{left:100%;top:50%}.c2 .u-line,.c4 .u-line{right:100%;top:50%;transform-origin:right;background:linear-gradient(270deg,#34d399,transparent)}
+.u-steps{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:16px;counter-reset:u}
+.u-steps li{display:grid;grid-template-columns:36px 1fr;gap:2px 14px;counter-increment:u}
+.u-steps li::before{content:counter(u);grid-row:span 2;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:.95rem;color:#06221a;background:#34d399}
+.u-steps b{color:#f2f8f9;font-size:1.08rem}.u-steps span{color:#a9c2c9;font-size:1rem}
+.unit-copy{display:grid;gap:18px;min-width:0}
+.u-facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.u-facts li{display:grid;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.u-facts b{font-family:var(--font-display);font-size:1.1rem;color:#f2f8f9;font-variant-numeric:tabular-nums}.u-facts span{font-size:.8rem;color:#8eaab3;text-transform:uppercase;letter-spacing:.06em}
+.u-flow{margin-top:56px;display:grid;grid-template-columns:1fr 1.1fr 1fr 1.1fr 1fr;align-items:center;gap:8px;padding:22px;border-radius:20px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+.u-node{display:grid;justify-items:center;text-align:center;gap:4px;min-width:0}
+.u-node i{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:#0e2a33;border:1px solid rgba(52,211,153,.4);margin-bottom:4px}
+.u-node svg{width:26px;height:26px;fill:none;stroke:#34d399;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.u-node img{width:28px;height:auto;display:block}
+.u-node b{color:#f2f8f9;font-size:1rem}.u-node span{color:#8eaab3;font-size:.86rem}
+.u-link{position:relative;height:2px;background:repeating-linear-gradient(90deg,rgba(52,211,153,.55) 0 6px,transparent 6px 12px);min-width:0}
+.u-link em{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);font-style:normal;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5eead4;white-space:nowrap}
+.u-link s{position:absolute;top:-4px;left:0;width:10px;height:10px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d399;animation:udot 2.6s linear infinite}
+.u-link s:nth-of-type(2){animation-delay:1.3s}
+@keyframes udot{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:calc(100% - 10px);opacity:0}}
+@media (max-width:900px){
+  .unit-grid{grid-template-columns:1fr}
+  .unit-copy{order:-1}
+  .unit-stage{min-height:0;padding-top:8px}
+  .u-calls{position:static;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px;width:100%}
+  .u-calls li{position:static;max-width:none;text-align:left!important}
+  .u-line{display:none}
+  .u-flow{grid-template-columns:1fr;justify-items:center;gap:6px;padding:20px 16px}
+  .u-link{width:2px;height:44px;background:repeating-linear-gradient(180deg,rgba(52,211,153,.55) 0 6px,transparent 6px 12px)}
+  .u-link em{left:14px;bottom:auto;top:50%;transform:translateY(-50%)}
+  .u-link s{left:-4px;animation-name:udotv}
+  @keyframes udotv{0%{top:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:calc(100% - 10px);opacity:0}}
+}
+@media (max-width:520px){ .u-calls{grid-template-columns:1fr} }
+
 /* privacy */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .split > div{display:grid;gap:18px;align-content:start;min-width:0}
@@ -537,36 +608,12 @@ nav a:hover{color:var(--green)}
       </div>
 
       <div class="dayout">
-        <div class="map-card" role="img" aria-label="Animated example: Margaret's scooter leaves home, visits the surgery and the shops, and returns. Her daughter gets a message as she arrives at and leaves each saved place.">
-          <svg id="map" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect width="500" height="400" fill="var(--map-land)"/>
-            <path d="M-10 365 C 90 345 160 390 250 372 S 420 340 510 362 L510 410 L-10 410Z" fill="var(--map-water)"/>
-            <g fill="none" stroke-linecap="round">
-              <g stroke="var(--map-road-edge)" stroke-width="16">
-                <path d="M40 250 H460"/><path d="M80 60 V330"/><path d="M400 250 V320"/><path d="M220 250 V350"/><path d="M80 150 H170"/><path d="M300 250 V330 H360"/>
-              </g>
-              <g stroke="var(--map-road)" stroke-width="12">
-                <path d="M40 250 H460"/><path d="M80 60 V330"/><path d="M400 250 V320"/><path d="M220 250 V350"/><path d="M80 150 H170"/><path d="M300 250 V330 H360"/>
-              </g>
-            </g>
-            <circle class="safe" cx="230" cy="210" r="200"/>
-            <circle class="geo" id="g-home" cx="80" cy="320" r="26"/>
-            <circle class="geo" id="g-doc" cx="400" cy="310" r="26"/>
-            <circle class="geo" id="g-shop" cx="80" cy="90" r="26"/>
-            <path id="route" class="route" d="M80 320 V250 H400 V310 V250 H80 V90 V320"/>
-            <text x="80" y="327" text-anchor="middle" font-size="20">🏠</text>
-            <text class="map-label" x="114" y="326">Home</text>
-            <text x="400" y="317" text-anchor="middle" font-size="19">🩺</text>
-            <text class="map-label" x="400" y="356" text-anchor="middle">The surgery</text>
-            <text x="80" y="97" text-anchor="middle" font-size="19">🛒</text>
-            <text class="map-label" x="114" y="95">The shops</text>
-            <g id="scooter">
-              <circle r="15" fill="var(--navy)" opacity=".18"><animate attributeName="r" values="11;19;11" dur="1.8s" repeatCount="indefinite"/></circle>
-              <circle r="8" fill="var(--navy)" stroke="var(--surface)" stroke-width="3"/>
-            </g>
-          </svg>
+        <div class="nm" role="img" aria-label="Animated example: Margaret's scooter leaves home, visits the surgery and the shops, and returns home. A clock and a timeline follow her morning, and her daughter gets a message at each stop.">
+          <svg id="nm-map" viewBox="0 0 500 400" aria-hidden="true"></svg>
+          <div class="nm-clock" aria-hidden="true"><b id="nm-clock">10:00</b><span>Tuesday</span></div>
+          <div class="nm-msg" id="nm-msg" aria-hidden="true"><b>🏠 At home</b><small>Margaret · battery 100%</small></div>
+          <div class="nm-tl" aria-hidden="true"><div class="nm-track"><div class="nm-fill" id="nm-fill"></div><div id="nm-stops"></div></div></div>
         </div>
-        <div class="notif-stack" id="notifs" aria-live="off"></div>
         <div class="map-key">
           <span><i class="k-dot"></i>Margaret's scooter</span>
           <span><i class="k-place"></i>Saved places</span>
@@ -591,7 +638,7 @@ nav a:hover{color:var(--green)}
       <div class="sec-head">
         <span class="eyebrow">What it covers</span>
         <h2>The four things families worry about.</h2>
-        <p class="lede">MobilityGuard does a lot, so here it is the way you'd think about it: the questions that go through your head when someone you love heads out on their own.</p>
+        <p class="lede">MobilityGuard does a lot. So here is the way you'd think about it: the questions that go through your head when someone you love heads out on their own.</p>
       </div>
       <div class="worries">
         <article class="worry">
@@ -642,34 +689,69 @@ nav a:hover{color:var(--green)}
         <div class="care-copy">
           <span class="eyebrow">Pre-emptive battery care</span>
           <h3 class="care-h">Look after the battery, and it looks after them.</h3>
-          <p class="lede">Most scooter breakdowns come down to a worn or badly treated battery. MobilityGuard watches it every day, so problems are fixed before anyone is left stranded.</p>
+          <p class="lede">Most scooter breakdowns come down to a worn or badly treated battery. MobilityGuard watches it every day and nudges at the right moment, so the battery lasts longer and is replaced before anyone is left stranded.</p>
           <ul class="care-list">
             <li><b>Active monitoring</b><span>Charge, range and charging, checked day and night. You and your dealer can see it any time.</span></li>
             <li><b>Health checks every month</b><span>Tested while parked, while riding, and by comparing the two batteries. That tells a worn battery apart from a soft tyre or a dragging brake.</span></li>
-            <li><b>Caught early</b><span>A battery left flat, a charger that isn't working, or charging habits that shorten its life are picked up straight away, with a gentle nudge to the rider and family.</span></li>
+            <li><b>Caught early</b><span>A battery left flat, a charger that isn't working or charging habits that shorten its life are picked up straight away, with a gentle nudge to the rider and family.</span></li>
           </ul>
         </div>
         <figure class="care-fig">
-          <svg class="care-chart" viewBox="0 0 520 260" role="img" aria-label="Example battery health over 18 months: it falls slowly from 100%, then faster after a year. At 15 months, at 83%, MobilityGuard flags it and the dealer books a new battery, before it reaches 75%, where breakdowns become likely.">
-            <line x1="44" x2="504" y1="220.0" y2="220.0" class="cc-grid"/><text x="36" y="224.0" text-anchor="end" class="cc-ax">60%</text><line x1="44" x2="504" y1="169.5" y2="169.5" class="cc-grid"/><text x="36" y="173.5" text-anchor="end" class="cc-ax">70%</text><line x1="44" x2="504" y1="119.0" y2="119.0" class="cc-grid"/><text x="36" y="123.0" text-anchor="end" class="cc-ax">80%</text><line x1="44" x2="504" y1="68.5" y2="68.5" class="cc-grid"/><text x="36" y="72.5" text-anchor="end" class="cc-ax">90%</text><line x1="44" x2="504" y1="18.0" y2="18.0" class="cc-grid"/><text x="36" y="22.0" text-anchor="end" class="cc-ax">100%</text>
-                        <text x="498" y="212.0" text-anchor="end" class="cc-risk-t">Breakdowns likely below 75%</text>
-            <path d="M44.0 18.0 L69.6 20.5 L95.1 23.1 L120.7 25.6 L146.2 28.1 L171.8 33.1 L197.3 35.7 L222.9 38.2 L248.4 43.2 L274.0 48.3 L299.6 53.4 L325.1 60.9 L350.7 68.5 L376.2 78.6 L401.8 88.7 L427.3 101.3 L452.9 116.5 L478.4 134.1 L504.0 151.8 L504.0 144.2 L44.0 144.2 Z" class="cc-area"/>
-            <rect x="44" y="144.2" width="460" height="75.8" class="cc-risk"/>
-            <path d="M44.0 18.0 L69.6 20.5 L95.1 23.1 L120.7 25.6 L146.2 28.1 L171.8 33.1 L197.3 35.7 L222.9 38.2 L248.4 43.2 L274.0 48.3 L299.6 53.4 L325.1 60.9 L350.7 68.5 L376.2 78.6 L401.8 88.7 L427.3 101.3 L452.9 116.5 L478.4 134.1 L504.0 151.8" class="cc-line"/>
-            <line x1="427.3" x2="427.3" y1="18" y2="101.3" class="cc-mark-l"/>
-            <circle cx="427.3" cy="101.3" r="11" class="cc-pulse"/>
-            <circle cx="427.3" cy="101.3" r="6" class="cc-dot"/>
-            <text x="417.3" y="28" text-anchor="end" class="cc-note">Flagged at 83%</text>
-            <text x="417.3" y="45" text-anchor="end" class="cc-note-s">New battery booked in</text>
-            <text x="44.0" y="246" text-anchor="start" class="cc-ax">Fitted</text><text x="197.3" y="246" text-anchor="middle" class="cc-ax">6 months</text><text x="350.7" y="246" text-anchor="middle" class="cc-ax">12 months</text><text x="504.0" y="246" text-anchor="end" class="cc-ax">18 months</text>
-          </svg>
-          <figcaption>Example: how one battery's health might fade over 18 months.</figcaption>
+          <div class="cc-stage">
+            <span class="cc-month" id="cc-month" aria-hidden="true">Month 21</span>
+            <svg class="care-chart" id="cc-svg" viewBox="0 0 560 320" role="img" aria-label="Example over 21 months. With MobilityGuard's care, reminders about a flat battery, a faulty charger and charging habits keep the battery healthy for longer. It reaches 83% at month 19, is flagged, and a new battery is fitted before any breakdown. Without care, the same battery wears out faster and drops below 75%, where breakdowns become likely, by month 16. Care gives about 6 extra months of battery life."></svg>
+            <div class="cc-toast" id="cc-toast" aria-hidden="true"><i id="cc-ti">🔌</i><b id="cc-tt">Left flat overnight</b><small id="cc-ts">Reminder sent to Margaret</small></div>
+          </div>
+          <div class="cc-legend"><span><i class="l-with"></i>With MobilityGuard's care</span><span><i class="l-without"></i>Without care</span></div>
+          <figcaption>Example: the same battery over 21 months, with and without care.</figcaption>
         </figure>
         <ul class="care-tags">
-          <li>Fewer breakdowns</li><li>Batteries last longer</li><li>No paying for a battery you didn't need</li>
+          <li>Batteries last longer</li><li>Fewer breakdowns</li><li>No paying for a battery you didn't need</li>
         </ul>
       </div>
       <div class="calm"><b>Every message, in plain English.</b><span>No codes, no jargon. If it says "time to head home", that's exactly what it means.</span></div>
+    </div>
+  </section>
+
+  <!-- UNIT -->
+  <section id="unit" class="unit">
+    <div class="wrap unit-grid">
+      <div class="unit-stage">
+        <div class="u-glow" aria-hidden="true"></div>
+        <div class="u-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="u-float"><img class="u-img" src="images/unit.webp" alt="The MobilityGuard unit: a slim black box, a little smaller than a mobile phone." width="900" height="486"></div>
+        <ul class="u-calls">
+          <li class="c1"><i class="u-line" aria-hidden="true"></i><b>4G and GPS inside</b><span>Knows where it is, and tells us</span></li>
+          <li class="c2"><i class="u-line" aria-hidden="true"></i><b>Motion sensor</b><span>Feels a tip-over or a hard knock</span></li>
+          <li class="c3"><i class="u-line" aria-hidden="true"></i><b>Backup battery</b><span>Still raises the alarm if it's cut off</span></li>
+          <li class="c4"><i class="u-line" aria-hidden="true"></i><b>Runs off the scooter</b><span>Never needs charging</span></li>
+        </ul>
+      </div>
+      <div class="unit-copy">
+        <span class="eyebrow">The unit</span>
+        <h2>Small enough to hide. Clever enough to notice.</h2>
+        <p class="lede">Everything starts with one slim box, a little smaller than a mobile phone. Your dealer fits it inside the scooter, where nobody sees it, and it quietly keeps watch from then on.</p>
+        <ol class="u-steps">
+          <li><b>Fitted out of sight</b><span>Your dealer tucks it inside the scooter and wires it to the scooter's own battery. There's nothing to charge and nothing to wear.</span></li>
+          <li><b>It notices</b><span>A built-in motion sensor feels a tip-over or a hard knock, and it knows when the key is turned on.</span></li>
+          <li><b>It knows where</b><span>Satellite positioning (GPS) works out where the scooter is, and a built-in 4G connection sends that, and the battery readings, to us.</span></li>
+          <li><b>We do the thinking</b><span>Our system checks everything, decides what matters, and sends one clear text or app message to the right person.</span></li>
+        </ol>
+        <ul class="u-facts">
+          <li><b>93 × 43 × 12 mm</b><span>size</span></li>
+          <li><b>65 g</b><span>weight</span></li>
+          <li><b>4G + GPS</b><span>connection</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="u-flow" aria-label="How a reading travels: from the unit on the scooter, over 4G, to MobilityGuard, then to you as a text or app message.">
+        <div class="u-node"><i><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="2"/><path d="M8 11h3M8 13.5h5"/></svg></i><b>The unit</b><span>on the scooter</span></div>
+        <div class="u-link" aria-hidden="true"><em>4G</em><s></s><s></s></div>
+        <div class="u-node"><i><img src="images/logo.webp" alt="" width="26" height="27"></i><b>MobilityGuard</b><span>checks it, day and night</span></div>
+        <div class="u-link" aria-hidden="true"><em>text or app</em><s></s><s></s></div>
+        <div class="u-node"><i><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 6h4M11 18h2"/></svg></i><b>You</b><span>only when it matters</span></div>
+      </div>
     </div>
   </section>
 
@@ -1051,50 +1133,185 @@ nav a:hover{color:var(--green)}
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Day-out map ---- */
-  var route = document.getElementById('route'), dot = document.getElementById('scooter'), stack = document.getElementById('notifs');
-  var places = {home:document.getElementById('g-home'), doc:document.getElementById('g-doc'), shop:document.getElementById('g-shop')};
-  var events = [
-    {at:0.06,  ic:'🏠', t:'Left home', s:'Margaret · 10:02', g:'home'},
-    {at:0.27,  ic:'🩺', t:'Arrived at the surgery', s:'Margaret · 10:19', g:'doc', on:true},
-    {at:0.42,  ic:'🩺', t:'Left the surgery', s:'Margaret · 10:51', g:'doc'},
-    {at:0.635, ic:'🛒', t:'Arrived at the shops', s:'Margaret · 11:06', g:'shop', on:true},
-    {at:0.70,  ic:'🔋', t:'Time to head home', s:'Text to Margaret: 2.4 miles left, home is 1.1', rider:true},
-    {at:0.78,  ic:'🛒', t:'Left the shops', s:'Margaret · 11:52', g:'shop'},
-    {at:0.955, ic:'✅', t:'Back home', s:'Margaret · 12:14 · battery 31%', g:'home', on:true}
-  ];
-  // time -> progress along the route, pausing at each place
-  var KT=[0,0.04,0.30,0.40,0.66,0.77,0.97,1], KP=[0,0,0.369,0.369,0.811,0.811,1,1];
-  function prog(t){ for(var i=1;i<KT.length;i++){ if(t<=KT[i]){ var f=(t-KT[i-1])/(KT[i]-KT[i-1]); f=f<.5?2*f*f:1-Math.pow(-2*f+2,2)/2; return KP[i-1]+(KP[i]-KP[i-1])*f; } } return 1; }
-  function card(e){
-    var d=document.createElement('div'); d.className='notif'+(e.rider?' rider':'');
-    d.innerHTML='<span class="ni">'+e.ic+'</span><b>'+e.t+'</b><small>'+e.s+'</small>';
-    return d;
-  }
-  function show(e){
-    stack.insertBefore(card(e), stack.firstChild);
-    while(stack.children.length>3) stack.removeChild(stack.lastChild);
-    Object.keys(places).forEach(function(k){ places[k].classList.toggle('on', !!(e.on && e.g===k)); });
-  }
-  if(route && route.getTotalLength){
-    var L = route.getTotalLength(), dur = 22000, start = null, next = 0, lastT = 0;
-    var place = function(p){ var pt = route.getPointAtLength(L*p); dot.setAttribute('transform','translate('+pt.x+' '+pt.y+')'); };
-    if(reduce){
-      place(0.811); [events[2],events[3],events[4]].forEach(show);
-    } else {
-      // open on a filled state so the first frame already tells the story
-      [events[0],events[1]].forEach(show); next = 2; var offset = 0.30*dur;
-      var tick = function(ts){
-        if(start===null) start = ts - offset;
-        var t = ((ts-start)%dur)/dur;
-        if(t < lastT){ next = 0; }
-        lastT = t;
-        place(prog(t));
-        while(next < events.length && t >= events[next].at){ show(events[next]); next++; }
-        requestAnimationFrame(tick);
-      };
+  /* ---- Day-out map: night mode with clock and timeline (made-up town) ---- */
+  (function(){
+    var svg=document.getElementById('nm-map'); if(!svg) return;
+    var NS='http://www.w3.org/2000/svg';
+    function el(tag,a,parent){ var e=document.createElementNS(NS,tag); for(var k in a) e.setAttribute(k,a[k]); if(parent) parent.appendChild(e); return e; }
+    var ROADS={church:[[120,-10],[118,120],[120,205],[118,300],[116,410]],high:[[-10,212],[120,205],[250,207],[382,212],[510,205]],station:[[250,207],[330,140],[430,62],[520,10]],sea:[[382,212],[398,275],[402,330]],mill:[[-10,120],[118,120],[200,112]],park:[[118,300],[220,305],[300,300]]};
+    var PLACES={home:{x:118,y:300,ic:'🏠',name:'Home',lx:-14},doc:{x:398,y:275,ic:'🩺',name:'The surgery',lx:0},shop:{x:430,y:62,ic:'🛒',name:'The shops',lx:0}};
+    var ROUTE=[[118,300],[120,205],[250,207],[382,212],[398,275],[382,212],[250,207],[330,140],[430,62],[330,140],[250,207],[120,205],[118,300]];
+    var LEGEND=[['High Street',175,199,0],['Church Lane',106,70,90],['Station Road',300,158,-38],['Sea Road',408,250,75]];
+    var seed=11; function rnd(){ seed=(seed*16807)%2147483647; return seed/2147483647; }
+    function segDist(px,py,a,b){ var dx=b[0]-a[0],dy=b[1]-a[1],t=((px-a[0])*dx+(py-a[1])*dy)/(dx*dx+dy*dy); t=Math.max(0,Math.min(1,t)); return Math.hypot(px-(a[0]+t*dx),py-(a[1]+t*dy)); }
+    var blocks=[];
+    for(var gx=10;gx<500;gx+=26) for(var gy=10;gy<400;gy+=24){
+      var x=gx+rnd()*8,y=gy+rnd()*6,ok=true;
+      for(var k in ROADS){ var r=ROADS[k]; for(var i=0;i<r.length-1;i++) if(segDist(x+8,y+7,r[i],r[i+1])<20) ok=false; }
+      for(var q in PLACES) if(Math.hypot(x-PLACES[q].x,y-PLACES[q].y)<44) ok=false;
+      if(y+x*0.35>455) ok=false; if(x>150&&x<300&&y>235&&y<290) ok=false;
+      if(ok && rnd()>.28) blocks.push([x,y,12+rnd()*9,10+rnd()*7]);
+    }
+    function pts(a){ return a.map(function(p){return p.join(' ')}).join(' L'); }
+    var CUM=[0]; for(var i2=1;i2<ROUTE.length;i2++) CUM.push(CUM[i2-1]+Math.hypot(ROUTE[i2][0]-ROUTE[i2-1][0],ROUTE[i2][1]-ROUTE[i2-1][1]));
+    var TOTAL=CUM[CUM.length-1], D_DOC=CUM[4], D_SHOP=CUM[8];
+    function at(d){ for(var i=1;i<CUM.length;i++) if(d<=CUM[i]){ var f=(d-CUM[i-1])/(CUM[i]-CUM[i-1]); return [ROUTE[i-1][0]+f*(ROUTE[i][0]-ROUTE[i-1][0]),ROUTE[i-1][1]+f*(ROUTE[i][1]-ROUTE[i-1][1])]; } return ROUTE[ROUTE.length-1]; }
+    var KT=[0,.04,.22,.32,.55,.68,.92,1], KD=[0,0,D_DOC,D_DOC,D_SHOP,D_SHOP,TOTAL,TOTAL];
+    function dist(t){ for(var i=1;i<KT.length;i++) if(t<=KT[i]){ var f=(t-KT[i-1])/(KT[i]-KT[i-1]); f=f<.5?2*f*f:1-Math.pow(-2*f+2,2)/2; return KD[i-1]+(KD[i]-KD[i-1])*f; } return TOTAL; }
+    var CT=[0,.045,.22,.32,.55,.62,.68,.92,1], CM=[600,602,619,651,666,700,712,734,740];
+    function clock(t){ for(var i=1;i<CT.length;i++) if(t<=CT[i]){ var m=Math.floor(CM[i-1]+(CM[i]-CM[i-1])*(t-CT[i-1])/(CT[i]-CT[i-1])); return Math.floor(m/60)+':'+('0'+m%60).slice(-2); } return '12:20'; }
+    var EV=[
+      {t:.045,k:'home',on:false,ic:'🏠',ti:'Left home',su:'Margaret · 10:02'},
+      {t:.22,k:'doc',on:true,ic:'🩺',ti:'Arrived at the surgery',su:'Margaret · 10:19'},
+      {t:.32,k:'doc',on:false,ic:'🩺',ti:'Left the surgery',su:'Margaret · 10:51'},
+      {t:.55,k:'shop',on:true,ic:'🛒',ti:'Arrived at the shops',su:'Margaret · 11:06'},
+      {t:.62,k:null,ic:'🔋',ti:'Time to head home',su:'Text to Margaret: 2.4 miles left, home is 1.1'},
+      {t:.68,k:'shop',on:false,ic:'🛒',ti:'Left the shops',su:'Margaret · 11:52'},
+      {t:.92,k:'home',on:true,ic:'✅',ti:'Back home',su:'Margaret · 12:14 · battery 31%'}
+    ];
+    // draw the town
+    el('rect',{x:-50,y:-50,width:600,height:500,fill:'#071820'},svg);
+    var gr=el('g',{stroke:'rgba(94,234,212,.05)','stroke-width':.6},svg); for(var gi=0;gi<=500;gi+=25) el('line',{x1:gi,y1:0,x2:gi,y2:400},gr); for(var gj=0;gj<=400;gj+=25) el('line',{x1:0,y1:gj,x2:500,y2:gj},gr);
+    el('path',{d:'M150 240 L300 236 L298 292 L156 290 Z',fill:'#0b2a23'},svg);
+    el('text',{x:226,y:268,'text-anchor':'middle','font-size':9,fill:'#2f6b5a','class':'mfont','font-style':'italic'},svg).textContent='Recreation ground';
+    el('path',{d:'M250 410 C 330 360 420 330 520 300 L520 410 Z',fill:'#0a2433'},svg);
+    el('text',{x:470,y:380,'text-anchor':'end','font-size':10,fill:'#2c6077','class':'mfont','font-style':'italic','letter-spacing':2},svg).textContent='THE SEA';
+    var bg=el('g',{fill:'#0c2530'},svg); blocks.forEach(function(b){ el('rect',{x:b[0],y:b[1],width:b[2],height:b[3],rx:2},bg); });
+    ['casing','road'].forEach(function(layer){ for(var k in ROADS){ var main=(k==='high'||k==='station'); el('path',{d:'M'+pts(ROADS[k]),fill:'none',stroke:layer==='casing'?'#0a1f28':(main?'#174250':'#12313c'),'stroke-width':layer==='casing'?(main?14:11):(main?10:7.5),'stroke-linecap':'round','stroke-linejoin':'round'},svg); } });
+    for(var k4 in ROADS) el('path',{d:'M'+pts(ROADS[k4]),fill:'none',stroke:'rgba(94,234,212,.25)','stroke-width':1.2,'stroke-linecap':'round','stroke-linejoin':'round'},svg);
+    LEGEND.forEach(function(l){ el('text',{x:l[1],y:l[2],'font-size':8.5,fill:'#3f7f8c','class':'mfont','text-anchor':'middle',transform:'rotate('+l[3]+' '+l[1]+' '+l[2]+')','letter-spacing':.4},svg).textContent=l[0]; });
+    el('path',{d:'M40 150 C 60 40 300 0 470 20 C 520 120 480 300 400 345 C 300 390 120 380 60 340 C 20 280 25 200 40 150Z',fill:'none',stroke:'#f59e0b','stroke-width':1.4,'stroke-dasharray':'6 6',opacity:.75},svg);
+    var defs=el('defs',{},svg), f=el('filter',{id:'nm-glow',x:'-50%',y:'-50%',width:'200%',height:'200%'},defs); el('feGaussianBlur',{stdDeviation:2.2,result:'b'},f); var mg=el('feMerge',{},f); el('feMergeNode',{in:'b'},mg); el('feMergeNode',{in:'SourceGraphic'},mg);
+    var trail=el('path',{d:'M'+pts(ROUTE),fill:'none',stroke:'#34d399','stroke-width':3.5,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':TOTAL+' '+TOTAL,'stroke-dashoffset':TOTAL,filter:'url(#nm-glow)'},svg);
+    var P={};
+    for(var k3 in PLACES){
+      var pl=PLACES[k3], g2=el('g',{},svg);
+      var ring=el('circle',{cx:pl.x,cy:pl.y,r:24,fill:'#34d399','fill-opacity':.14,stroke:'#34d399','stroke-width':1.6},g2);
+      var pulse=el('circle',{cx:pl.x,cy:pl.y,r:24,fill:'none',stroke:'#34d399','stroke-width':2,opacity:0},g2);
+      el('circle',{cx:pl.x,cy:pl.y,r:13,fill:'#0b2029',stroke:'#34d399','stroke-width':1.5},g2);
+      el('text',{x:pl.x,y:pl.y+5,'text-anchor':'middle','font-size':13},g2).textContent=pl.ic;
+      var lw=pl.name.length*5.6+16, lx=pl.x+pl.lx-lw/2, ly=pl.y+22;
+      el('rect',{x:lx,y:ly,width:lw,height:15,rx:7.5,fill:'rgba(9,30,38,.9)',stroke:'rgba(52,211,153,.4)'},g2);
+      el('text',{x:lx+lw/2,y:ly+11,'text-anchor':'middle','font-size':9,'font-weight':700,fill:'#d1fae5','class':'mfont'},g2).textContent=pl.name;
+      P[k3]={ring:ring,pulse:pulse};
+    }
+    var dot=el('g',{},svg);
+    el('circle',{r:13,fill:'#5eead4',opacity:.22},dot).innerHTML='<animate attributeName="r" values="10;17;10" dur="1.8s" repeatCount="indefinite"/>';
+    el('circle',{r:7.5,fill:'#5eead4',stroke:'#06121a','stroke-width':3},dot);
+    // clock, message, timeline
+    var clockEl=document.getElementById('nm-clock'), msg=document.getElementById('nm-msg'), fill=document.getElementById('nm-fill'), stops=document.getElementById('nm-stops'), stopEls=[];
+    [[.045,'🏠','10:02'],[.22,'🩺','10:19'],[.55,'🛒','11:06'],[.92,'✅','12:14']].forEach(function(s){ var d=document.createElement('div'); d.className='nm-stop'; d.style.left=(s[0]*100)+'%'; d.innerHTML='<em>'+s[1]+'</em><i>'+s[2]+'</i>'; stops.appendChild(d); stopEls.push([s[0],d]); });
+    function fire(e){
+      msg.classList.remove('flash'); void msg.offsetWidth; msg.classList.add('flash');
+      msg.innerHTML='<b>'+e.ic+' '+e.ti+'</b><small>'+e.su+'</small>';
+      for(var k in P) P[k].ring.setAttribute('fill-opacity',(e.k===k&&e.on)?.32:.14);
+      if(e.k && e.on){ var p=P[e.k].pulse; p.innerHTML='<animate attributeName="r" from="24" to="48" dur="1.3s" begin="indefinite" fill="freeze"/><animate attributeName="opacity" from=".9" to="0" dur="1.3s" begin="indefinite" fill="freeze"/>'; Array.prototype.forEach.call(p.children,function(an){ try{ an.beginElement(); }catch(err){} }); }
+    }
+    function draw(t){
+      var d=dist(t), pt=at(d);
+      dot.setAttribute('transform','translate('+pt[0]+' '+pt[1]+')'); trail.setAttribute('stroke-dashoffset',TOTAL-d);
+      clockEl.textContent=clock(t); fill.style.width=(Math.min(1,t/.92)*100)+'%';
+      stopEls.forEach(function(s){ s[1].classList.toggle('done',t>=s[0]); });
+    }
+    if(reduce){ draw(.6); EV.slice(0,5).forEach(fire); return; }
+    var dur=24000, start=null, next=0, last=0;
+    function tick(ts){
+      if(start===null) start=ts-.12*dur;          // open part-way in, so the first frame already tells the story
+      var t=((ts-start)%dur)/dur;
+      if(t<last){ next=0; msg.innerHTML='<b>🏠 At home</b><small>Margaret · battery 100%</small>'; }
+      last=t;
+      while(next<EV.length && t>=EV[next].t){ fire(EV[next]); next++; }
+      draw(t);
       requestAnimationFrame(tick);
     }
+    requestAnimationFrame(tick);
+  })();
+
+
+  /* ---- Battery care: the same battery with and without care, 21 months ---- */
+  (function(){
+    var svg=document.getElementById('cc-svg'); if(!svg) return;
+    var NS='http://www.w3.org/2000/svg';
+    function el(t,a,p){ var e=document.createElementNS(NS,t); for(var k in a) e.setAttribute(k,a[k]); if(p) p.appendChild(e); return e; }
+    // made-up example readings, one per month
+    var CARE=[100,99.6,99.2,98.7,98.2,97.7,97.2,96.6,96.0,95.4,94.7,94.0,93.2,92.3,91.3,90.2,89.0,87.6,85.8,83.5];   // flagged at month 19
+    var NOCARE=[100,99.3,98.5,97.6,96.6,95.6,94.5,93.3,92.0,90.6,89.0,87.3,85.5,83.5,81.3,79.0,76.5,74.0];          // worn out by month 16-17
+    var NEW=[100,99.8,99.6];
+    var W=560,H=320,pl=46,pr=16,pt=40,pb=40,MAXM=21,vmin=60,vmax=100;
+    var X=function(m){return pl+(W-pl-pr)*m/MAXM}, Y=function(v){return pt+(H-pt-pb)*(1-(v-vmin)/(vmax-vmin))};
+    [60,70,80,90,100].forEach(function(v){ el('line',{x1:pl,x2:W-pr,y1:Y(v),y2:Y(v),'class':'cc-grid'},svg); el('text',{x:pl-8,y:Y(v)+4,'text-anchor':'end','class':'cc-ax'},svg).textContent=v+'%'; });
+    el('rect',{x:pl,y:Y(75),width:W-pl-pr,height:Y(60)-Y(75),'class':'cc-risk'},svg);
+    el('text',{x:W-pr-6,y:Y(60)-8,'text-anchor':'end','class':'cc-risk-t'},svg).textContent='Breakdowns likely below 75%';
+    [[0,'Fitted','start'],[7,'7 months','middle'],[14,'14 months','middle'],[21,'21 months','end']].forEach(function(a){ el('text',{x:X(a[0]),y:H-14,'text-anchor':a[2],'class':'cc-ax'},svg).textContent=a[1]; });
+    var defs=el('defs',{},svg), lg=el('linearGradient',{id:'cc-fade',x1:0,y1:0,x2:0,y2:1},defs);
+    el('stop',{offset:0,'stop-color':'var(--green)','stop-opacity':.2},lg); el('stop',{offset:1,'stop-color':'var(--green)','stop-opacity':0},lg);
+    function interp(a,m){ var i=Math.floor(m),f=m-i; return i>=a.length-1?a[a.length-1]:a[i]+(a[i+1]-a[i])*f; }
+    function path(a,m,off){ off=off||0; var d='',n=Math.floor(m); for(var i=0;i<=n&&i<a.length;i++) d+=(i?'L':'M')+X(i+off).toFixed(1)+' '+Y(a[i]).toFixed(1)+' '; if(m>n&&n<a.length-1) d+='L'+X(m+off).toFixed(1)+' '+Y(interp(a,m)).toFixed(1); return d; }
+    var area=el('path',{fill:'url(#cc-fade)'},svg);
+    var ghost=el('path',{fill:'none',stroke:'var(--muted)','stroke-width':2.5,'stroke-dasharray':'6 6','stroke-linecap':'round',opacity:.7},svg);
+    var ghostEnd=el('g',{opacity:0},svg);
+    el('circle',{cx:X(17),cy:Y(NOCARE[17]),r:6,fill:'var(--red)'},ghostEnd);
+    el('text',{x:X(17)-10,y:Y(NOCARE[17])+4,'text-anchor':'end','class':'cc-note-s'},ghostEnd).textContent='Without care';
+    var gain=el('g',{opacity:0},svg);   // the extra life care gives
+    el('line',{x1:X(13),x2:X(19),y1:Y(83.5),y2:Y(83.5),stroke:'var(--green)','stroke-width':2,'marker-end':'url(#cc-arr)','marker-start':'url(#cc-arr)'},gain);
+    var mk=el('marker',{id:'cc-arr',viewBox:'0 0 10 10',refX:5,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},defs); el('path',{d:'M0 0 L10 5 L0 10 z',fill:'var(--green)'},mk);
+    el('text',{x:(X(13)+X(19))/2,y:Y(83.5)-8,'text-anchor':'middle','class':'cc-gain'},gain).textContent='6 extra months';
+    var line=el('path',{'class':'cc-line'},svg), line2=el('path',{'class':'cc-line'},svg);
+    var care=el('g',{},svg);
+    var swap=el('g',{opacity:0},svg);
+    el('line',{x1:X(19),x2:X(19),y1:pt-6,y2:H-pb,'class':'cc-mark-l'},swap);
+    el('text',{x:X(19)-8,y:pt+8,'text-anchor':'end','class':'cc-note'},swap).textContent='New battery fitted';
+    var ring=el('circle',{cx:X(19),cy:Y(CARE[19]),r:13,fill:'none',stroke:'var(--navy)','stroke-width':2,opacity:0},svg);
+    var dot=el('circle',{r:6.5,'class':'cc-dot'},svg);
+    var MOMENTS=[[3,'🔌','Left flat overnight','Reminder sent to Margaret'],[8,'⚡','Charger not charging fully','Dealer told, charger swapped'],[13,'🌙','Often left low','Evening charging reminders on']];
+    var mdots=MOMENTS.map(function(c){ return el('circle',{cx:X(c[0]),cy:Y(CARE[c[0]]),r:4.5,fill:'var(--surface)',stroke:'var(--green)','stroke-width':2.5,opacity:0},care); });
+    var toast=document.getElementById('cc-toast'), ti=document.getElementById('cc-ti'), tt=document.getElementById('cc-tt'), ts=document.getElementById('cc-ts'), monthEl=document.getElementById('cc-month');
+    var shown=null;
+    function say(k,ic,a,b){ if(shown===k) return; shown=k; if(k===null){ toast.classList.remove('on'); return; } ti.textContent=ic; tt.textContent=a; ts.textContent=b; toast.classList.remove('on'); void toast.offsetWidth; toast.classList.add('on'); }
+    function draw(t){
+      // 0-.68 months 0-19 · .68-.82 flagged · .82 swap · .82-.94 new battery 19-21 · hold
+      var m = t<.68 ? 19*(t/.68) : (t<.82 ? 19 : 19+2*Math.min(1,(t-.82)/.12));
+      var cm=Math.min(m,19), swapped=t>=.82, flagged=t>=.68;
+      line.setAttribute('d',path(CARE,cm));
+      area.setAttribute('d',path(CARE,cm)+'L'+X(cm).toFixed(1)+' '+Y(75)+' L'+X(0)+' '+Y(75)+' Z');
+      ghost.setAttribute('d',path(NOCARE,Math.min(m,17)));
+      ghostEnd.setAttribute('opacity',m>=17?1:0);
+      gain.setAttribute('opacity',flagged?1:0);
+      mdots.forEach(function(d,i){ d.setAttribute('opacity',m>=MOMENTS[i][0]?1:0); });
+      if(swapped){ var nm=m-19; line2.setAttribute('d','M'+X(19)+' '+Y(100)+' L'+X(m).toFixed(1)+' '+Y(interp(NEW,nm)).toFixed(1)); dot.setAttribute('cx',X(m)); dot.setAttribute('cy',Y(interp(NEW,nm))); }
+      else { line2.setAttribute('d',''); dot.setAttribute('cx',X(cm)); dot.setAttribute('cy',Y(interp(CARE,cm))); }
+      swap.setAttribute('opacity',swapped?1:0);
+      ring.setAttribute('opacity',flagged&&!swapped?(.35+.65*Math.abs(Math.sin(t*38))):0);
+      dot.style.fill = flagged&&!swapped ? 'var(--amber, #d97706)' : '';
+      monthEl.textContent = m<0.5 ? 'Fitted' : 'Month '+Math.floor(m);
+      var k=null;
+      MOMENTS.forEach(function(c,i){ if(m>=c[0] && m<c[0]+2.2) k=i; });
+      if(k!==null) say('m'+k,MOMENTS[k][1],MOMENTS[k][2],MOMENTS[k][3]);
+      else if(flagged && t<.97) say(swapped?'swap':'flag', swapped?'✅':'🔧', swapped?'New battery fitted':'Battery at 83%: dealer told', swapped?'Month 19, before any breakdown':'New battery booked in');
+      else say(null);
+    }
+    draw(.96);                                   // complete picture before it starts
+    if(reduce) return;
+    var dur=15000, start=null, running=false;
+    function tick(tsx){ if(start===null) start=tsx; draw(((tsx-start)%dur)/dur); requestAnimationFrame(tick); }
+    var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !running){ running=true; requestAnimationFrame(tick); } }); },{threshold:.35}) : null;
+    if(io) io.observe(svg); else { running=true; requestAnimationFrame(tick); }
+  })();
+
+  /* ---- The unit: turns to face you as you scroll to it ---- */
+  var unit = document.getElementById('unit');
+  if(unit && !reduce){
+    var uTick = false;
+    var uSet = function(){
+      uTick = false;
+      var r = unit.getBoundingClientRect(), vh = window.innerHeight || 800;
+      var p = (vh - r.top) / (vh * 0.85);
+      p = Math.max(0, Math.min(1, p));
+      unit.style.setProperty('--p', (1 - Math.pow(1 - p, 2)).toFixed(3));
+    };
+    window.addEventListener('scroll', function(){ if(!uTick){ uTick = true; requestAnimationFrame(uSet); } }, {passive:true});
+    window.addEventListener('resize', uSet);
+    uSet();
   }
 
   /* ---- App tabs ---- */
