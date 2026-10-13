@@ -356,6 +356,110 @@ nav a:hover{color:var(--green)}
 .cust small{color:var(--dv-dim);font-size:10px}
 .carers{display:flex;gap:4px;align-items:center}
 .carers span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--dv-green);font-size:9px;font-weight:800;color:var(--dv-text)}
+/* ---- dealer portal: animated fleet screen (made-up data). Drawn at 1200x700 and scaled/zoomed by script ---- */
+.fp-laptop{padding:8px;margin-top:8px}
+.fp-vp{position:relative;overflow:hidden;border-radius:9px;background:#0f1828;aspect-ratio:12/7}
+.fp{position:absolute;left:0;top:0;width:1200px;height:700px;transform-origin:0 0;transition:transform 1.3s cubic-bezier(.45,.05,.25,1);background:#0f1828;color:#e5edf6;font:12px/1.3 "Segoe UI",Roboto,system-ui,-apple-system,sans-serif;display:grid;grid-template-rows:54px 1fr;overflow:hidden;text-align:left}
+.fp *{box-sizing:border-box}
+.fp-top{display:flex;align-items:center;gap:14px;padding:0 16px;border-bottom:1px solid #1f2d42}
+.fp-logo{display:flex;align-items:center;gap:8px}
+.fp-logo img{width:34px;height:35px}
+.fp-logo b{font-size:17px;font-weight:800;letter-spacing:-.01em}.fp-logo b span{color:#5ac94a}
+.fp-logo small{display:block;font-size:5.5px;letter-spacing:.06em;color:#8ea2bb;margin-top:-1px}
+.fp-div{width:1px;height:26px;background:#2a3a52}
+.fp-title{font-size:12px}
+.fp-sp{flex:1}
+.fp-pair{background:#22c5b5;color:#04221f;font-weight:700;font-size:10.5px;padding:7px 12px;border-radius:6px}
+.fp-pill{display:flex;align-items:center;gap:5px;border:1px solid #2f8a4a;color:#7ee2a0;font-size:9.5px;padding:3px 9px;border-radius:999px}
+.fp-pill i{width:6px;height:6px;border-radius:50%;background:#22c55e}
+.fp-upd{font-size:9.5px;color:#cbd5e1;font-variant-numeric:tabular-nums}
+.fp-body{display:grid;grid-template-columns:1fr 232px;min-height:0;position:relative}
+.fp-main{padding:10px 12px;display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden}
+.fp-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.fp-st{border:1px solid #2a3a52;border-radius:6px;padding:7px 12px;display:flex;align-items:baseline;gap:8px;height:40px}
+.fp-st b{font-size:21px;font-weight:500;line-height:1;display:inline-block}
+.fp-st span{font-size:10px;color:#cbd5e1}
+.fp-st.fp-sel{border-color:#22c5b5}
+.fp-bump{animation:fp-bump .5s}
+@keyframes fp-bump{40%{transform:scale(1.4)}}
+.fp-search{display:flex;align-items:center;gap:12px}
+.fp-search div{width:330px;border:1px solid #2a3a52;border-radius:6px;padding:6px 10px;color:#7b8ca3;font-size:10px}
+.fp-search span{font-size:10px;color:#cbd5e1}
+.fp-cols{display:grid;grid-template-columns:205px 78px 70px 70px 1fr 92px 86px 96px;align-items:center}
+.fp-th{color:#a7b5c8;font-size:9.5px;border-bottom:1px solid #22324a;padding:3px 0 5px 28px}
+.fp-groups{display:flex;flex-direction:column;position:relative}
+.fp-gh{display:flex;justify-content:space-between;align-items:center;padding:0 9px;height:26px;border-radius:4px;margin-top:5px;font-size:10.5px}
+.fp-gh small{color:#94a3b8;font-size:9.5px}.fp-gh em{font-style:normal;color:#cbd5e1;margin-left:4px}
+.fp-gh.red{background:rgba(239,68,68,.13);color:#f87171}
+.fp-gh.amber{background:rgba(234,179,8,.13);color:#facc15}
+.fp-gh.green{background:rgba(34,197,94,.10);color:#4ade80}
+.fp-empty{padding:8px 9px;color:#cbd5e1;font-size:10px;height:28px}
+.fp-r{height:33px;border-bottom:1px solid #1b293c;position:relative;padding-left:28px;background:#0f1828}
+.fp-r::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:3px;border-radius:2px;background:var(--rc)}
+.fp-r::after{content:"";position:absolute;left:11px;top:12px;width:8px;height:8px;border-radius:50%;background:#22c55e}
+.fp-r.red{--rc:#ef4444}.fp-r.amber{--rc:#eab308}.fp-r.green{--rc:#22c55e}
+.fp-r.fp-on{background:#14283a;box-shadow:inset 0 0 0 1px rgba(34,197,181,.45)}
+.fp-r.fp-fl{animation:fp-fl 1.6s}
+@keyframes fp-fl{0%,45%{background:#3a1b22}}
+.fp-nm b{display:block;font-size:11px;font-weight:600}
+.fp-nm small{display:block;font-size:8.5px;color:#7b8ca3;letter-spacing:.02em}
+.fp-r > span{font-size:10px;color:#cbd5e1}
+.fp-pl{display:inline-block;padding:1px 8px;border-radius:999px;font-size:9px;font-weight:700;min-width:36px;text-align:center;font-style:normal}
+.fp-pl.g{background:#16a34a;color:#eafff0}.fp-pl.a{background:#b7791f;color:#fff7e6}.fp-pl.rd{background:#dc2626;color:#fff0f0}
+.fp-r.red .fp-why{color:#f87171}.fp-r.amber .fp-why{color:#facc15}.fp-r .fp-why.ok{color:#4ade80}
+.fp-ql{justify-self:end;margin-right:10px;border:1px solid #22c5b5;color:#5eead4!important;font-size:9.5px!important;padding:4px 10px;border-radius:5px}
+.fp-press{animation:fp-press .35s}
+@keyframes fp-press{50%{transform:scale(.92);background:rgba(34,197,181,.3)}}
+.fp-side{border-left:1px solid #1f2d42;padding:12px 12px 10px;display:flex;flex-direction:column;min-height:0}
+.fp-sh{font-size:12.5px;font-weight:600}
+.fp-lab{font-size:8.5px;color:#a7b5c8;margin:10px 0 4px}
+.fp-dim{font-size:9.5px;color:#cbd5e1}
+.fp-msgs{margin-top:auto;border-top:1px solid #23354d;padding-top:10px}
+.fp-ms{display:grid;grid-template-columns:26px 1fr auto;gap:0 8px;align-items:center;padding:7px 0;border-bottom:1px solid #1b293c}
+.fp-ms i{grid-row:span 2;width:24px;height:24px;border-radius:50%;background:#1e2d42;display:grid;place-items:center;font-size:8.5px;font-weight:700;color:#cbd5e1;font-style:normal}
+.fp-ms b{font-size:10px}.fp-ms small{font-size:8.5px;color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}.fp-ms time{font-size:8.5px;color:#94a3b8}
+.fp-ms.fp-new{animation:fp-in .5s}.fp-ms.fp-new small{color:#5eead4}
+@keyframes fp-in{from{opacity:0;transform:translateX(24px)}}
+.fp-dr{position:absolute;top:0;right:0;bottom:0;width:272px;background:#0f1828;border-left:1px solid #26364e;box-shadow:-24px 0 40px -10px rgba(0,0,0,.55);transform:translateX(104%);transition:transform .55s cubic-bezier(.2,.8,.2,1);padding:10px 12px;display:flex;flex-direction:column;gap:7px;overflow:hidden;z-index:3}
+.fp-dr.fp-open{transform:none}
+.fp-dh{display:flex;justify-content:space-between;gap:8px}
+.fp-dh b{font-size:13px;display:block}.fp-dh small{display:block;font-size:8.5px;color:#94a3b8}
+.fp-dh .fp-x{flex:none;width:22px;height:22px;border:1px solid #334155;border-radius:5px;display:grid;place-items:center;color:#cbd5e1;font-size:11px}
+.fp-ds{border-top:1px solid #1f2d42;padding-top:7px}
+.fp-ds b{display:block;font-size:9.5px;letter-spacing:.03em;color:#f87171}.fp-ds span{font-size:9.5px;color:#cbd5e1}
+.fp-dl{font-size:9px;color:#a7b5c8;letter-spacing:.04em}
+.fp-bc{display:grid;grid-template-columns:62px 1fr;gap:8px;align-items:center;border:1px solid #9b2c2c;border-radius:7px;padding:8px;background:rgba(239,68,68,.06)}
+.fp-bc .fp-mo{text-align:center}.fp-bc .fp-mo b{display:block;font-size:24px;line-height:1;color:#f87171}.fp-bc .fp-mo small{font-size:8px;color:#94a3b8}
+.fp-bc .fp-lf b{font-size:11px;color:#f87171}.fp-bc .fp-lf small{display:block;font-size:8.5px;color:#94a3b8;margin-top:5px}
+.fp-trk{height:4px;border-radius:2px;background:#24344a;margin-top:5px;position:relative}
+.fp-trk i{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:#f87171;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.fp-trk em{position:absolute;top:-3px;width:1px;height:10px;background:#94a3b8}
+.fp-mt{display:grid;gap:3px;--vc:#22c55e}
+.fp-mt .fp-t{display:flex;justify-content:space-between;font-size:9.5px;font-weight:600}
+.fp-mt .fp-t span{color:var(--vc)}
+.fp-mt small{font-size:8.5px;color:#94a3b8}
+.fp-br{height:3px;border-radius:2px;background:#24344a;overflow:hidden}
+.fp-br i{display:block;height:100%;width:0;background:var(--vc);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.fp-mt.a{--vc:#facc15}.fp-mt.rd{--vc:#f87171}
+.fp-tmp{border:1px solid #2a3a52;border-radius:6px;padding:5px 8px;font-size:9.5px}
+.fp-ah{display:flex;align-items:center;gap:6px;border:1px solid #2a3a52;border-radius:6px;padding:5px 8px;font-size:9.5px}
+.fp-ah i{width:6px;height:6px;border-radius:50%}.fp-ah small{color:#94a3b8}.fp-ah time{margin-left:auto;font-size:8.5px;color:#cbd5e1}
+.fp-ok{position:absolute;left:12px;right:12px;bottom:44px;box-shadow:0 10px 24px -8px rgba(0,0,0,.6);background:#0f2a1f!important;display:grid;grid-template-columns:20px 1fr;gap:1px 8px;align-items:center;border:1px solid #1f7a4a;background:rgba(34,197,94,.1);border-radius:7px;padding:7px 9px;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.fp-ok.fp-show{opacity:1;transform:none}
+.fp-ok i{grid-row:span 2;width:20px;height:20px;border-radius:50%;background:#22c55e;color:#04221f;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:11px}
+.fp-ok b{font-size:10px;color:#86efac}.fp-ok small{font-size:8.5px;color:#cbd5e1}
+.fp-df{display:flex;gap:6px;margin-top:auto;padding-top:4px}
+.fp-df span{border:1px solid #22c5b5;color:#5eead4;border-radius:5px;padding:4px 7px;font-size:9.5px;white-space:nowrap}
+.fp-df span.fp-cta{background:#22c5b5;color:#04221f;font-weight:700}
+.fp-df span.fp-done{background:#16a34a;border-color:#16a34a;color:#eafff0}
+.fp-cur{position:absolute;left:640px;top:420px;width:20px;height:20px;z-index:6;opacity:0;transition:left .9s cubic-bezier(.45,.05,.25,1),top .9s cubic-bezier(.45,.05,.25,1),opacity .3s;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.fp-cur.fp-ck::before{content:"";position:absolute;left:-12px;top:-12px;width:24px;height:24px;border-radius:50%;border:2px solid #5eead4;animation:fp-ck .5s ease-out forwards}
+@keyframes fp-ck{from{transform:scale(.3);opacity:1}to{transform:scale(1.6);opacity:0}}
+.fp-cap{position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:rgba(6,12,22,.88);color:#e8f0f8;font-size:1rem;line-height:1.35;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;z-index:5}
+.fp-cap.fp-show{opacity:1;transform:none}
+.fp-cap b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#22c5b5;color:#04221f;font-family:var(--font-display)}
+.fp-sub{margin:40px 0 0;font-size:1.25rem}
+@media (max-width:700px){.fp-vp{aspect-ratio:1/1.05}.fp-cap{font-size:.9rem;left:8px;right:8px;bottom:8px;padding:8px 10px}}
 .portal-points{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
 .portal-points div{display:grid;gap:6px}
 .portal-points p{color:var(--muted)}
@@ -963,6 +1067,29 @@ nav a:hover{color:var(--green)}
         <h2>Your dealer can see the battery, not where you go.</h2>
         <p class="lede">Every scooter's battery, charging and alerts in one place, so your dealer can spot trouble early and back up a warranty claim with real evidence. They never see the rider's location.</p>
       </div>
+      <div class="laptop fp-laptop">
+        <div class="fp-vp" id="fp-vp" role="img" aria-label="Animated example of the dealer portal's fleet screen, with made-up customers. Ron's scooter moves from 'Keep an eye on' to 'Needs attention'. The dealer opens Quick look: the battery is 24 months old, range is down to 53%, self-discharge is a little high and the two battery blocks are out of balance. The dealer presses 'Book battery swap' and a message is delivered to Ron.">
+          <div class="fp" id="fp" aria-hidden="true">
+            <div class="fp-top"><div class="fp-logo"><img src="images/logo.webp" alt="" width="34" height="35"><div><b>Mobility<span>Guard</span></b><small>SECURE MOTION. DYNAMIC SOLUTIONS.</small></div></div><i class="fp-div"></i><b class="fp-title">Dealer portal</b><i class="fp-sp"></i><span class="fp-pair">Pair a tracker</span><span class="fp-pill"><i></i>Gateways</span><span class="fp-pill"><i></i>Server</span><span class="fp-upd">Updated <span id="fp-clock">9:14 AM</span></span></div>
+            <div class="fp-body">
+              <div class="fp-main">
+                <div class="fp-stats"><div class="fp-st"><b id="fp-nr" style="color:#f87171">0</b><span>Needs attention</span></div><div class="fp-st"><b id="fp-na" style="color:#facc15">2</b><span>Keep an eye on</span></div><div class="fp-st"><b id="fp-ng" style="color:#4ade80">8</b><span>All good</span></div><div class="fp-st fp-sel"><b>10</b><span>All scooters</span></div><div class="fp-st"><b>0</b><span>Unread messages</span></div></div>
+                <div class="fp-search"><div>Search customer, model, IMEI or problem</div><span>Showing all, worst first</span></div>
+                <div class="fp-th fp-cols"><span>Customer</span><span>Model</span><span>Battery</span><span>Health</span><span>Why</span><span>Last charged</span><span>Last used</span><span></span></div>
+                <div class="fp-groups" id="fp-groups"></div>
+              </div>
+              <div class="fp-side">
+                <div class="fp-sh">Alerts</div><div class="fp-lab">New</div><div class="fp-dim">No new alarms.</div><div class="fp-lab">Earlier, last 24 hours</div><div class="fp-dim">Nothing earlier.</div>
+                <div class="fp-msgs"><div class="fp-sh">Messages</div><div id="fp-msgs"></div></div>
+              </div>
+              <div class="fp-dr" id="fp-dr"></div>
+            </div>
+            <div class="fp-cur" id="fp-cur"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 2l15 9-6.5 1.6L9.5 19z" fill="#fff" stroke="#0b1220" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="fp-cap" id="fp-cap" aria-hidden="true"><b>1</b><span>Every scooter you've fitted, on one screen, worst first.</span></div>
+        </div>
+      </div>
+      <h3 class="fp-sub">Open any scooter for its full battery history</h3>
       <div class="scroll-x">
         <div class="laptop">
           <div class="portal" role="img" aria-label="Example dealer portal screen for a demo customer, showing battery charge, battery health, a seven-day voltage chart with charging events, and the customer card.">
@@ -1307,6 +1434,148 @@ nav a:hover{color:var(--green)}
     function tick(tsx){ if(start===null) start=tsx; draw(((tsx-start)%dur)/dur); requestAnimationFrame(tick); }
     var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !running){ running=true; requestAnimationFrame(tick); } }); },{threshold:.35}) : null;
     if(io) io.observe(svg); else { running=true; requestAnimationFrame(tick); }
+  })();
+
+  /* ---- Dealer portal fleet screen: Ron's battery goes amber to red, dealer books a swap (made-up data) ---- */
+  (function(){
+    var vp=document.getElementById('fp-vp'), fp=document.getElementById('fp'); if(!vp||!fp) return;
+    var W=1200, H=700, $=function(id){ return document.getElementById(id); };
+    var groups=$('fp-groups'), dr=$('fp-dr'), cur=$('fp-cur'), cap=$('fp-cap'), msgs=$('fp-msgs');
+    function fleet(){ return [
+      {id:'rt',n:'Ron T.',im:'866203049902417',m:'Class 3',b:81,h:'FAIR',w:'Range dropping: watching',c:'Last night',u:'Yesterday',g:'amber'},
+      {id:'jw',n:'Joan W.',im:'866203041185264',m:'Boot scooter',b:71,h:'FAIR',w:'Charger stops before full',c:'Last night',u:'Today',g:'amber'},
+      {id:'mb',n:'Margaret B.',im:'866203040058831',m:'Class 3',b:100,h:'GOOD',w:'Nothing to do',c:'Last night',u:'Yesterday',g:'green'},
+      {id:'dh',n:'Derek H.',im:'866203047719352',m:'Class 3',b:94,h:'GOOD',w:'Nothing to do',c:'Today',u:'Yesterday',g:'green'},
+      {id:'ps',n:'Pat S.',im:'866203043367105',m:'Class 2',b:88,h:'GOOD',w:'Nothing to do',c:'Yesterday',u:'Today',g:'green'},
+      {id:'ap',n:'Arthur P.',im:'866203046624190',m:'Class 3',b:96,h:'GOOD',w:'Nothing to do',c:'Last night',u:'Today',g:'green'},
+      {id:'em',n:'Elsie M.',im:'866203048810073',m:'Class 2',b:100,h:'GOOD',w:'Nothing to do',c:'Today',u:'3 days ago',g:'green'},
+      {id:'bk',n:'Brian K.',im:'866203042271648',m:'Boot scooter',b:93,h:'GOOD',w:'Nothing to do',c:'Last night',u:'Yesterday',g:'green'},
+      {id:'sc',n:'Sylvia C.',im:'866203045538926',m:'Class 3',b:98,h:'GOOD',w:'Nothing to do',c:'Last night',u:'Today',g:'green'},
+      {id:'kd',n:'Ken D.',im:'866203044493517',m:'Class 2',b:100,h:'GOOD',w:'Nothing to do',c:'Today',u:'Today',g:'green'}
+    ]; }
+    var S=fleet();
+    function pB(v){ return '<i class="fp-pl '+(v>=80?'g':v>=40?'a':'rd')+'">'+v+'%</i>'; }
+    function pH(h){ return '<i class="fp-pl '+(h==='GOOD'?'g':h==='FAIR'?'a':'rd')+'">'+h+'</i>'; }
+    function render(flipId){
+      var old={};
+      if(flipId) [].forEach.call(groups.querySelectorAll('.fp-r'),function(r){ old[r.dataset.id]=r.offsetTop; });
+      var by={red:[],amber:[],green:[]}; S.forEach(function(s){ by[s.g].push(s); });
+      var T={red:'Needs attention',amber:'Keep an eye on',green:'All good'}, E={red:'Nothing needs attention.',amber:'Nothing to keep an eye on.',green:'Nothing here.'}, h='';
+      ['red','amber','green'].forEach(function(k){
+        h+='<div class="fp-gh '+k+'"><span>'+T[k]+'<em>('+by[k].length+')</em></span><small>Hide ▴</small></div>';
+        if(!by[k].length) h+='<div class="fp-empty">'+E[k]+'</div>';
+        by[k].forEach(function(s){
+          h+='<div class="fp-r fp-cols '+k+(s.on?' fp-on':'')+'" data-id="'+s.id+'"><span class="fp-nm"><b>'+s.n+'</b><small>'+s.im+'</small></span><span>'+s.m+'</span><span>'+pB(s.b)+'</span><span>'+pH(s.h)+'</span><span class="fp-why'+(s.ok?' ok':'')+'">'+s.w+'</span><span>'+s.c+'</span><span>'+s.u+'</span><span class="fp-ql">Quick look</span></div>';
+        });
+      });
+      groups.innerHTML=h;
+      [['fp-nr','red'],['fp-na','amber'],['fp-ng','green']].forEach(function(p){ var el=$(p[0]), n=String(by[p[1]].length); if(el.textContent!==n){ el.textContent=n; el.classList.remove('fp-bump'); void el.offsetWidth; el.classList.add('fp-bump'); } });
+      if(flipId && !reduce) [].forEach.call(groups.querySelectorAll('.fp-r'),function(r){
+        var o=old[r.dataset.id]; if(o===undefined) return; var d=o-r.offsetTop; if(!d) return;
+        r.style.transition='none'; r.style.transform='translateY('+d+'px)'; r.style.zIndex=2;
+        if(r.dataset.id===flipId) r.classList.add('fp-fl');
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ r.style.transition='transform .9s cubic-bezier(.3,.8,.25,1)'; r.style.transform=''; setTimeout(function(){ r.style.zIndex=''; },950); }); });
+      });
+    }
+    function get(id){ for(var i=0;i<S.length;i++) if(S[i].id===id) return S[i]; }
+    function row(id){ return groups.querySelector('.fp-r[data-id="'+id+'"]'); }
+    function setMsgs(extra){
+      var h=extra||'';
+      h+='<div class="fp-ms"><i>AP</i><b>Arthur P.</b><time>Yesterday</time><small>You: Battery checked, all fine</small></div><div class="fp-ms"><i>EM</i><b>Elsie M.</b><time>12 Oct</time><small>Charge complete sent</small></div>';
+      if(!extra) h+='<div class="fp-ms"><i>KD</i><b>Ken D.</b><time>11 Oct</time><small>SERVICE: brakes squeaking</small></div>';
+      msgs.innerHTML=h;
+    }
+    function drawer(){
+      var h='<div class="fp-dh"><div><b>Ron T.</b><small>Class 3 · 866203049902417</small><small style="color:#e2e8f0">● Online · seen 2 min ago</small><small>Last used yesterday · 5.2 km</small></div><span class="fp-x">✕</span></div>'+
+        '<div class="fp-ds"><b>NEEDS ATTENTION</b><span>Battery worn out. Book a swap before it lets Ron down.</span></div>'+
+        '<div class="fp-dl">BATTERY</div>'+
+        '<div class="fp-bc"><div class="fp-mo"><b>24</b><small>months old</small></div><div class="fp-lf"><b>End of life</b><div class="fp-trk"><i data-w="99"></i><em style="left:75%"></em><em style="left:100%"></em></div><small>AGM usually lasts 18–24 months · fitted Oct 2024</small></div></div>';
+      [['','81% charged · holds less charge each week',81,''],
+       ['rd','Range · volts per km','53%',53,'0.21 V/km against 0.11 when new'],
+       ['a','Self-discharge · volts per day','80%',80,'0.11 V/day against 0.09 when new'],
+       ['a','Pack balance · block A vs B','Uneven',58,'Block B 0.4 V lower than block A'],
+       ['','Care record','92%',92,'Charged most nights · never left flat']].forEach(function(m,i){
+        if(i===0){ h+='<div class="fp-mt a"><div class="fp-t">'+m[1]+'</div><div class="fp-br"><i data-w="81"></i></div></div>'; return; }
+        h+='<div class="fp-mt '+m[0]+'"><div class="fp-t">'+m[1]+'<span>'+m[2]+'</span></div><div class="fp-br"><i data-w="'+m[3]+'"></i></div><small>'+m[4]+'</small></div>';
+      });
+      h+='<div class="fp-dl">ALARM HISTORY</div>'+
+        '<div class="fp-ah"><i style="background:#ef4444"></i><b>Battery health bad</b><small>· open</small><time>Today 09:16</time></div>'+
+        '<div class="fp-ah"><i style="background:#eab308"></i><b>Low range on ride</b><small>· cleared</small><time>11 Oct 15:40</time></div>'+
+        '<div class="fp-ah"><i style="background:#eab308"></i><b>Pack out of balance</b><small>· cleared</small><time>2 Oct 08:05</time></div>'+
+        '<div class="fp-ok" id="fp-ok"><i>✓</i><b>Message delivered to Ron</b><small>“Your new batteries are booked in for Thursday at 10am.”</small></div>'+
+        '<div class="fp-df"><span class="fp-cta" id="fp-cta">Book battery swap</span><span>Text</span><span>Full scooter page</span></div>';
+      dr.innerHTML=h;
+    }
+    function fill(on){ [].forEach.call(dr.querySelectorAll('[data-w]'),function(i){ i.style.width=on?i.dataset.w+'%':'0'; }); }
+    function rect(el){ var x=0,y=0,e=el; while(e && e!==fp){ x+=e.offsetLeft; y+=e.offsetTop; e=e.offsetParent; } return {x:x,y:y,w:el.offsetWidth,h:el.offsetHeight}; }
+    function union(els){ var a=1e9,b=1e9,c=-1e9,d=-1e9; els.forEach(function(e){ var r=rect(e); a=Math.min(a,r.x); b=Math.min(b,r.y); c=Math.max(c,r.x+r.w); d=Math.max(d,r.y+r.h); }); return {x:a,y:b,w:c-a,h:d-b}; }
+    var lastFocus=null;
+    function focus(r){
+      lastFocus=r;
+      var vw=vp.clientWidth, vh=vp.clientHeight, s0=vw/W;
+      if(!r){ fp.style.transform='translate(0px,'+((vh-H*s0)/2)+'px) scale('+s0+')'; return; }
+      var room=vh-(cap.offsetHeight+24), pad=14;
+      var k=Math.min(vw/(r.w+pad*2), room/(r.h+pad*2), 1.25); k=Math.max(k,s0);
+      var tx=vw/2-(r.x+r.w/2)*k, ty=room/2-(r.y+r.h/2)*k;
+      tx=Math.min(0,Math.max(vw-W*k,tx)); ty=Math.min(0,Math.max(room-H*k,ty));
+      fp.style.transform='translate('+tx+'px,'+ty+'px) scale('+k+')';
+    }
+    window.addEventListener('resize',function(){ fp.style.transition='none'; focus(lastFocus); void fp.offsetWidth; fp.style.transition=''; });
+    function say(n,t){ cap.classList.remove('fp-show'); setTimeout(function(){ cap.firstChild.textContent=n; cap.lastChild.textContent=t; cap.classList.add('fp-show'); },250); }
+    function cursorTo(el,dx,dy){ var r=rect(el); cur.style.opacity=1; cur.style.left=(r.x+(dx==null?r.w/2:dx))+'px'; cur.style.top=(r.y+(dy==null?r.h/2:dy))+'px'; }
+    function click(el){ cur.classList.remove('fp-ck'); void cur.offsetWidth; cur.classList.add('fp-ck'); if(el){ el.classList.remove('fp-press'); void el.offsetWidth; el.classList.add('fp-press'); } }
+    var seen=false;
+    function wait(ms){ return new Promise(function(res){ setTimeout(function chk(){ if(seen) res(); else setTimeout(chk,300); },ms); }); }
+
+    function reset(){
+      S=fleet(); render(); setMsgs(); dr.classList.remove('fp-open'); drawer(); fill(false);
+      cur.style.opacity=0; $('fp-clock').textContent='9:14 AM';
+    }
+    reset(); focus(null);
+    if(reduce){ var rr=get('rt'); rr.g='red'; rr.h='BAD'; rr.w='Battery worn out: book a swap'; rr.on=true; render(); dr.classList.add('fp-open'); fill(true); $('fp-ok').classList.add('fp-show'); cap.style.display='none'; return; }
+
+    async function run(){
+      for(;;){
+        reset(); focus(null); say('1','Every scooter you\'ve fitted, on one screen, worst first.');
+        await wait(3400);
+        // 2. Ron slips from amber to red
+        var gh=groups.querySelectorAll('.fp-gh'), r2=union([gh[0],row('jw')]); r2.w=Math.min(r2.w,660);
+        focus(r2); say('2','Ron\'s battery slips from “Keep an eye on” to “Needs attention”.');
+        await wait(2000);
+        var ron=get('rt'); ron.g='red'; ron.h='BAD'; ron.w='Battery worn out: book a swap'; $('fp-clock').textContent='9:16 AM';
+        render('rt');
+        await wait(2600);
+        // 3. Dealer opens Quick look
+        focus(union([row('rt')])); await wait(900);
+        var ql=row('rt').querySelector('.fp-ql'); cursorTo(ql,22,10); await wait(1100);
+        click(ql); ron.on=true; row('rt').classList.add('fp-on'); await wait(300);
+        dr.classList.add('fp-open'); await wait(450); fill(true);
+        var kids=dr.children; focus(union([kids[0],kids[1],kids[2],kids[3]]));
+        say('3','Quick look: the battery is 24 months old, at the end of its life.');
+        await wait(4200);
+        // 4. The evidence
+        var mts=dr.querySelectorAll('.fp-mt'); focus(union([mts[1],mts[3]]));
+        say('4','Range down to 53%, self-discharge creeping up and the two blocks out of balance.');
+        await wait(4800);
+        // 5. Book the swap
+        var cta=$('fp-cta'); focus(union([dr.querySelector('.fp-ah'),cta]));
+        say('5','One click books a new battery…');
+        cursorTo(cta,40,9); await wait(1300);
+        click(cta); cta.textContent='Sending…'; await wait(900);
+        cta.textContent='✓ Swap booked'; cta.className='fp-done'; $('fp-ok').classList.add('fp-show');
+        say('5','…and the message is delivered to Ron straight away.');
+        await wait(3800);
+        // 6. Sorted
+        cur.style.opacity=0; dr.classList.remove('fp-open'); ron.on=false; ron.g='amber'; ron.h='BAD'; ron.w='New battery booked: Thu 10am'; ron.ok=true; render('rt');
+        setMsgs('<div class="fp-ms fp-new"><i>RT</i><b>Ron T.</b><time>9:17</time><small>✓ Delivered: new batteries Thu 10am</small></div>');
+        focus(null); say('6','Sorted before Ron is ever left stranded.');
+        await wait(4600);
+      }
+    }
+    if('IntersectionObserver' in window){
+      var started=false;
+      new IntersectionObserver(function(es){ seen=es[0].isIntersecting; if(seen && !started){ started=true; run(); } },{threshold:.25}).observe(vp);
+    } else { seen=true; run(); }
   })();
 
   /* ---- The unit: turns to face you as you scroll to it ---- */
