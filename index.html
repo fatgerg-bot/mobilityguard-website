@@ -61,6 +61,16 @@ p{margin:0}
 .lede{color:var(--muted);max-width:62ch}
 section{padding-block:80px}
 .sec-head{display:grid;gap:12px;margin-bottom:40px}
+.pf-head{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 48px;align-items:end}
+.pf-head-text{display:grid;gap:12px}
+.pf-friction{border-radius:20px;padding:22px 24px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--green);display:grid;gap:10px}
+.pf-friction h3{margin:0;font-size:1.3rem}
+.pf-friction p{margin:0;color:var(--muted)}
+.pf-friction ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.pf-friction li{position:relative;padding-left:28px;color:var(--muted)}
+.pf-friction li b{color:var(--ink)}
+.pf-friction li::before{content:"✓";position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--tint);color:var(--green);display:grid;place-items:center;font-size:.75rem;font-weight:800}
+@media (max-width:900px){.pf-head{grid-template-columns:minmax(0,1fr)}}
 .band{background:var(--surface);border-block:1px solid var(--line)}
 
 /* header */
@@ -330,32 +340,6 @@ nav a:hover{color:var(--green)}
 /* portal */
 .portal-wrap{margin-top:8px}
 .laptop{border-radius:18px;padding:10px;background:#05080f;box-shadow:0 30px 70px -36px rgba(5,8,15,.8),inset 0 0 0 2px #273244;max-width:100%}
-.portal{border-radius:10px;background:var(--dv-bg);color:var(--dv-text);font-family:Roboto,"Segoe UI",system-ui,sans-serif;font-size:12px;display:grid;grid-template-columns:200px 1fr 220px;gap:10px;padding:10px;min-width:0}
-.p-col{display:grid;gap:8px;align-content:start;min-width:0}
-.p-card{background:var(--dv-surface);border:1px solid var(--dv-border);border-radius:10px;padding:10px;min-width:0}
-.p-lab{font-size:9px;letter-spacing:.7px;font-weight:700;color:var(--dv-dim);text-transform:uppercase}
-.p-big{font-size:26px;font-weight:900;color:var(--dv-blue);font-variant-numeric:tabular-nums;line-height:1.15}
-.p-big.g{color:var(--dv-green)}
-.p-small{font-size:10px;color:var(--dv-dim);line-height:1.4}
-.p-row{display:flex;justify-content:space-between;gap:6px;align-items:baseline}
-.p-row b{color:var(--dv-green);font-size:11px;font-variant-numeric:tabular-nums}
-.chips{display:flex;gap:6px;flex-wrap:wrap}
-.p-chip{font-size:9.5px;font-weight:700;padding:4px 8px;border-radius:99px;background:#111c2e;border:1px solid var(--dv-border);color:var(--dv-dim);white-space:nowrap;font-variant-numeric:tabular-nums}
-.p-chip i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;background:var(--dv-dim)}
-.chart-box{position:relative;min-width:0}
-.chart-box svg{display:block;width:100%;height:auto}
-.c-axis{font-size:9px;fill:var(--dv-dim);font-family:Roboto,system-ui,sans-serif}
-.c-grid{stroke:#1c2a3e;stroke-width:1}
-.c-band{fill:#f59e0b;fill-opacity:.16}
-.c-ride{fill:#10b981;fill-opacity:.14}
-.readout{position:absolute;top:6px;left:8px;font-size:10px;color:var(--dv-dim);background:rgba(10,15,26,.8);padding:3px 7px;border-radius:6px;font-variant-numeric:tabular-nums}
-.readout b{color:var(--dv-text)}
-.cust{display:flex;gap:10px;align-items:center}
-.av{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;background:#0f3b33;color:var(--dv-green);font-weight:900;flex:none}
-.cust b{font-size:14px;display:block}
-.cust small{color:var(--dv-dim);font-size:10px}
-.carers{display:flex;gap:4px;align-items:center}
-.carers span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--dv-green);font-size:9px;font-weight:800;color:var(--dv-text)}
 /* ---- dealer portal: animated fleet screen (made-up data). Drawn at 1200x700 and scaled/zoomed by script ---- */
 .fp-laptop{padding:8px;margin-top:8px}
 .fp-vp{position:relative;overflow:hidden;border-radius:9px;background:#0f1828;aspect-ratio:12/7}
@@ -460,6 +444,84 @@ nav a:hover{color:var(--green)}
 .fp-cap b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#22c5b5;color:#04221f;font-family:var(--font-display)}
 .fp-sub{margin:40px 0 0;font-size:1.25rem}
 @media (max-width:700px){.fp-vp{aspect-ratio:1/1.05}.fp-cap{font-size:.9rem;left:8px;right:8px;bottom:8px;padding:8px 10px}}
+/* ---- dealer portal: diagnostics screen (made-up data, real chart you can zoom and drag) ---- */
+.dx-intro{color:var(--muted);margin:6px 0 0;max-width:62ch}
+.dx-laptop{padding:8px;margin-top:16px}
+.dx{border-radius:9px;background:#0f1828;color:#e5edf6;font:12px/1.35 "Segoe UI",Roboto,system-ui,-apple-system,sans-serif;display:grid;grid-template-columns:210px minmax(0,1fr) 220px;gap:10px;padding:10px;text-align:left}
+.dx *{box-sizing:border-box}
+.dx-left,.dx-right{display:flex;flex-direction:column;gap:8px;min-width:0}
+.dx-card{background:#111d30;border:1px solid #24344b;border-radius:9px;padding:9px 10px}
+.dx-pills{display:grid;gap:5px}
+.dx-pills span{display:flex;align-items:center;gap:6px;border:1px solid #2f8a4a;border-radius:999px;padding:3px 10px;font-size:9.5px;font-weight:700;color:#7ee2a0}
+.dx-pills .dx-poff{border-color:#334155;color:#94a3b8}
+.dx-pills i{width:6px;height:6px;border-radius:50%;background:#22c55e}.dx-poff i{background:#64748b}
+.dx-pills small{font-size:9px;color:#7b8ca3}
+.dx-msg b{font-size:9px;letter-spacing:.04em;color:#cbd5e1;margin-right:6px}.dx-msg small{font-size:8.5px;color:#7b8ca3}.dx-msg p{margin:3px 0 0;font-size:10.5px}
+.dx-lab,.dx-mets span,.dx-facts span,.dx-diag span,.dx-alerts span{font-size:8.5px;letter-spacing:.06em;font-weight:700;color:#a7b5c8}
+.dx-big{font-size:26px;font-weight:800;line-height:1.1}
+.dx-bar{height:4px;border-radius:2px;background:#24344a;margin:4px 0;overflow:hidden}
+.dx-bar i{display:block;height:100%;background:#22c55e;border-radius:2px}
+.dx small{font-size:8.5px;color:#94a3b8}
+.dx-mets{display:grid;gap:9px;padding:4px 2px}
+.dx-mets > div{display:grid;grid-template-columns:1fr auto;align-items:baseline}
+.dx-mets b{font-size:10px;color:#4ade80}.dx-mets .dx-bar,.dx-mets small{grid-column:1/-1}
+.dx-mets .dx-warn b{color:#facc15}.dx-mets .dx-warn .dx-bar i{background:#eab308}
+.dx-mid{display:flex;flex-direction:column;gap:8px;min-width:0}
+.dx-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}
+.dx-chips{display:flex;gap:5px;flex-wrap:wrap}
+.dx-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid #2a3a52;border-radius:6px;padding:3px 8px;font-size:9.5px;color:#cbd5e1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.dx-chip i{width:8px;height:3px;border-radius:2px}.dx-chip b{color:#5eead4;font-weight:600}
+#dx-st{font-weight:700;letter-spacing:.04em}#dx-st i{width:7px;height:7px;border-radius:50%}
+.dx-range{display:flex;gap:6px;align-items:center;font-size:9.5px}
+.dx-range button{font:inherit;color:#cbd5e1;background:none;border:1px solid #2a3a52;padding:3px 7px;cursor:pointer;margin-left:-1px}
+.dx-range button:first-child{border-radius:5px 0 0 5px}.dx-range button:last-child{border-radius:0 5px 5px 0}
+.dx-range button.on{background:#134e4a;color:#5eead4;border-color:#22c5b5;position:relative}
+.dx-range button.dx-tap{animation:fp-press .35s}
+.dx-when{color:#e5edf6;min-width:118px;text-align:center;font-variant-numeric:tabular-nums}
+.dx-live{display:inline-flex;align-items:center;gap:5px;border:1px solid #22c5b5;color:#5eead4;border-radius:6px;padding:3px 8px}.dx-live i{width:6px;height:6px;border-radius:50%;background:#22c55e}
+.dx-chart{position:relative;height:340px;border-radius:7px;background:#0d1626;touch-action:pan-y;cursor:crosshair;user-select:none;-webkit-user-select:none;overflow:hidden}
+.dx-chart.dx-drag{cursor:grabbing}
+#dx-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.dx-ax{font-size:10px;fill:#8ea2bb;font-family:"Segoe UI",Roboto,system-ui,sans-serif}
+.dx-mk{font-size:9.5px;font-weight:700;font-family:"Segoe UI",Roboto,system-ui,sans-serif}
+.dx-tip{position:absolute;top:28px;left:0;min-width:150px;padding:8px 10px;border-radius:8px;background:rgba(9,15,27,.95);border:1px solid #334155;box-shadow:0 10px 24px -8px rgba(0,0,0,.7);font-size:10px;pointer-events:none;opacity:0;transition:opacity .2s;z-index:3}
+.dx-tip.on{opacity:1}
+.dx-tip h4{margin:0 0 4px;font-size:10px;font-weight:400;color:#cbd5e1}
+.dx-tip h5{margin:0 0 5px;font-size:9.5px;letter-spacing:.06em}
+.dx-tip p{margin:2px 0;display:flex;justify-content:space-between;gap:14px}
+.dx-tip p b{font-variant-numeric:tabular-nums}
+.dx-tip p i{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:5px}
+.dx-tip .dx-x{border-top:1px solid #334155;margin-top:5px;padding-top:5px;font-weight:700}
+.dx-sel{position:absolute;top:22px;bottom:36px;left:0;width:0;background:rgba(34,197,181,.14);border:1px solid rgba(94,234,212,.7);border-width:0 1px;opacity:0;pointer-events:none;z-index:1}
+.dx-sel.on{opacity:1}
+.dx-note{position:absolute;max-width:240px;padding:7px 10px;border-radius:8px;background:rgba(9,15,27,.94);border:1px solid #9b2c2c;font-size:10.5px;line-height:1.35;color:#fecaca;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;pointer-events:none;z-index:2}
+.dx-note.on{opacity:1;transform:none}
+.dx-note.ok{border-color:#1f7a4a;color:#bbf7d0}
+.dx-note b{display:block;color:#fff;font-size:11px;margin-bottom:2px}
+.dx-cur{position:absolute;left:50%;top:50%;width:22px;height:22px;z-index:4;opacity:0;pointer-events:none;transition:opacity .3s;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+.dx-cur.mv{transition:left .9s cubic-bezier(.45,.05,.25,1),top .9s cubic-bezier(.45,.05,.25,1),opacity .3s}
+.dx-cur .dx-hand{display:none;position:absolute;left:-8px;top:-6px}.dx-cur.grab .dx-hand{display:block}.dx-cur.grab .dx-arrow{display:none}
+.dx-cur.fp-ck::before{content:"";position:absolute;left:-12px;top:-12px;width:24px;height:24px;border-radius:50%;border:2px solid #5eead4;animation:fp-ck .5s ease-out forwards}
+.dx-legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:9.5px;color:#cbd5e1;align-items:center}
+.dx-legend i{display:inline-block;width:9px;height:6px;border-radius:2px;margin-right:4px}
+.dx-legend em{font-style:normal;color:#7b8ca3;margin-left:auto}
+.dx-story{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;background:#132238;border:1px solid #24344b;font-family:var(--font-body);font-size:1rem;line-height:1.35;min-height:56px}
+.dx-story > b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#22c5b5;color:#04221f;font-family:var(--font-display)}
+.dx-story span{flex:1;transition:opacity .25s}
+.dx-story button{flex:none;font:inherit;font-size:.85rem;color:#5eead4;background:none;border:1px solid #22c5b5;border-radius:8px;padding:5px 10px;cursor:pointer}
+.dx-story button:focus-visible,.dx-range button:focus-visible{outline:3px solid #5eead4;outline-offset:2px}
+.dx-cust{display:flex;gap:10px;align-items:center}
+.dx-av{width:32px;height:32px;border-radius:9px;border:1.5px solid #22c5b5;display:grid;place-items:center;font-weight:800;color:#5eead4}
+.dx-cust b{font-size:13px;display:block}
+.dx-facts{display:grid;gap:8px}.dx-facts div{display:grid}.dx-facts b{font-size:14px}
+.dx-diag{border-color:#9b2c2c;background:rgba(239,68,68,.07);display:grid;gap:4px;transition:box-shadow .4s}
+.dx-diag b{font-size:14px;color:#f87171}.dx-diag p{margin:0;font-size:10px;color:#cbd5e1}
+.dx-diag em{justify-self:start;font-style:normal;font-weight:700;font-size:10px;background:#22c5b5;color:#04221f;border-radius:5px;padding:4px 9px;margin-top:3px}
+.dx-diag.glow{box-shadow:0 0 0 2px #f87171,0 0 24px rgba(248,113,113,.45);animation:dx-pulse 1s 2}
+@keyframes dx-pulse{50%{transform:scale(1.03)}}
+.dx-alerts div{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}.dx-alerts em{font-style:normal;font-size:8.5px;font-weight:700;border:1px solid #22c5b5;color:#5eead4;border-radius:999px;padding:2px 8px}.dx-alerts em+em{border-color:#334155;color:#cbd5e1}
+@media (max-width:1060px){.dx{grid-template-columns:minmax(0,1fr)}.dx-left{display:none}.dx-right{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.dx-diag{grid-row:span 2}}
+@media (max-width:640px){.dx-laptop{padding:5px}.dx{padding:7px}.dx-chart{height:270px}.dx-opt{display:none}.dx-legend em{margin-left:0;width:100%}.dx-right{grid-template-columns:minmax(0,1fr)}.dx-facts,.dx-alerts{display:none}.dx-story{font-size:.92rem}.dx-when{min-width:0}.dx-range{flex-wrap:wrap;gap:4px 6px}.dx-range button{padding:3px 6px}.dx-live{display:none}}
 .portal-points{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
 .portal-points div{display:grid;gap:6px}
 .portal-points p{color:var(--muted)}
@@ -1062,10 +1124,21 @@ nav a:hover{color:var(--green)}
   <!-- PORTAL -->
   <section id="portal" class="band">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">The dealer portal</span>
-        <h2>Your dealer can see the battery, not where you go.</h2>
-        <p class="lede">Every scooter's battery, charging and alerts in one place, so your dealer can spot trouble early and back up a warranty claim with real evidence. They never see the rider's location.</p>
+      <div class="sec-head pf-head">
+        <div class="pf-head-text">
+          <span class="eyebrow">The dealer portal</span>
+          <h2>Your dealer can see the battery, not where you go.</h2>
+          <p class="lede">Every scooter's battery, charging and alerts in one place, so your dealer can spot trouble early and back up a warranty claim with real evidence. They never see the rider's location.</p>
+        </div>
+        <aside class="pf-friction">
+          <h3>No more battery blame game</h3>
+          <p>Most battery disputes start with neglect nobody noticed. MobilityGuard spots it early, taking the friction out for customers and dealers alike.</p>
+          <ul>
+            <li><b>For customers:</b> a nudge before a flat battery becomes a dead one.</li>
+            <li><b>For dealers:</b> the full history, so warranty calls are quick and fair.</li>
+            <li><b>For both:</b> no surprise breakdowns and no paying for a battery that didn't need replacing.</li>
+          </ul>
+        </aside>
       </div>
       <div class="laptop fp-laptop">
         <div class="fp-vp" id="fp-vp" role="img" aria-label="Animated example of the dealer portal's fleet screen, with made-up customers. Ron's scooter moves from 'Keep an eye on' to 'Needs attention'. The dealer opens Quick look: the battery is 24 months old, range is down to 53%, self-discharge is a little high and the two battery blocks are out of balance. The dealer presses 'Book battery swap' and a message is delivered to Ron.">
@@ -1090,48 +1163,44 @@ nav a:hover{color:var(--green)}
         </div>
       </div>
       <h3 class="fp-sub">Open any scooter for its full battery history</h3>
-      <div class="scroll-x">
-        <div class="laptop">
-          <div class="portal" role="img" aria-label="Example dealer portal screen for a demo customer, showing battery charge, battery health, a seven-day voltage chart with charging events, and the customer card.">
-            <div class="p-col">
-              <div class="chips"><span class="p-chip"><i style="background:#10b981"></i>ONLINE</span><span class="p-chip">RESTING</span></div>
-              <div class="p-card"><div class="p-lab">State of charge</div><div class="p-big" id="soc">100%</div><div class="bar"><i style="width:100%;background:#38bdf8"></i></div><div class="p-small" style="margin-top:6px">26.1 V · about 10.5 miles left</div></div>
-              <div class="p-card"><div class="p-lab">Battery health</div><div class="p-big g">92%</div><div class="bar"><i style="width:92%"></i></div><div class="p-small" style="margin-top:6px">Both blocks within tolerance</div></div>
-              <div class="p-card" style="display:grid;gap:7px">
-                <div class="p-row"><span class="p-lab">Range · volts per mile</span><b>96%</b></div>
-                <div class="p-row"><span class="p-lab">Self-discharge</span><b>100%</b></div>
-                <div class="p-row"><span class="p-lab">Care record</span><b>95%</b></div>
-                <div class="p-row"><span class="p-lab">Charging habits</span><b>Regular</b></div>
-              </div>
+      <p class="dx-intro">Every charge, ride and rest, minute by minute. Here's how a dealer spots a faulty charger on Joan's scooter (made-up example).</p>
+      <div class="laptop dx-laptop">
+        <div class="dx" id="dx">
+          <aside class="dx-left" aria-hidden="true">
+            <div class="dx-pills"><span class="dx-pon"><i></i>ONLINE</span><span class="dx-poff"><i></i>IGNITION OFF</span><small>resting · ping 3 min ago</small></div>
+            <div class="dx-card dx-msg"><b>MESSAGES</b><small>12 Oct 20:41</small><p>Joan: Charger is plugged in every night</p></div>
+            <div class="dx-card"><div class="dx-lab">STATE OF CHARGE</div><div class="dx-big" style="color:#38bdf8">78%</div><div class="dx-bar"><i style="width:78%;background:#38bdf8"></i></div><small><span id="dx-socv">25.50 V</span> · about 12 km left · measured at rest</small></div>
+            <div class="dx-card"><div class="dx-lab">BATTERY HEALTH</div><div class="dx-big" style="color:#34d399">98%</div><div class="dx-bar"><i style="width:98%"></i></div><small>Both blocks within tolerance</small></div>
+            <div class="dx-mets">
+              <div><span>RANGE · VOLTS PER KM</span><b>97%</b><div class="dx-bar"><i style="width:97%"></i></div><small>0.11 V/km against 0.11 when new</small></div>
+              <div><span>SELF-DISCHARGE · VOLTS PER DAY</span><b>100%</b><div class="dx-bar"><i style="width:100%"></i></div><small>0.09 V/day against 0.09 when new</small></div>
+              <div><span>PACK BALANCE · BLOCK A VS B</span><b>OK</b><div class="dx-bar"><i style="width:100%"></i></div><small>Blocks within 0.1 V</small></div>
+              <div class="dx-warn"><span>CHARGING HABITS</span><b>Short charges</b><div class="dx-bar"><i style="width:45%"></i></div><small>Charger cutting out every 2–3 min since 10 Oct</small></div>
             </div>
-            <div class="p-col">
-              <div class="chips">
-                <span class="p-chip"><i style="background:#ef4444"></i>Pack 26.06 V</span>
-                <span class="p-chip"><i style="background:#38bdf8"></i>Block A 12.95 V</span>
-                <span class="p-chip"><i style="background:#c084fc"></i>Block B 13.11 V</span>
-                <span class="p-chip">Health 92%</span>
-                <span class="p-chip">7 days</span>
-              </div>
-              <div class="p-card chart-box">
-                <svg id="chart" viewBox="0 0 560 250" aria-hidden="true"></svg>
-                <div class="readout" id="readout">Pack <b>26.10 V</b> · resting</div>
-              </div>
-              <div class="chips"><span class="p-chip"><i style="background:#f59e0b"></i>Charging</span><span class="p-chip"><i style="background:#10b981"></i>Riding</span><span class="p-chip"><i style="background:#64748b"></i>Resting</span></div>
+          </aside>
+          <div class="dx-mid">
+            <div class="dx-top">
+              <div class="dx-chips" aria-hidden="true"><span class="dx-chip" id="dx-st"><i style="background:#64748b"></i>RESTING</span><span class="dx-chip"><i style="background:#ef4444"></i>Pack <b id="dx-vp">25.71 V</b></span><span class="dx-chip dx-opt"><i style="background:#38bdf8"></i>Block A <b id="dx-va">12.82 V</b></span><span class="dx-chip dx-opt"><i style="background:#c084fc"></i>Block B <b id="dx-vb">12.90 V</b></span><span class="dx-chip dx-opt">Imbalance <b id="dx-vi">+0.08 V</b></span><span class="dx-chip dx-opt">Ambient <b id="dx-vt">13.9 °C</b></span></div>
+              <div class="dx-range"><span id="dx-btns"><button type="button" data-m="15">15m</button><button type="button" data-m="60">1h</button><button type="button" data-m="360">6h</button><button type="button" data-m="1440">24h</button><button type="button" data-m="4320">3d</button><button type="button" data-m="10440">7d</button></span><span class="dx-when" id="dx-when">6 Oct – now</span><span class="dx-live"><i></i>Live</span></div>
             </div>
-            <div class="p-col">
-              <div class="p-card"><div class="cust"><span class="av">M</span><div><b>Margaret B. (demo)</b><small>Hythe · your dealer</small></div></div></div>
-              <div class="p-card" style="display:grid;gap:8px">
-                <div class="p-row"><span class="p-lab">Batteries fitted</span><b style="color:#38bdf8">Mar 2026</b></div>
-                <div class="p-row"><span class="p-lab">Batteries</span><b style="color:#f8fafc">50 Ah AGM · 24 V</b></div>
-                <div class="p-row"><span class="p-lab">Model</span><b style="color:#f8fafc">Class 3 scooter</b></div>
-              </div>
-              <div class="p-card" style="display:grid;gap:8px"><span class="p-lab">Carers</span><div class="carers"><span>SB</span><span>JB</span><span>PT</span></div></div>
-              <div class="p-card" style="display:grid;gap:8px"><span class="p-lab">Alerts · last 30 days</span><div class="p-small">No alarms. Text alerts on.</div><div class="chips"><span class="p-chip" style="color:#10b981;border-color:#10b981">TEXT ALERTS ON</span><span class="p-chip">LOCATION: RIDER ONLY</span></div></div>
+            <div class="dx-chart" id="dx-chart" role="img" aria-label="Joan's battery voltage over seven days (made-up example). On 6 to 9 October each evening charge climbs smoothly to full at about 28.4 volts. From 10 October each charge starts normally, but after about 25 minutes the charger overheats and cuts in and out every 2 to 3 minutes, so the voltage zigzags and never reaches full. Both battery blocks stay matched, so the battery is fine and the charger is at fault.">
+              <svg id="dx-svg" aria-hidden="true"></svg>
+              <div class="dx-sel" id="dx-sel"></div>
+              <div class="dx-note" id="dx-note" aria-hidden="true"></div>
+              <div class="dx-tip" id="dx-tip" aria-hidden="true"></div>
+              <div class="dx-cur" id="dx-cur" aria-hidden="true"><svg class="dx-arrow" width="20" height="20" viewBox="0 0 24 24"><path d="M4 2l15 9-6.5 1.6L9.5 19z" fill="#fff" stroke="#0b1220" stroke-width="1.4" stroke-linejoin="round"/></svg><svg class="dx-hand" width="22" height="22" viewBox="0 0 24 24"><path d="M8 11V5.5a1.5 1.5 0 0 1 3 0V10m0-1V4.5a1.5 1.5 0 0 1 3 0V10m0-.5V6a1.5 1.5 0 0 1 3 0v8c0 4-2.5 7-6.5 7S6 19 4.5 16.5L2.8 13.6a1.5 1.5 0 0 1 2.5-1.6L8 15V8.5" fill="#fff" stroke="#0b1220" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
             </div>
+            <div class="dx-legend" aria-hidden="true"><span><i style="background:#f59e0b"></i>Charging</span><span><i style="background:#22c55e"></i>Riding</span><span><i style="background:#14b8a6"></i>Key on</span><span><i style="background:#94a3b8"></i>Settling</span><span><i style="background:#475569"></i>Resting</span><em>Drag to scroll · pinch, or Ctrl + scroll, to zoom · double-click to reset</em></div>
+            <div class="dx-story"><b id="dx-n">1</b><span id="dx-cap" aria-live="polite">Joan's full battery history: every charge, ride and rest for the last 7 days.</span><button type="button" id="dx-play">Pause tour</button></div>
           </div>
+          <aside class="dx-right">
+            <div class="dx-card dx-cust"><span class="dx-av">J</span><div><b>Joan W. (demo)</b><small>Hythe · your dealer</small></div></div>
+            <div class="dx-card dx-facts"><div><span>BATTERIES FITTED</span><b style="color:#38bdf8">Mar 2026</b><small>7 months ago</small></div><div><span>RESISTANCE A / B</span><b style="color:#34d399">5.61 / 5.58 mΩ</b><small>same as when fitted</small></div><div><span>BATTERIES</span><b style="color:#c084fc">50 Ah</b><small>AGM · 24 V</small></div></div>
+            <div class="dx-card dx-diag" id="dx-diag"><span>DIAGNOSIS</span><b>Charger fault</b><p>The charger overheats: it works for about 25 minutes, then cuts in and out every 2–3 minutes, so the battery never fills. The battery itself is healthy: both blocks match and hold their charge.</p><em>Book charger swap</em></div>
+            <div class="dx-card dx-alerts"><span>ALERTS</span><div><em>TEXT ALERTS ON</em><em>LOCATION: RIDER ONLY</em></div></div>
+          </aside>
         </div>
       </div>
-      <p class="hint-swipe">Swipe sideways to see the whole screen.</p>
       <div class="portal-points">
         <div><h3>See trouble coming</h3><p>Monthly health checks while parked and while riding tell a worn battery apart from a soft tyre or a dragging brake.</p></div>
         <div><h3>Evidence for warranty claims</h3><p>A full charging and battery history for every scooter, so no one pays for a battery they didn't need.</p></div>
@@ -1647,46 +1716,256 @@ nav a:hover{color:var(--green)}
   tabs.forEach(function(t){ t.addEventListener('click', function(){ select(t.dataset.view, true); }); });
   if(!reduce){ timer = setInterval(function(){ select(order[(cur+1)%order.length]); }, 5600); }
 
-  /* ---- Portal chart (demo data) ---- */
-  var svg = document.getElementById('chart');
-  if(svg){
-    var W=560,H=250,pl=34,pr=8,pt=10,pb=26, vmin=21,vmax=29, days=7, N=7*48;
-    var x=function(i){return pl+(W-pl-pr)*i/(N-1)}, y=function(v){return pt+(H-pt-pb)*(1-(v-vmin)/(vmax-vmin))};
-    var pts=[], A=[], B=[], state=[];
-    var seed=7; var rnd=function(){ seed=(seed*16807)%2147483647; return seed/2147483647; };
-    var charges={0:1,2:1,4:1,6:1}, rides={1:[20,25],2:[21,24],3:[19,26],5:[20,23],6:[19,22]};
-    var v=26.1;
-    for(var i=0;i<N;i++){
-      var d=Math.floor(i/48), h=i%48, s='rest', target=26.1-d*0.004;
-      if(rides[d] && h>=rides[d][0] && h<rides[d][1]){ s='ride'; target=24.2+rnd()*0.9; if(h===rides[d][0]+2) target=22.6; }
-      else if(charges[d]!==undefined && h>=40 && h<44){ s='charge'; target=27.2+(h-40)*0.45; }
-      else if(charges[d]!==undefined && h>=44 && h<47){ s='settle'; target=26.5-(h-44)*0.12; }
-      v += (target-v)*(s==='ride'?0.8:0.6) + (rnd()-0.5)*0.03;
-      pts.push(v); state.push(s);
-      A.push(v/2-0.02+(rnd()-0.5)*0.02); B.push(v/2+0.02+(rnd()-0.5)*0.02);
+  /* ---- Diagnostics chart: Joan's last 7 days, good charges then a faulty charger (made-up data) ---- */
+  (function(){
+    var box=document.getElementById('dx-chart'), svg=document.getElementById('dx-svg'); if(!box||!svg) return;
+    var $=function(i){ return document.getElementById(i); };
+    var tip=$('dx-tip'), cur=$('dx-cur'), sel=$('dx-sel'), note=$('dx-note'), capN=$('dx-n'), capT=$('dx-cap'), play=$('dx-play'), diag=$('dx-diag'), when=$('dx-when');
+    var btns=[].slice.call(document.querySelectorAll('#dx-btns button'));
+    var END=7*1440+360, DOW=['Tue','Wed','Thu','Fri','Sat','Sun','Mon','Tue'];
+
+    /* -- one reading a minute, 6 Oct 00:00 to 13 Oct 06:00 -- */
+    var seed=11; function rnd(){ seed=(seed*16807)%2147483647; return seed/2147483647; }
+    var N=END+1, ST=new Uint8Array(N), CW=new Int16Array(N).fill(-1);   // 0 rest 1 ride 2 key on 3 settling 4 charging
+    var RIDES=[[810,70],[615,55],[940,95],[660,60],[850,85],[640,50],[900,75]], CH=[1235,1260,1270,1250,1240,1255,1230], WIN=[];
+    function fill(a,b,v){ for(var m=a;m<b&&m<N;m++) ST[m]=v; }
+    for(var d=0; d<7; d++){
+      var D=d*1440, r=RIDES[d], s=D+r[0];
+      fill(s-4,s,2); fill(s,s+r[1],1); fill(s+r[1],s+r[1]+50,3); WIN.push({a:s,b:s+r[1],k:'ride'});
+      var cs=D+CH[d], w={a:cs,k:'charge',good:d<4,cuts:[]};
+      if(w.good){ fill(cs,cs+225,4); w.b=cs+225; fill(w.b,w.b+40,3); }
+      else { fill(cs,cs+25,4); w.hot=cs+25; var t=cs+25; while(t<cs+235){ var on=1+Math.floor(rnd()*2), off=1+Math.floor(rnd()*2); fill(t,t+on,4); fill(t+on,t+on+off,3); w.cuts.push([t,t+on]); t+=on+off; } w.b=t; fill(t,t+40,3); }   // fine for 25 min, then overheats and cuts out every 2-3 min
+      for(var m2=w.a;m2<w.b;m2++) CW[m2]=WIN.length;
+      WIN.push(w);
     }
-    var ns='http://www.w3.org/2000/svg', el=function(t,a){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);return e;};
-    // bands
-    var run=null;
-    for(var i=0;i<=N;i++){
-      var s=i<N?state[i]:'end';
-      if(run && run.s!==s){ if(run.s==='charge'||run.s==='ride') svg.appendChild(el('rect',{x:x(run.i),y:pt,width:Math.max(2,x(i-1)-x(run.i)),height:H-pt-pb,'class':run.s==='charge'?'c-band':'c-ride'})); run=null; }
-      if(!run && i<N) run={s:s,i:i};
+    var P=new Float32Array(N), A=new Float32Array(N), B=new Float32Array(N), T=new Float32Array(N);
+    var v=26.15, base=26.2, surf=0;
+    for(var m=0;m<N;m++){
+      var st=ST[m], w2=CW[m]>=0?WIN[CW[m]]:null;
+      if(st===1){ base-=0.011; surf=0; v=base-(1.05+rnd()*0.8+(rnd()<0.07?rnd()*1.7:0)); }
+      else if(w2 && w2.good){
+        var k=m-w2.a; if(k===0) w2.v0=base;
+        base=w2.v0+(26.25-w2.v0)*(k/225);
+        if(k<6) v+=(w2.v0+1.2-v)*0.45;
+        else if(k<150) v+=((w2.v0+1.2)+(28.39-(w2.v0+1.2))*Math.pow((k-6)/144,0.85)-v)*0.35;
+        else if(k<205) v+=(28.39-0.0016*(k-150)-v)*0.3;
+        else v+=(27.07-v)*0.25;
+        if(k===224){ base=26.25; surf=v-26.25; }
+      }
+      else if(w2){
+        if(m===w2.a) w2.v0=base;
+        var k2=m-w2.a;
+        if(k2<25){ base+=0.006; v+=(k2<6 ? (w2.v0+1.2-v)*0.45 : (w2.v0+1.2+0.025*(k2-6)-v)*0.35); }
+        else if(st===4){ base+=0.003; v+=(base+1.75+(rnd()-0.5)*0.1-v)*0.75; } else v+=(base+0.35-v)*0.6;
+        if(m===w2.b-1) surf=0.25;
+      }
+      else if(st===3){ surf*=Math.exp(-1/160); v+=(base+surf-v)*0.06; }
+      else if(st===2){ v+=(base+surf-0.06-v)*0.5; }
+      else { surf*=Math.exp(-1/160); base-=0.00004; v+=(base+surf-v)*0.2; }
+      v+=(rnd()-0.5)*0.01;
+      P[m]=v; A[m]=v-0.1+(rnd()-0.5)*0.02+(st===1?(rnd()-0.5)*0.15:0); B[m]=v+0.06+(rnd()-0.5)*0.02;
+      T[m]=15+3.5*Math.sin(2*Math.PI*((m%1440)-540)/1440)-Math.floor(m/1440)*0.15+(rnd()-0.5)*0.15;
     }
-    for(var g=vmin; g<=vmax; g+=2){ svg.appendChild(el('line',{x1:pl,x2:W-pr,y1:y(g),y2:y(g),'class':'c-grid'})); var t=el('text',{x:pl-6,y:y(g)+3,'text-anchor':'end','class':'c-axis'}); t.textContent=g; svg.appendChild(t); }
-    var labels=['6 Oct','7 Oct','8 Oct','9 Oct','10 Oct','11 Oct','12 Oct'];
-    for(var d=0; d<days; d++){ var t=el('text',{x:x(d*48+24),y:H-8,'text-anchor':'middle','class':'c-axis'}); t.textContent=labels[d]; svg.appendChild(t); }
-    var line=function(arr,mul,col,w,dash){ var p=''; for(var i=0;i<N;i++){ p+=(i?'L':'M')+x(i).toFixed(1)+' '+y(arr[i]*mul).toFixed(1); } svg.appendChild(el('path',{d:p,fill:'none',stroke:col,'stroke-width':w,'stroke-linejoin':'round','stroke-dasharray':dash||'none'})); };
-    line(A,2,'#38bdf8',1.2); line(B,2,'#c084fc',1.2); line(pts,1,'#ef4444',1.8);
-    var cur1=el('line',{y1:pt,y2:H-pb,stroke:'#f8fafc','stroke-opacity':.35,'stroke-width':1}), cdot=el('circle',{r:4,fill:'#ef4444',stroke:'#0a0f1a','stroke-width':2});
-    svg.appendChild(cur1); svg.appendChild(cdot);
-    var ro=document.getElementById('readout'), names={rest:'resting',ride:'riding',charge:'charging',settle:'settling'};
-    var setAt=function(i){ var X=x(i),Y=y(pts[i]); cur1.setAttribute('x1',X);cur1.setAttribute('x2',X);cdot.setAttribute('cx',X);cdot.setAttribute('cy',Y); ro.innerHTML=labels[Math.floor(i/48)]+' · Pack <b>'+pts[i].toFixed(2)+' V</b> · '+names[state[i]]; };
-    setAt(N-1);
-    if(!reduce){ var ci=0; setInterval(function(){ ci=(ci+1)%N; setAt(ci); }, 45); }
-  }
+    var MK=[], CUT=[];
+    WIN.forEach(function(w){
+      if(w.k!=='charge') return;
+      if(w.good){ var pi=w.a; for(var m=w.a;m<w.b;m++) if(P[m]>P[pi]) pi=m; MK.push({t:w.a+6,c:'#22c55e',s:'up'},{t:pi,c:'#eab308',s:'dia'},{t:w.b-1,c:'#ef4444',s:'down'}); w.peak=pi; }
+      else w.cuts.forEach(function(c){ var pi=c[0]; for(var m=c[0];m<c[1];m++) if(P[m]>P[pi]) pi=m; var lo=pi; for(var m=c[1];m<c[1]+3&&m<N;m++) if(P[m]<P[lo]) lo=m; CUT.push({t:pi,lo:lo}); });
+    });
+
+    /* -- drawing -- */
+    var t0=0, t1=END, hov=null, hiBad=false, pl=36, pr=40, pt=24, pb=38, W=0, Hh=0, pw=0, ph=0;
+    function X(t){ return pl+(t-t0)/(t1-t0)*pw; }
+    function Y(val){ return pt+ph*(1-(val-21)/8); }
+    function setWin(a,b){ var s=Math.max(15,Math.min(END,b-a)), c=(a+b)/2; a=c-s/2; b=c+s/2; if(a<0){ b-=a; a=0; } if(b>END){ a-=b-END; b=END; } t0=Math.max(0,a); t1=b; }
+    function pad(n){ return (n<10?'0':'')+n; }
+    function hm(t){ t=Math.round(t); return pad(Math.floor((t%1440)/60))+':'+pad(t%60); }
+    function day(t){ return (6+Math.floor(t/1440))+' Oct'; }
+    function line(arr,i0,i1,off){
+      var n=i1-i0, s='';
+      if(n<=pw*1.5){ for(var m=i0;m<=i1;m++) s+=(s?'L':'M')+X(m).toFixed(1)+' '+Y(arr[m]+off).toFixed(1); return s; }
+      for(var c=0;c<pw;c++){
+        var a=i0+Math.floor(c*n/pw), b=Math.max(a+1,i0+Math.floor((c+1)*n/pw)), lo=a, hi=a;
+        for(var m=a;m<b;m++){ if(arr[m]<arr[lo]) lo=m; if(arr[m]>arr[hi]) hi=m; }
+        var f=Math.min(lo,hi), g=Math.max(lo,hi);
+        s+=(s?'L':'M')+X(f).toFixed(1)+' '+Y(arr[f]+off).toFixed(1)+'L'+X(g).toFixed(1)+' '+Y(arr[g]+off).toFixed(1);
+      }
+      return s;
+    }
+    var BAND=['#475569','#22c55e','#14b8a6','#94a3b8','#f59e0b'];
+    function draw(){
+      W=box.clientWidth; Hh=box.clientHeight; pw=W-pl-pr; ph=Hh-pt-pb; if(pw<20) return;
+      var i0=Math.max(0,Math.floor(t0)), i1=Math.min(END,Math.ceil(t1)), span=t1-t0, s='';
+      s+='<defs><clipPath id="dx-clip"><rect x="'+pl+'" y="0" width="'+pw+'" height="'+Hh+'"/></clipPath></defs>';
+      WIN.forEach(function(w){ if(w.b<t0||w.a>t1) return; var a=X(Math.max(w.a,t0)), b=X(Math.min(w.b,t1));
+        s+='<rect x="'+a.toFixed(1)+'" y="'+pt+'" width="'+Math.max(1,b-a).toFixed(1)+'" height="'+ph+'" fill="'+(w.k==='ride'?'rgba(34,197,94,.09)':(hiBad&&!w.good?'rgba(239,68,68,.2)':'rgba(148,163,184,.09)'))+'"/>'; });
+      for(var g=21; g<=29; g++){ s+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+Y(g)+'" y2="'+Y(g)+'" stroke="#1c2a3e"/><text class="dx-ax" x="'+(pl-7)+'" y="'+(Y(g)+3.5)+'" text-anchor="end">'+g+'</text>'; if(g%1===0) s+='<text class="dx-ax" x="'+(W-pr+6)+'" y="'+(Y(g)+3.5)+'">'+(g/2).toFixed(1)+'</text>'; }
+      var steps=[15,30,60,120,180,360,720,1440], step=1440; for(var q=0;q<steps.length;q++){ if(span/steps[q]<=Math.max(3,pw/95)){ step=steps[q]; break; } }
+      for(var t=Math.ceil(t0/step)*step; t<=t1; t+=step){ var x=X(t); s+='<line x1="'+x+'" x2="'+x+'" y1="'+pt+'" y2="'+(pt+ph)+'" stroke="#16233a"/><text class="dx-ax" x="'+x+'" y="'+(Hh-8)+'" text-anchor="middle"'+(t%1440===0?' fill="#e5edf6"':'')+'>'+(t%1440===0?day(t):hm(t))+'</text>'; }
+      // state band
+      var by=pt+ph+6, stp=Math.max(1,Math.floor((i1-i0)/(pw*1.5))), rs=i0, rv=ST[i0];
+      for(var m=i0;m<=i1;m+=stp){ if(ST[m]!==rv||m+stp>i1){ var e=(m+stp>i1)?i1:m; s+='<rect x="'+X(rs).toFixed(1)+'" y="'+by+'" width="'+Math.max(1,X(e)-X(rs)).toFixed(1)+'" height="7" fill="'+BAND[rv]+'"/>'; rs=m; rv=ST[m]; } }
+      s+='<g clip-path="url(#dx-clip)">';
+      // ambient (own scale), blocks, pack
+      var amb='', as=Math.max(1,Math.floor((i1-i0)/pw)); for(var m=i0;m<=i1;m+=as) amb+=(amb?'L':'M')+X(m).toFixed(1)+' '+Y(21+T[m]*0.27).toFixed(1);
+      s+='<path d="'+amb+'" fill="none" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="4 4" opacity=".75"/>';
+      s+='<path d="'+line(A,i0,i1,0)+'" fill="none" stroke="#38bdf8" stroke-width="1.3" stroke-linejoin="round"/>';
+      s+='<path d="'+line(B,i0,i1,0)+'" fill="none" stroke="#c084fc" stroke-width="1.3" stroke-linejoin="round"/>';
+      s+='<path d="'+line(P,i0,i1,0)+'" fill="none" stroke="#ef4444" stroke-width="1.9" stroke-linejoin="round"/>';
+      // markers
+      MK.forEach(function(k){ if(k.t<t0||k.t>t1) return; var x=X(k.t), y=Y(P[k.t]), c=k.c, sh;
+        if(k.s==='up') sh='M'+x+' '+(y-5)+'L'+(x+5)+' '+(y+4)+'L'+(x-5)+' '+(y+4)+'Z';
+        else if(k.s==='down') sh='M'+x+' '+(y+5)+'L'+(x+5)+' '+(y-4)+'L'+(x-5)+' '+(y-4)+'Z';
+        else sh='M'+x+' '+(y-6)+'L'+(x+6)+' '+y+'L'+x+' '+(y+6)+'L'+(x-6)+' '+y+'Z';
+        s+='<path d="'+sh+'" fill="'+c+'" stroke="#0d1626" stroke-width="1"/>';
+        if(span<=4320) s+='<text class="dx-mk" x="'+x+'" y="'+(y-(k.s==='down'?9:10))+'" text-anchor="middle" fill="'+c+'">'+P[k.t].toFixed(2)+'</text>'; });
+      if(span<=150) CUT.forEach(function(c){ if(c.t<t0||c.t>t1) return; var x=X(c.t), y=Y(P[c.t]);
+        s+='<path d="M'+x+' '+(y-3)+'L'+(x+5)+' '+(y-12)+'L'+(x-5)+' '+(y-12)+'Z" fill="#ef4444"/>'; });
+      else WIN.forEach(function(w){ if(w.k!=='charge'||w.good||w.a<t0||w.a>t1) return; var x=X((w.a+w.b)/2); s+='<circle cx="'+x+'" cy="'+(pt-9)+'" r="5" fill="#ef4444"/><text class="dx-mk" x="'+x+'" y="'+(pt-5.5)+'" text-anchor="middle" fill="#fff" font-size="8">!</text>'; });
+      if(span<=720) WIN.forEach(function(w){ if(!w.hot||w.hot<t0||w.hot>t1) return; var x=X(w.hot); s+='<line x1="'+x+'" x2="'+x+'" y1="'+(pt-4)+'" y2="'+(pt+ph)+'" stroke="#f87171" stroke-dasharray="5 4" opacity=".8"/><text class="dx-mk" x="'+(x+5)+'" y="'+(pt+ph-8)+'" fill="#f87171">Charger overheats</text>'; });
+      if(hov!==null && hov>=t0 && hov<=t1){ var hx=X(hov); s+='<line x1="'+hx+'" x2="'+hx+'" y1="'+pt+'" y2="'+(pt+ph)+'" stroke="#cbd5e1" stroke-dasharray="3 3" opacity=".7"/>'; [[A,'#38bdf8'],[B,'#c084fc'],[P,'#ef4444']].forEach(function(a){ s+='<circle cx="'+hx+'" cy="'+Y(a[0][hov])+'" r="3.5" fill="'+a[1]+'" stroke="#0d1626" stroke-width="1.5"/>'; }); }
+      s+='</g>';
+      svg.setAttribute('viewBox','0 0 '+W+' '+Hh); svg.innerHTML=s;
+      // toolbar
+      var best=null; btns.forEach(function(b){ var mm=+b.dataset.m; if(Math.abs(Math.log(span/mm))<0.3) best=b; }); btns.forEach(function(b){ b.classList.toggle('on',b===best); });
+      when.textContent = (t1>=END-1&&span>=END-1) ? '6 Oct – now' : (span>=1440 ? day(t0)+' – '+(t1>=END-1?'now':day(t1)) : day(t0)+' '+hm(t0)+' – '+(Math.floor(t0/1440)===Math.floor(t1/1440)?'':day(t1)+' ')+hm(t1));
+      if(hov!==null) placeTip();
+    }
+    var NAMES=['RESTING','RIDING','KEY ON','SETTLING','CHARGING'];
+    function setChips(m){
+      var st=$('dx-st'); st.lastChild.textContent=NAMES[ST[m]]; st.firstChild.style.background=BAND[ST[m]];
+      $('dx-vp').textContent=P[m].toFixed(2)+' V'; $('dx-va').textContent=(A[m]/2).toFixed(2)+' V'; $('dx-vb').textContent=(B[m]/2).toFixed(2)+' V';
+      var im=(B[m]-A[m])/2; $('dx-vi').textContent=(im>=0?'+':'')+im.toFixed(2)+' V'; $('dx-vt').textContent=T[m].toFixed(1)+' °C';
+    }
+    function showTip(t){
+      hov=Math.max(0,Math.min(END,Math.round(t))); var m=hov, st=ST[m], im=(B[m]-A[m])/2, extra='';
+      WIN.forEach(function(w){ if(w.good && Math.abs(m-w.peak)<=8) extra='<div class="dx-x" style="color:#eab308">Full '+P[w.peak].toFixed(2)+' V</div>'; if(w.good && Math.abs(m-w.a-6)<=6) extra='<div class="dx-x" style="color:#22c55e">Charge started</div>'; });
+      CUT.forEach(function(c){ if(m===c.t) extra='<div class="dx-x" style="color:#f87171">Charger cut out: drops to '+P[c.lo].toFixed(2)+' V</div>'; });
+      tip.innerHTML='<h4>'+DOW[Math.floor(m/1440)]+' '+day(m)+', '+hm(m)+'</h4><h5 style="color:'+(st===0?'#94a3b8':BAND[st])+'">'+NAMES[st]+'</h5>'+
+        '<p><span><i style="background:#ef4444"></i>Pack</span><b>'+P[m].toFixed(2)+' V</b></p><p><span><i style="background:#38bdf8"></i>Block A</span><b>'+(A[m]/2).toFixed(2)+' V</b></p><p><span><i style="background:#c084fc"></i>Block B</span><b>'+(B[m]/2).toFixed(2)+' V</b></p>'+
+        '<p><span>Imbalance</span><b style="color:'+(Math.abs(im)<0.15?'#4ade80':'#facc15')+'">'+(im>=0?'+':'')+im.toFixed(2)+' V</b></p><p><span><i style="background:#3b82f6"></i>Ambient</span><b>'+T[m].toFixed(1)+' °C</b></p><p><span>Ignition</span><b>'+(st===1||st===2?'On':'Off')+'</b></p>'+extra;
+      tip.classList.add('on'); setChips(m); draw();
+    }
+    function placeTip(){ var x=X(hov), tw=tip.offsetWidth||160; tip.style.left=(x+14+tw<W-4 ? x+14 : Math.max(4,x-14-tw))+'px'; }
+    function hideTip(){ hov=null; tip.classList.remove('on'); setChips(END); draw(); }
+
+    /* -- story -- */
+    var tok=0, running=false, seen=false;
+    function sleep(ms,my){ return new Promise(function(res){ setTimeout(function chk(){ if(my!==tok||seen) res(); else setTimeout(chk,300); },ms); }); }
+    function ease(k){ return k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; }
+    function animWin(a,b,ms,my,onStep){
+      var c0=(t0+t1)/2, s0=t1-t0, c1=(a+b)/2, s1=b-a;
+      if(reduce||!ms){ setWin(a,b); draw(); return Promise.resolve(); }
+      return new Promise(function(res){ var st=null; function f(ts){ if(my!==tok){ res(); return; } if(st===null) st=ts; var k=Math.min(1,(ts-st)/ms), e=ease(k), sp=s0*Math.pow(s1/s0,e), c=c0+(c1-c0)*e; setWin(c-sp/2,c+sp/2); if(onStep) onStep(e); draw(); if(k<1) requestAnimationFrame(f); else res(); } requestAnimationFrame(f); });
+    }
+    function tween(ms,my,fn){ return new Promise(function(res){ var st=null; function f(ts){ if(my!==tok){ res(); return; } if(st===null) st=ts; var k=Math.min(1,(ts-st)/ms); fn(ease(k)); if(k<1) requestAnimationFrame(f); else res(); } requestAnimationFrame(f); }); }
+    function say(n,t){ capT.style.opacity=0; setTimeout(function(){ capN.textContent=n; capT.textContent=t; capT.style.opacity=1; },220); }
+    function curAt(x,y,move,grab){ cur.classList.toggle('mv',!!move); cur.classList.toggle('grab',!!grab); cur.style.opacity=1; cur.style.left=x+'px'; cur.style.top=y+'px'; }
+    function curOff(){ cur.style.opacity=0; }
+    function noteAt(html,x,y,ok){ note.innerHTML=html; note.classList.toggle('ok',!!ok); note.style.left=x+'px'; note.style.top=y+'px'; note.classList.add('on'); }
+    function clearFx(){ curOff(); sel.classList.remove('on'); note.classList.remove('on'); diag.classList.remove('glow'); hiBad=false; tip.classList.remove('on'); hov=null; }
+    var good=WIN.filter(function(w){ return w.k==='charge'&&w.good; })[2], bad=WIN.filter(function(w){ return w.k==='charge'&&!w.good; })[0];
+    async function tour(){
+      var my=++tok; running=true; play.textContent='Pause tour';
+      for(;;){
+        clearFx(); setWin(0,END); setChips(END); draw();
+        say('1','Joan’s full battery history: every charge, ride and rest for the last 7 days.'); await sleep(3800,my); if(my!==tok) return;
+        // 2. drag across a good night to zoom in
+        var a=good.a-120, b=good.b+150, y=pt+ph*0.45;
+        say('2','Drag across any night to zoom in on it…');
+        curAt(X(a)+2,y,false); await sleep(900,my); if(my!==tok) return;
+        sel.style.left=X(a)+'px'; sel.style.width='0px'; sel.classList.add('on');
+        var xa=X(a), xb=X(b);
+        await tween(1300,my,function(e){ var x=xa+(xb-xa)*e; sel.style.width=(x-xa)+'px'; curAt(x,y,false); }); if(my!==tok) return;
+        await sleep(250,my); sel.classList.remove('on'); curOff();
+        await animWin(a,b,1400,my); if(my!==tok) return;
+        // 3. a good charge, hover along it
+        say('3','A good charge: it starts at ▲, climbs steadily and reaches full ◆ at 28.4 V.');
+        await sleep(700,my); if(my!==tok) return;
+        await tween(3600,my,function(e){ var t=good.a-15+(good.peak-good.a+15)*e; showTip(t); curAt(X(hov)+1,Y(P[hov])+1,false); }); if(my!==tok) return;
+        await sleep(2000,my); if(my!==tok) return;
+        // 4. scroll along to 10 Oct
+        hideTip(); say('4','Scroll along the days to another night…');
+        var sp=t1-t0, target=bad.a-110, from=t0;
+        for(var sw=0; sw<2; sw++){
+          var x0=pl+pw*0.82, x1=pl+pw*0.18, start=t0, end=from+(target-from)*(sw+1)/2;
+          curAt(x0,y,false,true); await sleep(500,my); if(my!==tok) return;
+          box.classList.add('dx-drag');
+          await tween(1100,my,function(e){ setWin(start+(end-start)*e,start+(end-start)*e+sp); draw(); curAt(x0+(x1-x0)*e,y,false,true); });
+          box.classList.remove('dx-drag'); curOff(); if(my!==tok) return; await sleep(350,my);
+        }
+        // 5. the faulty charge, closer
+        say('5','…here it charges normally for 25 minutes, then the charger overheats and cuts out every 2–3 minutes.');
+        var b6=btns[2]; b6.classList.remove('dx-tap'); void b6.offsetWidth; b6.classList.add('dx-tap');
+        var cen=(bad.a+bad.b)/2; await animWin(cen-180,cen+180,1300,my); if(my!==tok) return;
+        await sleep(1600,my); if(my!==tok) return;
+        await animWin(bad.a-10,bad.a+65,1500,my); if(my!==tok) return;
+        var c3=CUT.filter(function(c){ return c.t>bad.hot+14; })[0]; curAt(X(c3.t)+1,Y(P[c3.t])+1,true); await sleep(1000,my); if(my!==tok) return;
+        showTip(c3.t); await sleep(3000,my); if(my!==tok) return;
+        hideTip(); curOff();
+        noteAt('<b>Overheating charger</b>Fine for the first 25 minutes. Once it’s hot it cuts out every 2–3 minutes, so the voltage zigzags and the battery never fills.',pl+10,Y(24.7));
+        await sleep(4600,my); if(my!==tok) return;
+        // 6. diagnosis
+        hideTip(); curOff();
+        noteAt('<b>The battery is fine</b>Block A and block B stay within 0.1 V of each other the whole time.',pl+10,Y(24.7),true);
+        diag.classList.add('glow');
+        say('6','It’s the charger, not the battery, so Joan gets a new charger and doesn’t pay for batteries she doesn’t need.');
+        await sleep(5600,my); if(my!==tok) return;
+        // 7. back out
+        note.classList.remove('on'); diag.classList.remove('glow');
+        say('7','Zoom back out: every night since 10 October shows the same fault.');
+        var b7=btns[5]; b7.classList.remove('dx-tap'); void b7.offsetWidth; b7.classList.add('dx-tap');
+        await animWin(0,END,1500,my); if(my!==tok) return;
+        hiBad=true; draw(); await sleep(4200,my); if(my!==tok) return; hiBad=false;
+      }
+    }
+    function stop(msg){ tok++; running=false; clearFx(); draw(); play.textContent='Replay tour'; capN.textContent='✋'; capT.style.opacity=1; capT.textContent=msg||'Your turn: drag to scroll, pinch or use the buttons to zoom, and point at the chart for readings.'; }
+    play.addEventListener('click',function(){ if(running) stop('Paused. Drag to scroll, use the buttons to zoom, and point at the chart for readings.'); else tour(); });
+
+    /* -- let visitors explore -- */
+    var pts={}, drag=null, pinch=null;
+    function tAt(clientX){ var r=box.getBoundingClientRect(); return t0+(clientX-r.left-pl)/pw*(t1-t0); }
+    box.addEventListener('pointerdown',function(e){
+      if(running) stop();
+      pts[e.pointerId]={x:e.clientX}; try{ box.setPointerCapture(e.pointerId); }catch(_){}
+      var ids=Object.keys(pts);
+      if(ids.length===2){ var p1=pts[ids[0]].x, p2=pts[ids[1]].x; pinch={d:Math.abs(p1-p2)||1, a:t0, b:t1, c:tAt((p1+p2)/2)}; drag=null; }
+      else { drag={x:e.clientX, a:t0, b:t1, moved:false}; if(e.pointerType!=='mouse') showTip(tAt(e.clientX)); }
+    });
+    box.addEventListener('pointermove',function(e){
+      if(pts[e.pointerId]) pts[e.pointerId].x=e.clientX;
+      var ids=Object.keys(pts);
+      if(pinch && ids.length===2){ var p1=pts[ids[0]].x, p2=pts[ids[1]].x, f=pinch.d/(Math.abs(p1-p2)||1), sp=(pinch.b-pinch.a)*f, c=pinch.c; var r=(c-pinch.a)/(pinch.b-pinch.a); setWin(c-sp*r,c-sp*r+sp); draw(); return; }
+      if(drag){ var dx=e.clientX-drag.x; if(Math.abs(dx)>3){ drag.moved=true; box.classList.add('dx-drag'); } if(drag.moved){ var dt=dx/pw*(drag.b-drag.a); setWin(drag.a-dt,drag.b-dt); } }
+      showTip(tAt(e.clientX));
+    });
+    function up(e){ delete pts[e.pointerId]; if(Object.keys(pts).length<2) pinch=null; if(!Object.keys(pts).length){ drag=null; box.classList.remove('dx-drag'); } }
+    box.addEventListener('pointerup',up); box.addEventListener('pointercancel',up);
+    box.addEventListener('pointerleave',function(e){ if(e.pointerType==='mouse' && !running) hideTip(); });
+    box.addEventListener('wheel',function(e){
+      if(!(e.ctrlKey||e.metaKey)) return;
+      e.preventDefault(); if(running) stop();
+      var c=tAt(e.clientX), f=Math.exp(e.deltaY*0.004), sp=(t1-t0)*f, r=(c-t0)/(t1-t0); setWin(c-sp*r,c-sp*r+sp); draw();
+    },{passive:false});
+    box.addEventListener('dblclick',function(){ if(running) stop(); hideTip(); animWin(0,END,700,tok); });
+    btns.forEach(function(b){ b.addEventListener('click',function(){ if(running) stop(); var sp=+b.dataset.m, c=sp>=END?END/2:(hov!==null?hov:(t0+t1)/2); animWin(c-sp/2,c+sp/2,700,tok); }); });
+    window.addEventListener('resize',draw);
+
+    setChips(END); draw(); var sv=$('dx-socv'); if(sv) sv.textContent=P[END].toFixed(2)+' V';
+    if(reduce){
+      setWin(bad.a-10,bad.a+65); showTip(CUT.filter(function(c){ return c.t>bad.hot+14; })[0].t);
+      noteAt('<b>Overheating charger</b>Fine for the first 25 minutes, then it cuts out every 2–3 minutes. The battery is fine: it’s the charger.',pl+10,Y(24.7));
+      capN.textContent='5'; capT.textContent='Here the charger works for 25 minutes, then overheats and cuts out every 2–3 minutes. It’s the charger, not the battery.'; play.textContent='Explore'; play.hidden=true;
+      return;
+    }
+    if('IntersectionObserver' in window){
+      var started=false;
+      new IntersectionObserver(function(es){ seen=es[0].isIntersecting; if(seen && !started){ started=true; tour(); } },{threshold:.3}).observe(box);
+    } else { seen=true; tour(); }
+  })();
 })();
 </script>
+
 <script>
 (function(){
   var ENDPOINT = 'https://alerts.mobilityguard.co.uk/web/enquiry';
