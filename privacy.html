@@ -629,10 +629,37 @@ nav a:hover{color:var(--green)}
 .checks{list-style:none;padding:0;margin:0;display:grid;gap:14px}
 .checks li{display:grid;grid-template-columns:28px 1fr;gap:12px}
 .checks li::before{content:"✓";width:24px;height:24px;margin-top:3px;border-radius:50%;background:var(--tint);color:var(--green);font-weight:700;font-size:.85rem;display:grid;place-items:center}
-.ladder{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.ladder li{display:flex;align-items:center;gap:6px 14px;padding:13px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--line);flex-wrap:wrap}
-.ladder b{min-width:7.5em}
+.ladder{list-style:none;padding:0;margin:0;display:grid;gap:10px;align-content:start}
+.ladder li{display:grid;grid-template-columns:36px 7em 1fr auto;align-items:center;gap:0 14px;padding:13px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--line);transition:opacity .4s,border-color .4s,box-shadow .4s,background .4s}
 .ladder span{color:var(--muted)}
+.lad-ic{width:36px;height:36px;border-radius:10px;background:var(--tint);color:var(--green);display:grid;place-items:center;font-style:normal;transition:background .4s,color .4s}
+.lad-ic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ladder li.red .lad-ic{background:color-mix(in srgb,var(--red) 16%,transparent);color:var(--red)}
+.ladder li.lit .lad-ic{animation:lad-pop .5s}
+@keyframes lad-pop{40%{transform:scale(1.18)}}
+/* who-gets-told animation */
+.lad-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.lad-tabs button{font:inherit;font-size:.92rem;font-weight:700;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;position:relative;overflow:hidden}
+.lad-tabs button[aria-selected="true"]{border-color:var(--green);background:var(--tint);color:var(--green)}
+.lad-tabs button[aria-selected="true"]::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--green);transform-origin:left;animation:lad-prog var(--lad-d,12s) linear forwards}
+.lad-tabs.paused button::after{display:none}
+@keyframes lad-prog{from{transform:scaleX(0)}}
+.lad-tabs button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.lad-st{font-style:normal;font-size:.78rem;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap;opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s}
+.lad-st.on{opacity:1;transform:none}
+.lad-st.told{background:var(--tint);color:var(--green)}
+.lad-st.urgent{background:rgba(220,38,38,.14);color:var(--red)}
+.lad-st.skip{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.lad-st.ok{background:var(--green);color:var(--on-accent,#fff)}
+.lad-msg{grid-column:1/-1;font-style:normal;font-size:.92rem;line-height:1.35;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:0 12px;max-height:0;opacity:0;overflow:hidden;transition:max-height .45s,opacity .35s,margin .45s,padding .45s}
+.lad-msg.on{max-height:90px;opacity:1;margin-top:9px;padding:8px 12px}
+.ladder.lad-live li{opacity:.45}
+.ladder.lad-live li.lit{opacity:1;border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 18%,transparent)}
+.ladder.lad-live li.lit.red{border-color:var(--red);box-shadow:0 0 0 3px color-mix(in srgb,var(--red) 18%,transparent)}
+.ladder.lad-live li.done{opacity:1}
+.lad-why{min-height:3.2em;margin:12px 0 0;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px dashed var(--line);color:var(--muted);font-size:.98rem;transition:opacity .25s}
+.lad-why b{color:var(--ink)}
+@media (max-width:520px){.ladder li{grid-template-columns:32px 5.6em 1fr auto;padding:12px 12px;gap:0 9px}.lad-ic{width:32px;height:32px}.ladder span{font-size:.92rem}}
 
 /* contact + form */
 .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
