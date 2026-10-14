@@ -3,8 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MobilityGuard | Freedom for scooter riders, peace of mind for families</title>
-<meta name="description" content="MobilityGuard lets scooter riders get out on their own, and quietly tells the family if anything needs doing. Battery care, safety alerts and arrive-and-leave messages for carers.">
+<title>Mobility scooter tracker and battery alerts for families | MobilityGuard</title>
+<meta name="description" content="A mobility scooter tracker, battery monitor and safety alarm in one hidden unit. The rider just goes, and the family get a text if anything needs doing.">
+<link rel="canonical" href="https://mobilityguard.co.uk/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#13577f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MobilityGuard">
+<meta property="og:title" content="Mobility scooter tracker and battery alerts for families | MobilityGuard">
+<meta property="og:description" content="A mobility scooter tracker, battery monitor and safety alarm in one hidden unit. The rider just goes, and the family get a text if anything needs doing.">
+<meta property="og:url" content="https://mobilityguard.co.uk/">
+<meta property="og:image" content="https://mobilityguard.co.uk/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MobilityGuard","legalName":"Scooterdoc Ltd","url":"https://mobilityguard.co.uk/","logo":"https://mobilityguard.co.uk/icon-192.png","email":"beta@mobilityguard.co.uk","telephone":"+44 1303 883123","address":{"@type":"PostalAddress","addressLocality":"Dymchurch","addressRegion":"Kent","addressCountry":"GB"},"areaServed":"GB"}</script>
+<link rel="preload" as="image" href="images/park.webp">
 <style>
 @font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"Atkinson Hyperlegible";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-400-italic.woff2) format("woff2")}
@@ -19,7 +36,7 @@
   --muted:#4b6474;
   --line:#d3e1e3;
   --navy:#13577f;
-  --green:#2f8f3a;
+  --green:#237a2c;
   --tint:#e4f0ec;
   --tint-blue:#e2edf4;
   --amber:#a15c07;
@@ -472,7 +489,7 @@ nav a:hover{color:var(--green)}
 .dx-chip i{width:8px;height:3px;border-radius:2px}.dx-chip b{color:#5eead4;font-weight:600}
 #dx-st{font-weight:700;letter-spacing:.04em}#dx-st i{width:7px;height:7px;border-radius:50%}
 .dx-range{display:flex;gap:6px;align-items:center;font-size:9.5px}
-.dx-range button{font:inherit;color:#cbd5e1;background:none;border:1px solid #2a3a52;padding:3px 7px;cursor:pointer;margin-left:-1px}
+.dx-range button{font:inherit;color:#cbd5e1;background:none;border:1px solid #2a3a52;padding:3px 7px;cursor:pointer;margin-left:-1px;min-height:32px;min-width:38px}
 .dx-range button:first-child{border-radius:5px 0 0 5px}.dx-range button:last-child{border-radius:0 5px 5px 0}
 .dx-range button.on{background:#134e4a;color:#5eead4;border-color:#22c5b5;position:relative}
 .dx-range button.dx-tap{animation:fp-press .35s}
@@ -577,6 +594,20 @@ nav a:hover{color:var(--green)}
 .fl-note{font-size:.9rem;color:var(--muted);margin:0 0 16px;min-height:1.4em}
 @media (max-width:900px){.fl-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:520px){.fl-alert{margin:8px;padding:8px 10px}.fl-alert b{font-size:.88rem}.fl-alert small{font-size:.76rem}.fl-row{grid-template-columns:6em 1fr 5.6em}}
+/* home page: skip drawing sections until they're near the screen (faster on phones) */
+main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;contain-intrinsic-size:auto 900px}
+/* ---- FAQ ---- */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px 56px;align-items:start}
+.faq-grid .sec-head{margin-bottom:0}
+.faq-list{display:grid;gap:10px}
+.faq-q{border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:0 18px}
+.faq-q summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;font-weight:700;font-size:1.08rem;min-height:56px}
+.faq-q summary::-webkit-details-marker{display:none}
+.faq-q summary::after{content:"+";flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--tint);color:var(--green);font-size:1.3rem;font-weight:700;line-height:1}
+.faq-q[open] summary::after{content:"–"}
+.faq-q summary:focus-visible{outline:3px solid var(--green);outline-offset:4px;border-radius:6px}
+.faq-q p{margin:0 0 18px;color:var(--muted);max-width:62ch}
+@media (max-width:860px){.faq-grid{grid-template-columns:minmax(0,1fr)}}
 /* ---- home: business teaser band, business page jump buttons ---- */
 .biz-band{padding-block:64px}
 .biz-band-in{display:grid;grid-template-columns:minmax(0,1.4fr) auto;gap:20px 40px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:32px 36px}
@@ -692,7 +723,7 @@ nav a:hover{color:var(--green)}
 .lad-st.ok{background:var(--green);color:var(--on-accent,#fff)}
 .lad-msg{grid-column:1/-1;font-style:normal;font-size:.92rem;line-height:1.35;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:0 12px;max-height:0;opacity:0;overflow:hidden;transition:max-height .45s,opacity .35s,margin .45s,padding .45s}
 .lad-msg.on{max-height:90px;opacity:1;margin-top:9px;padding:8px 12px}
-.ladder.lad-live li{opacity:.45}
+.ladder.lad-live li{opacity:.62}
 .ladder.lad-live li.lit{opacity:1;border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 18%,transparent)}
 .ladder.lad-live li.lit.red{border-color:var(--red);box-shadow:0 0 0 3px color-mix(in srgb,var(--red) 18%,transparent)}
 .ladder.lad-live li.done{opacity:1}
@@ -845,13 +876,13 @@ nav a:hover{color:var(--green)}
       <div class="hero-copy">
         <span class="pill"><i></i>Launching soon · now in beta in Kent</span>
         <h1>Their freedom. <span>Your peace of mind.</span></h1>
-        <p class="lede">MobilityGuard is a small unit your mobility dealer fits out of sight on the scooter. The rider just gets on and goes. If anything needs doing, the right person gets one calm message.</p>
+        <p class="lede">MobilityGuard is a mobility scooter tracker and battery monitor in one small unit, fitted out of sight by your local dealer. The rider just gets on and goes. If anything needs doing, the right person gets one calm message.</p>
         <div class="ctas">
           <a class="btn primary" href="#contact" data-kind="launch">Email me when it launches</a>
           <a class="btn ghost" href="business">Mobility dealer? Partner with us</a>
         </div>
         <ul class="reassure">
-          <li>Nothing to wear or charge</li>
+          <li>Nothing to remember to charge</li>
           <li>Works with any phone</li>
           <li>Location private by default</li>
         </ul>
@@ -893,7 +924,7 @@ nav a:hover{color:var(--green)}
   <!-- STRIP -->
   <section class="band" style="padding-block:44px">
     <div class="wrap strip">
-      <div><b>Fitted by your dealer</b><p>Wired into the scooter, out of sight. Nothing for the rider to wear, press or remember to charge.</p></div>
+      <div><b>Fitted by your dealer</b><p>Wired into the scooter, out of sight. Nothing the rider has to remember to press or charge. (The wearable panic button is optional.)</p></div>
       <div><b>Calm, not chatty</b><p>One message at a time, and only when something needs doing. The most serious one always goes first.</p></div>
       <div><b>No app needed</b><p>Everything works by plain text on any phone. The app is there if you'd like to see more.</p></div>
     </div>
@@ -905,11 +936,11 @@ nav a:hover{color:var(--green)}
       <div class="sec-head">
         <span class="eyebrow">What it covers</span>
         <h2>The four things families worry about.</h2>
-        <p class="lede">MobilityGuard does a lot. So here is the way you'd think about it: the questions that go through your head when someone you love heads out on their own.</p>
+        <p class="lede">Whether you're a son, daughter, husband, wife or neighbour, here's how it helps with the questions that go through your head when someone you love heads out on their own.</p>
       </div>
       <div class="worries">
         <article class="worry">
-          <img class="ph" src="images/flatbattery.webp" alt="An older man in his dressing gown looks worried at his scooter in the garage, its battery flat." loading="lazy" style="object-position:50% 12%">
+          <img class="ph" src="images/flatbattery.webp" alt="An older man in his dressing gown looks worried at his mobility scooter in the garage, its battery flat." loading="lazy" style="object-position:50% 12%">
           <q>Will he get home?</q>
           <p class="ans">Battery care that stops breakdowns before they happen.</p>
           <ul>
@@ -954,7 +985,7 @@ nav a:hover{color:var(--green)}
       </div>
       <div class="care" id="battery-care">
         <div class="care-copy">
-          <span class="eyebrow">Pre-emptive battery care</span>
+          <span class="eyebrow">Battery care</span>
           <h3 class="care-h">Look after the battery, and it looks after them.</h3>
           <p class="lede">Most scooter breakdowns come down to a worn or badly treated battery. MobilityGuard watches it every day and nudges at the right moment, so the battery lasts longer and is replaced before anyone is left stranded.</p>
           <ul class="care-list">
@@ -988,7 +1019,7 @@ nav a:hover{color:var(--green)}
         <div class="u-rings" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="u-float"><img class="u-img" src="images/unit.webp" alt="The MobilityGuard unit: a slim black box, a little smaller than a mobile phone." width="900" height="486"></div>
         <ul class="u-calls">
-          <li class="c1"><i class="u-line" aria-hidden="true"></i><b>4G and GPS inside</b><span>Knows where it is, and tells us</span></li>
+          <li class="c1"><i class="u-line" aria-hidden="true"></i><b>GPS tracking</b><span>Works anywhere with a mobile signal</span></li>
           <li class="c2"><i class="u-line" aria-hidden="true"></i><b>Motion sensor</b><span>Feels a tip-over or a hard knock</span></li>
           <li class="c3"><i class="u-line" aria-hidden="true"></i><b>Backup battery</b><span>Still raises the alarm if it's cut off</span></li>
           <li class="c4"><i class="u-line" aria-hidden="true"></i><b>Runs off the scooter</b><span>Never needs charging</span></li>
@@ -1277,6 +1308,27 @@ nav a:hover{color:var(--green)}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq" class="band">
+    <div class="wrap faq-grid">
+      <div class="sec-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Questions people ask us</h2>
+        <p class="lede">Can't see your question here? Ring us on 01303 883123 or use the form below.</p>
+      </div>
+      <div class="faq-list">
+          <details class="faq-q"><summary>How long do mobility scooter batteries last?</summary><p>Most mobility scooter batteries last around 18 months to 2 years. How they&#x27;re charged makes a big difference: a battery that&#x27;s often left flat, or charged on a faulty charger, can wear out in a few months. MobilityGuard checks the battery every day and sends a gentle reminder when it needs charging, so it lasts as long as it should.</p></details>
+          <details class="faq-q"><summary>Why is my mobility scooter battery not charging?</summary><p>The usual causes are a faulty charger, a loose plug or lead, a tripped reset switch or fuse, or a battery that has been left flat for too long. Your dealer can check it for you. With MobilityGuard fitted, your dealer can see the charging history and can often tell whether it&#x27;s the charger or the battery before they visit.</p></details>
+          <details class="faq-q"><summary>Is there a monthly fee?</summary><p>Yes, a small monthly fee covers the mobile connection, the text messages and the app. We&#x27;ll confirm the price at launch. It will cost less each month than most GPS personal alarms, which typically charge £25 to £32 a month plus a set-up fee, and you&#x27;ll be able to cancel at any time.</p></details>
+          <details class="faq-q"><summary>Does the rider need a smartphone?</summary><p>No. Everything works by text message on any mobile phone, even an old button phone. The app is there for anyone who&#x27;d like to see more: there&#x27;s an Android app, and a web app for iPhone.</p></details>
+          <details class="faq-q"><summary>What if there&#x27;s no mobile signal?</summary><p>MobilityGuard carries on watching the battery and catches up as soon as the scooter is back in signal. Messages can only go out where there&#x27;s a mobile signal, which covers most of the UK.</p></details>
+          <details class="faq-q"><summary>Can I see where they are all the time?</summary><p>Only if the rider says yes. Sharing their location with carers stays switched off until the rider agrees, and location history is deleted automatically after 30 days. Dealers never see where the rider is.</p></details>
+          <details class="faq-q"><summary>What happens if the scooter is stolen?</summary><p>If the scooter moves when it shouldn&#x27;t, MobilityGuard sends an alert straight away with where it is. Call the police and give them the location. Please don&#x27;t try to get the scooter back yourself.</p></details>
+          </div>
+    </div>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How long do mobility scooter batteries last?", "acceptedAnswer": {"@type": "Answer", "text": "Most mobility scooter batteries last around 18 months to 2 years. How they're charged makes a big difference: a battery that's often left flat, or charged on a faulty charger, can wear out in a few months. MobilityGuard checks the battery every day and sends a gentle reminder when it needs charging, so it lasts as long as it should."}}, {"@type": "Question", "name": "Why is my mobility scooter battery not charging?", "acceptedAnswer": {"@type": "Answer", "text": "The usual causes are a faulty charger, a loose plug or lead, a tripped reset switch or fuse, or a battery that has been left flat for too long. Your dealer can check it for you. With MobilityGuard fitted, your dealer can see the charging history and can often tell whether it's the charger or the battery before they visit."}}, {"@type": "Question", "name": "Is there a monthly fee?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, a small monthly fee covers the mobile connection, the text messages and the app. We'll confirm the price at launch. It will cost less each month than most GPS personal alarms, which typically charge £25 to £32 a month plus a set-up fee, and you'll be able to cancel at any time."}}, {"@type": "Question", "name": "Does the rider need a smartphone?", "acceptedAnswer": {"@type": "Answer", "text": "No. Everything works by text message on any mobile phone, even an old button phone. The app is there for anyone who'd like to see more: there's an Android app, and a web app for iPhone."}}, {"@type": "Question", "name": "What if there's no mobile signal?", "acceptedAnswer": {"@type": "Answer", "text": "MobilityGuard carries on watching the battery and catches up as soon as the scooter is back in signal. Messages can only go out where there's a mobile signal, which covers most of the UK."}}, {"@type": "Question", "name": "Can I see where they are all the time?", "acceptedAnswer": {"@type": "Answer", "text": "Only if the rider says yes. Sharing their location with carers stays switched off until the rider agrees, and location history is deleted automatically after 30 days. Dealers never see where the rider is."}}, {"@type": "Question", "name": "What happens if the scooter is stolen?", "acceptedAnswer": {"@type": "Answer", "text": "If the scooter moves when it shouldn't, MobilityGuard sends an alert straight away with where it is. Call the police and give them the location. Please don't try to get the scooter back yourself."}}]}</script>
+  </section>
+
   <!-- BUSINESS TEASER -->
   <section class="biz-band">
     <div class="wrap biz-band-in">
@@ -1298,7 +1350,7 @@ nav a:hover{color:var(--green)}
       <div class="contact-copy">
         <span class="eyebrow">Get in touch</span>
         <h2>Want to hear when it launches?</h2>
-        <p class="lede">We're testing with a small group of riders in Kent. Leave your details and we'll let you know when MobilityGuard is available near you. Dealers and care homes can use this form too.</p>
+        <p class="lede">We're testing with a small group of riders in Kent. Leave your details and we'll let you know when MobilityGuard is available near you. Dealers, hire shops and care homes can use this form too.</p>
         <dl class="reach">
           <div><dt>Ring us</dt><dd>01303 883123</dd></div>
           <div><dt>Email</dt><dd>beta@mobilityguard.co.uk</dd></div>
@@ -1356,6 +1408,8 @@ nav a:hover{color:var(--green)}
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // animations only run while they're on screen (saves phones' battery and keeps the page smooth)
+  function onScreen(el){ var st={on:true}; if(el && 'IntersectionObserver' in window){ st.on=false; new IntersectionObserver(function(es){ st.on=es[0].isIntersecting; },{rootMargin:'150px'}).observe(el); } return st; }
 
   /* ---- Day-out map: night mode with clock and timeline (made-up town) ---- */
   (function(){
@@ -1438,14 +1492,17 @@ nav a:hover{color:var(--green)}
       stopEls.forEach(function(s){ s[1].classList.toggle('done',t>=s[0]); });
     }
     if(reduce){ draw(.6); EV.slice(0,5).forEach(fire); return; }
-    var dur=24000, start=null, next=0, last=0;
+    var dur=24000, acc=.12*dur, prev=null, next=0, last=0, vis=onScreen(document.getElementById('nm-map'));   // open part-way in, so the first frame already tells the story
+    draw(.12);
     function tick(ts){
-      if(start===null) start=ts-.12*dur;          // open part-way in, so the first frame already tells the story
-      var t=((ts-start)%dur)/dur;
-      if(t<last){ next=0; msg.innerHTML='<b>🏠 At home</b><small>Margaret · battery 100%</small>'; }
-      last=t;
-      while(next<EV.length && t>=EV[next].t){ fire(EV[next]); next++; }
-      draw(t);
+      var dt=prev===null?0:Math.min(100,ts-prev); prev=ts;
+      if(vis.on){
+        acc+=dt; var t=(acc%dur)/dur;
+        if(t<last){ next=0; msg.innerHTML='<b>🏠 At home</b><small>Margaret · battery 100%</small>'; }
+        last=t;
+        while(next<EV.length && t>=EV[next].t){ fire(EV[next]); next++; }
+        draw(t);
+      }
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
@@ -1526,7 +1583,8 @@ nav a:hover{color:var(--green)}
     draw(.96);                                   // complete picture before it starts
     if(reduce) return;
     var dur=15000, start=null, running=false;
-    function tick(tsx){ if(start===null) start=tsx; draw(((tsx-start)%dur)/dur); requestAnimationFrame(tick); }
+    var ccVis=onScreen(svg), ccAcc=0, ccPrev=null;
+    function tick(tsx){ var dt=ccPrev===null?0:Math.min(100,tsx-ccPrev); ccPrev=tsx; if(ccVis.on){ ccAcc+=dt; draw((ccAcc%dur)/dur); } requestAnimationFrame(tick); }
     var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !running){ running=true; requestAnimationFrame(tick); } }); },{threshold:.35}) : null;
     if(io) io.observe(svg); else { running=true; requestAnimationFrame(tick); }
   })();
@@ -1653,8 +1711,8 @@ nav a:hover{color:var(--green)}
   var plDot = document.getElementById('pl-dot'), plRoute = document.getElementById('pl-route'), plRaf = null;
   function runPlaces(){
     if(!plDot || !plRoute.getTotalLength) return;
-    var L = plRoute.getTotalLength();
-    var put = function(f){ var pt = plRoute.getPointAtLength(L * f); plDot.setAttribute('transform','translate('+pt.x+' '+pt.y+')'); };
+    if(!runPlaces.pts){ var L = plRoute.getTotalLength(), P=[]; for(var i=0;i<=120;i++){ var q=plRoute.getPointAtLength(L*i/120); P.push([q.x,q.y]); } runPlaces.pts=P; }   // work the route out once
+    var put = function(f){ var P=runPlaces.pts, i=Math.min(119,Math.floor(f*120)), r=f*120-i, x=P[i][0]+(P[i+1][0]-P[i][0])*r, y=P[i][1]+(P[i+1][1]-P[i][1])*r; plDot.setAttribute('transform','translate('+x+' '+y+')'); };
     if(reduce){ put(1); return; }
     cancelAnimationFrame(plRaf);
     var t0 = null;
@@ -1665,7 +1723,6 @@ nav a:hover{color:var(--green)}
     };
     plRaf = requestAnimationFrame(step);
   }
-  runPlaces();
   function select(name, user){
     tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.view===name ? 'true':'false'); });
     order.forEach(function(v){ document.getElementById('v-'+v).classList.toggle('on', v===name); });
@@ -1678,7 +1735,8 @@ nav a:hover{color:var(--green)}
     if(user){ clearInterval(timer); timer = null; }
   }
   tabs.forEach(function(t){ t.addEventListener('click', function(){ select(t.dataset.view, true); }); });
-  if(!reduce){ timer = setInterval(function(){ select(order[(cur+1)%order.length]); }, 5600); }
+  var appVis=onScreen(document.getElementById('app'));
+  if(!reduce){ timer = setInterval(function(){ if(appVis.on) select(order[(cur+1)%order.length]); }, 5600); }
 
 })();
 </script>
