@@ -659,6 +659,15 @@ nav a:hover{color:var(--green)}
 .ladder.lad-live li.done{opacity:1}
 .lad-why{min-height:3.2em;margin:12px 0 0;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px dashed var(--line);color:var(--muted);font-size:.98rem;transition:opacity .25s}
 .lad-why b{color:var(--ink)}
+.lad-why{display:flex;align-items:center;gap:10px 12px;flex-wrap:wrap}
+.lad-why > span:last-child{flex:1 1 220px}
+.lad-clock{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--tint);color:var(--green);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lad-clock[hidden]{display:none}
+.lad-clock b{color:var(--green)!important;font-size:1rem;min-width:6.4em}
+.lad-clock svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.lad-clock.run svg path{transform-origin:12px 12px;animation:lad-spin 1s linear infinite}
+@keyframes lad-spin{to{transform:rotate(360deg)}}
+.lad-tm{display:block;font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:2px}
 @media (max-width:520px){.ladder li{grid-template-columns:32px 5.6em 1fr auto;padding:12px 12px;gap:0 9px}.lad-ic{width:32px;height:32px}.ladder span{font-size:.92rem}}
 
 /* contact + form */
