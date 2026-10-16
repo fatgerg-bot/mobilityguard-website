@@ -600,9 +600,10 @@ nav a:hover{color:var(--green)}
 .fl-row.warn em{color:var(--amber)}.fl-row.warn .bar i{background:var(--amber)}
 .fl-row.alarm em{color:var(--red)}.fl-row.alarm .bar i{background:var(--red)}
 .fl-row.ok em{color:var(--green)}
+.fl-stats .fl-row{grid-template-columns:8.6em 1fr 3em}
 .fl-note{font-size:.9rem;color:var(--muted);margin:0 0 16px;min-height:1.4em}
 @media (max-width:900px){.fl-grid{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:520px){.fl-alert{margin:8px;padding:8px 10px}.fl-alert b{font-size:.88rem}.fl-alert small{font-size:.76rem}.fl-row{grid-template-columns:6em 1fr 5.6em}}
+@media (max-width:520px){.fl-alert{margin:8px;padding:8px 10px}.fl-alert b{font-size:.88rem}.fl-alert small{font-size:.76rem}.fl-row{grid-template-columns:6em 1fr 5.6em}.fl-stats .fl-row{grid-template-columns:8em 1fr 2.6em}}
 /* home page: skip drawing sections until they're near the screen (faster on phones) */
 main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;contain-intrinsic-size:auto 900px}
 /* ---- FAQ ---- */
@@ -1278,20 +1279,77 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
             [9.6,function(c){ c.go(2,'p-c',0,.12); c.color(2,R); c.pulse(2,R); c.row(2,'Moving!','alarm'); c.say('🚨','Scooter 3 is moving at 2:14am','Out of hours · possible theft · live tracking on',BR); }],
             [14.5,function(c){ c.night(false); c.clock('8:30am'); c.park(2,470,620); c.color(2,G); c.pulse(2,null); [0,1,3,4].forEach(function(i){ c.row(i,'Ready','ok'); }); c.row(2,'Recovered','ok'); c.say('✅','Scooter 3 found by the gate','Back on charge · the other four are ready for 9am',BG); }]]
       },
-      { // Mobility hire shop (image 1024 x 687)
-        h:'Mobility hire shop', l:'Know where every scooter on hire is, when it’s due back, and that it comes back healthy.', n:'Made-up example.',
-        vb:[1024,687], photo:'images/flshop.webp', len:19, clock:'Mon 9:10am',
-        bg:function(u){ return '<image href="images/fltown.webp" width="1024" height="687"/>'+
-           route('p-a','M200 330 L280 348 L740 348 L740 300 L790 300')+route('p-b','M30 571 L995 571 L995 580 L30 580 Z')+
-           lab(188,186,'Hire shop',u)+lab(510,20,'Station',u)+lab(900,150,'Grand Hotel',u)+lab(510,395,'Seaview B&amp;B',u)+lab(880,612,'Seafront',u); },
-        dots:[{p:'p-b',f:.2,v:.03,bat:76},{x:515,y:158,bat:58},{x:180,y:322,bat:100},{p:'p-a',f:0,v:.3,bat:100,once:1},{x:430,y:552,bat:40}],
-        names:['Scooter 1','Scooter 2','Scooter 3','Scooter 4','Scooter 5'],
-        ev:[[0.1,function(c){ c.row(1,'On hire','ok'); c.row(2,'In the shop','ok'); c.row(4,'On hire','ok'); }],
-            [3,function(c){ c.row(3,'7-day hire','ok'); c.say('🚚','Scooter 4 delivered to the Grand Hotel','Hire started · 7 days · battery 100%',BG); }],
-            [7,function(c){ c.clock('Wed 4:30pm'); c.color(1,A); c.pulse(1,A); c.row(1,'Due back 5pm','warn'); c.say('⏰','Scooter 2’s hire ends at 5pm','Last seen at the station · reminder sent to the hirer',BA); }],
-            [11.5,function(c){ c.clock('Wed 10:15pm'); c.color(1,G); c.pulse(1,null); c.park(1,215,322); c.row(1,'Returned','ok'); c.bat(4,12); c.color(4,A); c.pulse(4,A); c.row(4,'12% · plug in','warn'); c.say('🔌','Scooter 5 is at 12% and not on charge','At the Seaview B&B · text sent to the hirer to plug it in',BA); }],
-            [15.5,function(c){ c.clock('Thu 9:00am'); c.color(4,G); c.pulse(4,null); c.bat(4,100); c.row(4,'Charged','ok'); c.row(1,'Ready · 94%','ok'); c.say('✅','Scooter 2 checked back in','Battery health 94% · no faults · ready for the next hire',BG); }]]
-      }
+      (function(){ // Mobility hire across Kent (map image 2000 x 1342): routine rounds, then vans sent only where needed
+        // road points by each town, and the bends between them, traced from the map
+        var P={dar:[345,160],gra:[425,215],med:[705,385],sit:[985,388],fav:[1180,440],whi:[1340,378],hb:[1478,338],mar:[1765,292],ram:[1795,365],can:[1415,505],dea:[1752,595],dov:[1700,762],fol:[1545,858],hyt:[1420,895],nro:[1062,1135],ash:[1168,768],ten:[955,868],tw:[650,855],ton:[410,640],sev:[470,472],mai:[718,505]};
+        var E=[['dar','gra',[]],['gra','med',[[560,250],[650,275]]],['med','mai',[[712,450]]],['med','sit',[[840,385]]],['sit','fav',[[1080,410]]],['fav','can',[[1300,470]]],['fav','whi',[]],['whi','hb',[]],['hb','mar',[[1600,325]]],['can','mar',[[1520,450],[1640,385]]],['mar','ram',[]],['ram','dea',[[1720,450],[1700,540]]],['dea','dov',[[1690,680]]],['can','dov',[[1500,560],[1580,660],[1650,720]]],['dov','fol',[[1640,820]]],['fol','hyt',[]],['fol','ash',[[1450,860],[1300,830],[1230,800]]],['hyt','nro',[[1300,1000],[1180,1060]]],['ash','mai',[[1050,690],[900,590],[800,530]]],['mai','sev',[[600,470]]],['sev','dar',[[300,420],[300,300],[340,220]]],['sev','ton',[[400,560]]],['ton','tw',[[460,780],[560,840]]],['mai','tw',[[740,640],[740,780]]],['tw','ten',[[800,880]]],['ten','ash',[[1050,820]]],['ash','can',[[1220,690],[1300,600],[1370,540]]],['ash','nro',[[1160,880],[1150,1000]]]];
+        // scooters on hire, placed on land beside each town's houses (made-up)
+        var S0=[['gra',440,245],['med',803,306],['sit',1059,366],['sit',1007,304],['fav',1138,407],['whi',1386,334],['whi',1352,410],['hb',1455,358],['hb',1543,309],['mar',1801,317],['mar',1759,312],['mar',1845,262],['ram',1768,389],['ram',1779,320],['can',1433,549],['can',1488,459],['can',1385,444],['dea',1792,642],['dea',1774,599],['dov',1736,730],['dov',1660,738],['fol',1546,813],['fol',1503,876],['fol',1505,840],['hyt',1404,875],['hyt',1441,873],['nro',1080,1116],['ash',1121,761],['ash',1224,722],['ash',1136,704],['ten',995,885],['tw',673,818],['tw',625,824],['ton',374,634],['sev',398,489],['mai',682,545],['mai',771,474],['mai',736,452]].map(function(a){ return {town:a[0],x:a[1],y:a[2]}; });
+        var N={}; Object.keys(P).forEach(function(k){ N[k]={x:P[k][0],y:P[k][1],adj:[]}; });
+        function len(pts){ var d=0; for(var i=1;i<pts.length;i++) d+=Math.hypot(pts[i].x-pts[i-1].x,pts[i].y-pts[i-1].y); return d; }
+        E.forEach(function(e){ var via=e[2].map(function(p){ return {x:p[0],y:p[1]}; }), fw=via.concat([{x:N[e[1]].x,y:N[e[1]].y}]), bw=via.slice().reverse().concat([{x:N[e[0]].x,y:N[e[0]].y}]);
+          N[e[0]].adj.push({to:e[1],pts:fw,d:len([N[e[0]]].concat(fw))}); N[e[1]].adj.push({to:e[0],pts:bw,d:len([N[e[1]]].concat(bw))}); });
+        function way(a,b){ var d={},prev={},q=Object.keys(N); q.forEach(function(k){ d[k]=Infinity; }); d[a]=0;
+          while(q.length){ q.sort(function(m,n){ return d[m]-d[n]; }); var u=q.shift(); if(u===b) break;
+            N[u].adj.forEach(function(e){ if(d[u]+e.d<d[e.to]){ d[e.to]=d[u]+e.d; prev[e.to]={pts:e.pts,from:u}; } }); }
+          var out=[], k=b; while(k!==a){ var e=prev[k]; out=e.pts.concat(out); k=e.from; } return [{x:N[a].x,y:N[a].y}].concat(out); }
+        function first(k){ for(var i=0;i<S0.length;i++) if(S0[i].town===k) return i; }
+        function slot(j){ return {x:975+j*70,y:765}; }
+        var st=null;
+        function setRow(i,v,max,cls){ var r=st.rows[i]; r.className='fl-row'+(cls?' '+cls:''); r.querySelector('i').style.width=Math.min(100,v/max*100)+'%'; r.querySelector('em').textContent=v; }
+        function rows(){ var n=st.s.length, need=st.s.filter(function(s){ return s.state!=='ok'; }).length;
+          setRow(0,n,n,''); setRow(1,need,n,need?'warn':'ok'); setRow(2,st.trips,n,''); setRow(3,st.nothing,n,st.nothing?'warn':'ok'); }
+        function setS(i,state){ var s=st.s[i]; s.state=state; var c=state==='bad'?R:state==='warn'?A:G; s.dot.setAttribute('fill',c); s.ring.setAttribute('stroke',c); if(state==='ok') s.ring.setAttribute('opacity',0); }
+        function placeV(v){ v.g.setAttribute('transform','translate('+v.x.toFixed(1)+' '+v.y.toFixed(1)+') scale(2)'); }
+        function send(v,i){ var s=st.s[i]; v.path=way(v.at,s.town); v.path.push({x:s.x,y:s.y}); v.job=i; v.at=s.town; }
+        function goHome(v){ v.path=way(v.at,'ash'); v.path.push(slot(v.n)); v.at='ash'; v.job=null; }
+        function next(v){ if(v.todo.length) send(v,v.todo.shift()); else if(v.home && v.at!=='ash') goHome(v); }
+        function arrive(v){ if(v.job===null) return; var s=st.s[v.job]; st.trips++;
+          if(s.state==='ok'){ st.nothing++; s.tick.setAttribute('opacity',1); } else setS(v.job,'ok');
+          v.job=null; v.wait=.45; rows(); }
+        function round(ids){ var o=[]; ids.forEach(function(k){ S0.forEach(function(s,i){ if(s.town===k) o.push(i); }); }); return o; }
+        function reset(){ st.s.forEach(function(s,i){ setS(i,'ok'); s.tick.setAttribute('opacity',0); });
+          st.v.forEach(function(v){ var p=slot(v.n); v.x=p.x; v.y=p.y; v.path=[]; v.todo=[]; v.job=null; v.wait=0; v.at='ash'; v.home=true; placeV(v); });
+          st.trips=0; st.nothing=0; rows(); }
+        function finish(c){ reset(); st.trips=3; rows(); c.clock('With MobilityGuard');
+          c.say('✅','3 van trips today, and every one was needed','The other '+(st.s.length-3)+' scooters didn’t need a visit',BG); }
+        return {
+          h:'Mobility hire across Kent', l:'Every scooter reports its own battery and charger health, so your vans only go to the ones that need a visit.', n:'Made-up example.',
+          vb:[2000,1342], photo:'images/flshop.webp', len:24, clock:'Routine rounds', names:[], dots:[],
+          bg:function(u){ return '<image href="images/flkent.webp" width="2000" height="1342"/>'+
+            '<rect x="930" y="735" width="230" height="62" rx="16" fill="rgba(13,43,62,.10)" stroke="rgba(13,43,62,.45)" stroke-width="3" stroke-dasharray="9 7"/>'+lab(1045,826,'Depot',u*.8); },
+          init:function(K){
+            K.list.classList.add('fl-stats');
+            st={s:[],v:[],trips:0,nothing:0,rows:[]};
+            S0.forEach(function(o){ var g=document.createElementNS(K.NS,'g'); g.setAttribute('transform','translate('+o.x+' '+o.y+')');
+              g.innerHTML='<circle r="30" fill="none" stroke-width="6" opacity="0"/><circle r="15" fill="'+G+'" stroke="#0d2b3e" stroke-width="4" style="filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))"/><text y="-23" text-anchor="middle" font-size="32" font-weight="900" fill="#334155" opacity="0" '+F+'>✓</text>';
+              K.dots.appendChild(g); st.s.push({town:o.town,x:o.x,y:o.y,state:'ok',ring:g.childNodes[0],dot:g.childNodes[1],tick:g.childNodes[2]}); });
+            for(var j=0;j<3;j++){ var g=document.createElementNS(K.NS,'g');
+              g.innerHTML='<g transform="translate(0 -4)" style="filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))"><rect x="-17" y="-9" width="34" height="17" rx="4" fill="#fff" stroke="#0d2b3e" stroke-width="2"/><rect x="5" y="-6" width="9" height="7" rx="1.5" fill="#8ec5e8"/><rect x="-15" y="1" width="18" height="3.5" fill="'+G+'"/><circle cx="-9" cy="9" r="3.6" fill="#0d2b3e"/><circle cx="9" cy="9" r="3.6" fill="#0d2b3e"/></g>';
+              K.dots.appendChild(g); st.v.push({n:j,g:g,path:[],todo:[],job:null,wait:0,at:'ash',home:true}); }
+            ['Scooters','Need a visit','Van trips','No fault found'].forEach(function(n){ var r=document.createElement('div'); r.className='fl-row'; r.innerHTML='<b>'+n+'</b><span class="bar"><i></i></span><em></em>'; K.list.appendChild(r); st.rows.push(r); });
+            reset(); },
+          tick:function(dt,ts){
+            st.v.forEach(function(v){
+              if(v.wait>0){ v.wait-=dt; if(v.wait<=0){ v.wait=0; next(v); } return; }
+              if(!v.path.length) return;
+              var go=460*dt;
+              while(go>0 && v.path.length){ var p=v.path[0], dx=p.x-v.x, dy=p.y-v.y, d=Math.hypot(dx,dy);
+                if(d<=go){ v.x=p.x; v.y=p.y; go-=d; v.path.shift(); } else { v.x+=dx/d*go; v.y+=dy/d*go; go=0; } }
+              placeV(v); if(!v.path.length) arrive(v); });
+            var o=(.35+.65*Math.abs(Math.sin(ts/280))).toFixed(2);
+            st.s.forEach(function(s){ if(s.state!=='ok') s.ring.setAttribute('opacity',o); }); },
+          ev:[[0.2,function(c){ st.v[0].todo=round(['ash','fol','hyt','nro','dov','dea']); st.v[1].todo=round(['can','whi','hb','mar','ram']);
+                st.v[2].todo=round(['mai','med','sit','fav','gra','sev']); st.v.forEach(function(v){ v.home=false; next(v); });
+                c.say('🔧','Routine rounds: every scooter gets a visit','The vans can’t tell which scooters need one, so they check them all','#334155'); }],
+              [5.5,function(c){ setS(first('tw'),'bad'); rows(); c.say('🚨','Tunbridge Wells: a scooter has broken down','Flat battery · it isn’t on today’s round',BR); }],
+              [11.2,function(c){ reset(); c.clock('With MobilityGuard'); c.say('📡','Now every scooter reports in','Battery and charger checked every day · the vans wait at the depot',BG); }],
+              [13,function(c){ var i=first('mar'); setS(i,'warn'); rows(); send(st.v[1],i); c.say('🔋','Margate: battery wearing out','Health down to 61% · one van sent with a new battery',BA); }],
+              [15.6,function(c){ var i=first('tw'); setS(i,'warn'); rows(); send(st.v[2],i); c.say('🔌','Tunbridge Wells: charger not working','Spotted overnight · a new charger arrives before the battery runs flat',BA); }],
+              [18.2,function(c){ var i=first('dov'); setS(i,'warn'); rows(); send(st.v[0],i); c.say('🚚','Dover: hire ends at 5pm','The nearest van collects it',BG); }],
+              [21.6,finish]]
+        };
+      })()
     ];
 
     var cur=0, sc=null, D=[], rows=[], t=0, evi=0, auto=true, seen=false, last=null, exited={}, U=1;
@@ -1316,13 +1374,14 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
       tabBox.style.setProperty('--fl-d',sc.len+'s'); var tb=tabs[k]; tb.style.animation='none'; void tb.offsetWidth; tb.style.animation='';
       hh.textContent=sc.h; ll.textContent=sc.l; nn.textContent=sc.n; box.classList.remove('on');
       if(ph){ ph.classList.add('fade'); setTimeout(function(){ ph.src=sc.photo; ph.onload=function(){ ph.classList.remove('fade'); }; if(ph.complete) ph.classList.remove('fade'); },200); }
-      svg.setAttribute('viewBox','0 0 '+sc.vb[0]+' '+sc.vb[1]); bgG.innerHTML=sc.bg(U); dotsG.innerHTML=''; list.innerHTML=''; D=[]; rows=[]; C.clock(sc.clock);
+      svg.setAttribute('viewBox','0 0 '+sc.vb[0]+' '+sc.vb[1]); bgG.innerHTML=sc.bg(U); dotsG.innerHTML=''; list.innerHTML=''; list.className='fl-list'; D=[]; rows=[]; C.clock(sc.clock);
       sc.dots.forEach(function(o,i){
         var d={p:o.p||null,f:o.f||0,v:o.v||0,bat:o.bat,once:o.once,x:o.x||0,y:o.y||0,pc:null};
         var g=document.createElementNS(NS,'g');
         g.innerHTML='<circle r="'+(17*U)+'" fill="none" stroke-width="'+(3*U)+'" opacity="0"/><circle r="'+(10*U)+'" fill="'+G+'" stroke="#fff" stroke-width="'+(2.6*U)+'" style="filter:drop-shadow(0 '+(2*U)+'px '+(2*U)+'px rgba(0,0,0,.45))"/><text y="'+(4*U)+'" text-anchor="middle" font-size="'+(11*U)+'" font-weight="800" fill="#06121b" '+F+'>'+(i+1)+'</text>';
         dotsG.appendChild(g); d.g=g; d.ring=g.firstChild; d.dot=g.childNodes[1]; D.push(d); place(d);
       });
+      if(sc.init) sc.init({dots:dotsG,list:list,NS:NS,C:C});
       sc.names.forEach(function(n,i){ var r=document.createElement('div'); r.className='fl-row'; r.innerHTML='<b>'+n+'</b><span class="bar"><i></i></span><em></em>'; list.appendChild(r); rows.push(r); r.querySelector('i').style.width=D[i].bat+'%'; r.querySelector('em').textContent=D[i].bat+'%'; });
     }
     function step(ts){
@@ -1330,6 +1389,7 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
       if(seen){
         t+=dt;
         while(evi<sc.ev.length && t>=sc.ev[evi][0]){ sc.ev[evi][1](C); evi++; }
+        if(sc.tick) sc.tick(dt,ts);
         D.forEach(function(d,i){
           if(d.p && d.v){ d.f+=d.v*dt; if(d.once){ if(d.f>=1){ d.f=1; d.v=0; } } else if(d.f>1) d.f-=1; place(d);
             var z=sc.zone; if(z && !exited[i] && (d.x<z[0]||d.x>z[2]||d.y<z[1]||d.y>z[3])){ exited[i]=1; if(sc.exit) sc.exit(C,i); }
