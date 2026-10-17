@@ -396,9 +396,12 @@ nav a:hover{color:var(--green)}
 .b.them{border-bottom-left-radius:6px}
 .b a{color:inherit}
 .cmds{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.cmd{display:grid;gap:2px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.cmd{display:grid;align-content:start;gap:2px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
 .cmd code{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--navy);letter-spacing:.05em}
 .cmd span{color:var(--muted);font-size:.95rem;line-height:1.4}
+.cmd-h{grid-column:1/-1;margin:6px 0 -2px;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cmd-note{grid-column:1/-1;margin:2px 0 0;color:var(--muted);font-size:.92rem;line-height:1.45}
+.chat .who{justify-self:center;font-size:.8rem;font-weight:700;color:var(--muted);margin-top:4px}
 
 /* portal */
 .portal-wrap{margin-top:8px}
@@ -1336,20 +1339,27 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
         <h2>Text one word, get an answer.</h2>
         <p class="lede">Riders and carers can text MobilityGuard from any phone, even an old button phone.</p>
         <div class="cmds">
-          <div class="cmd"><code>WHERE</code><span>Last known location, if the rider allows it</span></div>
-          <div class="cmd"><code>BATTERY</code><span>How much charge is left right now</span></div>
-          <div class="cmd"><code>STATUS</code><span>A quick check that all is well</span></div>
-          <div class="cmd"><code>SERVICE</code><span>Ask the dealer to get in touch</span></div>
-          <div class="cmd"><code>PAUSE</code><span>Stop charge reminders for a while</span></div>
+          <p class="cmd-h">Riders and carers</p>
+          <div class="cmd"><code>WHERE</code><span>Last known position as a map link, with the time. Carers only get it if the rider agrees.</span></div>
+          <div class="cmd"><code>BATTERY</code><span>Charge and range, and whether it's on charge now</span></div>
+          <div class="cmd"><code>STATUS</code><span>Battery, what the scooter's doing, when it was last heard from and any alerts</span></div>
+          <div class="cmd"><code>CALL</code><span>Ask the dealer to ring you back</span></div>
+          <div class="cmd"><code>SERVICE</code><span>Ask the dealer to arrange a service</span></div>
           <div class="cmd"><code>HELP</code><span>List every word you can send</span></div>
+          <p class="cmd-h">Riders only</p>
+          <div class="cmd"><code>PAUSE</code><span>Charge reminders off for 7 days, or PAUSE 14 for two weeks. Crash, fall and theft alerts stay on.</span></div>
+          <div class="cmd"><code>WEATHER</code><span>The forecast where the scooter is, with a tip if the cold will cut its range</span></div>
+          <p class="cmd-note">Capitals don't matter. Only phones saved as the rider or a carer get an answer. Send STOP to turn texts off on your phone, and START to turn them back on.</p>
         </div>
       </div>
-      <div class="chat" aria-label="Example text conversation">
+      <div class="chat" aria-label="Example text conversations">
         <div class="chat-head">MobilityGuard<small>Text message</small></div>
+        <span class="who">Sarah, Margaret's daughter</span>
         <p class="b me">WHERE</p>
-        <p class="b them">Margaret's scooter was last seen at 11:48 near the Co-op, High Street. maps.google.com/?q=… This is where the scooter is, not always where Margaret is.</p>
+        <p class="b them">Margaret's scooter was last seen at 11:48. maps.google.com/?q=… This is where the scooter is, not necessarily Margaret.</p>
+        <span class="who">Margaret</span>
         <p class="b me">BATTERY</p>
-        <p class="b them">Margaret's scooter: 34%, about 4.1 miles left. Not charging.</p>
+        <p class="b them">Your scooter: 34% charged, about 7 km of range.</p>
       </div>
     </div>
   </section>
@@ -1386,7 +1396,7 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
           <li><i class="ico"><svg class="ic" aria-hidden="true"><use href="#i-usercheck"/></svg></i><span>Carers only see where the rider is day to day if the rider has said yes. It's off until they do. In a crash, fall or SOS, every carer gets the location so they can help.</span></li>
           <li><i class="ico"><svg class="ic" aria-hidden="true"><use href="#i-eyeoff"/></svg></i><span>Dealers never see where the rider is.</span></li>
           <li><i class="ico"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg></i><span>Location history is deleted automatically after 30 days.</span></li>
-          <li><i class="ico"><svg class="ic" aria-hidden="true"><use href="#i-msgstop"/></svg></i><span>Riders can stop all texts at any time by sending STOP.</span></li>
+          <li><i class="ico"><svg class="ic" aria-hidden="true"><use href="#i-msgstop"/></svg></i><span>Anyone can stop texts to their phone at any time by sending STOP.</span></li>
         </ul>
         <p class="lede">Read exactly what we hold, who can see it and for how long in our <a href="privacy">privacy notice</a>.</p>
       </div>
