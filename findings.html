@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Real findings from the MobilityGuard beta | MobilityGuard</title>
-<meta name="description" content="Real things MobilityGuard spotted on mobility scooters in the beta: a charger that never finished a charge, a van trip logged as a ride, and a false alarm we fixed.">
+<meta name="description" content="Real faults MobilityGuard found on mobility scooters in the beta, with the real readings: a charger that never finished charging the batteries.">
 <link rel="canonical" href="https://mobilityguard.co.uk/findings">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MobilityGuard">
 <meta property="og:title" content="Real findings from the MobilityGuard beta | MobilityGuard">
-<meta property="og:description" content="Real things MobilityGuard spotted on mobility scooters in the beta: a charger that never finished a charge, a van trip logged as a ride, and a false alarm we fixed.">
+<meta property="og:description" content="Real faults MobilityGuard found on mobility scooters in the beta, with the real readings: a charger that never finished charging the batteries.">
 <meta property="og:url" content="https://mobilityguard.co.uk/findings">
 <meta property="og:image" content="https://mobilityguard.co.uk/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -982,7 +982,7 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
       <div class="sec-head">
         <span class="eyebrow">Real findings</span>
         <h1>What the trackers have found so far</h1>
-        <p class="lede">MobilityGuard is in beta on a small number of scooters in Kent. These are real things it spotted, with the real readings behind them. We've left out names and places, and we've included the one we got wrong.</p>
+        <p class="lede">MobilityGuard is in beta on a small number of scooters in Kent. These are real things it spotted, with the real readings behind them. We've left out names and places.</p>
       </div>
       <ol class="rf-flow" aria-label="How a finding happens">
         <li><i class="ico"><svg class="ic" aria-hidden="true"><use href="#i-battery"/></svg></i><b>Tracker reads the battery</b><span>Pack volts, every few minutes, around the clock</span></li>
@@ -1035,71 +1035,6 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
     </div>
   </section>
 
-  <!-- CASE 2 -->
-  <section class="rf-case" id="van">
-    <div class="wrap rf-grid rf-flip">
-      <div class="rf-copy">
-        <span class="rf-tag rf-tag-blue"><svg class="ic" aria-hidden="true"><use href="#i-move"/></svg>Journeys · tidied up the history</span>
-        <h2>A "ride" at 42 mph</h2>
-        <p class="rf-who">A 24 V scooter in Kent, carried in a van.</p>
-        <dl class="rf-steps">
-          <div><dt>What happened</dt><dd>The scooter's history showed two rides that day. One of them went at 67 km/h (42 mph). A mobility scooter can't do that.</dd></div>
-          <div><dt>What MobilityGuard saw</dt><dd>When someone rides, the battery works hard: the pack voltage swings by 1 to 6 V as the motor pulls. During the fast "ride" it barely moved, staying within 0.08 V. The scooter was in a van, switched off.</dd></div>
-          <div><dt>What we changed</dt><dd>Fast movement with a still battery is now logged as "moved by vehicle". It doesn't count as a ride, doesn't eat into the battery figures, and doesn't fill the owner's history with nonsense.</dd></div>
-          <div><dt>A bonus</dt><dd>The same signal spots the opposite: a scooter going over 10 mph with the battery working hard is being ridden too fast. The dealer gets told (riders and families don't).</dd></div>
-        </dl>
-        <p class="rf-status"><b>Status:</b> live on every scooter since 13 November.</p>
-      </div>
-      <figure class="rf-fig">
-        <svg class="rf-chart" viewBox="0 0 640 262" role="img" aria-labelledby="c2t c2d">
-          <title id="c2t">Ridden or carried</title>
-          <desc id="c2d">Sketch comparing pack voltage. Ridden: the voltage swings up and down by 1 to 6 V. In a van at 67 km/h: a flat line, within 0.08 V.</desc>
-          <text class="rf-row-t" x="20" y="30">Ridden: battery working</text>
-          <text class="rf-ax" x="620" y="30" text-anchor="end">swings 1-6 V</text>
-          <path class="rf-line rf-line-g" d="M20 95 L45 92 L55 120 L65 88 L90 96 L100 128 L110 84 L135 94 L150 112 L160 90 L185 98 L195 135 L205 86 L230 95 L245 108 L255 90 L280 97 L292 124 L302 87 L330 96 L342 115 L352 89 L380 98 L392 130 L402 86 L430 95 L444 110 L454 90 L480 97 L492 126 L502 88 L530 96 L542 114 L552 90 L580 97 L592 122 L602 89 L620 94"/>
-          <line class="rf-sep" x1="20" x2="620" y1="152" y2="152"/>
-          <text class="rf-row-t" x="20" y="182">In a van at 67 km/h: battery still</text>
-          <text class="rf-ax" x="620" y="182" text-anchor="end">within 0.08 V</text>
-          <path class="rf-line rf-line-b" d="M20 222 L620 222"/>
-          <g class="rf-van" transform="translate(300 202)"><rect x="0" y="4" width="46" height="22" rx="4"/><path d="M46 10 h12 l8 9 v7 h-20z"/><circle cx="12" cy="28" r="5"/><circle cx="52" cy="28" r="5"/></g>
-        </svg>
-        <figcaption>Sketch. The numbers are from the real readings that day.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- CASE 3 -->
-  <section class="rf-case band" id="our-mistake">
-    <div class="wrap rf-grid">
-      <div class="rf-copy">
-        <span class="rf-tag rf-tag-amber"><svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>False alarm · our mistake</span>
-        <h2>The charger that wasn't cutting out</h2>
-        <p class="rf-who">A 24 V scooter in Kent.</p>
-        <dl class="rf-steps">
-          <div><dt>What happened</dt><dd>Twenty seconds into a charge, MobilityGuard raised "Charger fault: cut out 3 times". The charge itself was perfectly normal and finished full.</dd></div>
-          <div><dt>What we found</dt><dd>This charger's output flickers by about a quarter of a volt, roughly once a second. That's normal for some chargers. Our rule counted any 0.2 V dip as a cut-out, so it counted 140 of them before the charge finished.</dd></div>
-          <div><dt>What we changed</dt><dd>The same day, the rule was changed: a cut-out now has to be a real drop that lasts, not a flicker. Dealers also got a "Clear charger fault" button, so a fixed fault can be cleared without waiting for the next charge.</dd></div>
-        </dl>
-        <p class="rf-status"><b>Why it's here:</b> it's a beta. Telling you about the misses is how you know the catches are real.</p>
-      </div>
-      <figure class="rf-fig">
-        <svg class="rf-chart" viewBox="0 0 640 262" role="img" aria-labelledby="c3t c3d">
-          <title id="c3t">Flicker, not cut-outs</title>
-          <desc id="c3d">Sketch of a charger output flickering a quarter of a volt about once a second. The old rule marked each flicker as a cut-out. The new rule only counts a drop that lasts.</desc>
-          <text class="rf-row-t" x="20" y="30">Old rule: every flicker counted</text>
-          <path class="rf-line rf-line-a" d="M20 80 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30"/>
-          <g class="rf-x"><text x="54" y="118">✕</text><text x="92" y="118">✕</text><text x="130" y="118">✕</text><text x="168" y="118">✕</text><text x="206" y="118">✕</text><text x="244" y="118">✕</text><text x="282" y="118">✕</text><text x="320" y="118">✕</text><text x="358" y="118">✕</text><text x="396" y="118">✕</text><text x="434" y="118">✕</text></g>
-          <text class="rf-ax" x="620" y="118" text-anchor="end">140 "cut-outs"</text>
-          <line class="rf-sep" x1="20" x2="620" y1="146" y2="146"/>
-          <text class="rf-row-t" x="20" y="176">New rule: only a drop that lasts</text>
-          <path class="rf-line rf-line-g" d="M20 206 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30 l4 14 l4 -14 h30"/>
-          <text class="rf-ok" x="620" y="246" text-anchor="end">0 cut-outs, charge OK</text>
-        </svg>
-        <figcaption>Sketch. Real figures: about 0.25 V flicker, once a second; 140 counted before full.</figcaption>
-      </figure>
-    </div>
-  </section>
-
   <!-- NEXT -->
   <section class="rf-next">
     <div class="wrap">
@@ -1107,7 +1042,7 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
         <i class="ico"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></i>
         <div>
           <b>Running now: worn batteries against good ones</b>
-          <p>Through to late November, one test scooter is doing the same short daily route on a good set of batteries, then a worn set, then the good set again. The aim: see how early MobilityGuard can tell a tired battery from a healthy one. Results here when it's done.</p>
+          <p>Through to late November, one test scooter is doing the same short daily route on a good set of batteries, then a worn set, then the good set again. The aim: see how early MobilityGuard can tell a tired battery from a healthy one. More real faults go here as the beta finds them.</p>
         </div>
       </div>
       <div class="ctas">
