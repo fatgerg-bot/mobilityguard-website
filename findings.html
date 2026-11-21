@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Real cases from the MobilityGuard beta | MobilityGuard</title>
-<meta name="description" content="Real faults MobilityGuard found on mobility scooters in the beta, with the real readings: a charger that never finished charging the batteries.">
+<meta name="description" content="Real faults MobilityGuard found on mobility scooters in the beta, with the real readings: a charger that never finished charging the batteries, and the first charge after it was swapped.">
 <link rel="canonical" href="https://mobilityguard.co.uk/findings">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MobilityGuard">
 <meta property="og:title" content="Real cases from the MobilityGuard beta | MobilityGuard">
-<meta property="og:description" content="Real faults MobilityGuard found on mobility scooters in the beta, with the real readings: a charger that never finished charging the batteries.">
+<meta property="og:description" content="Real faults MobilityGuard found on mobility scooters in the beta, with the real readings: a charger that never finished charging the batteries, and the first charge after it was swapped.">
 <meta property="og:url" content="https://mobilityguard.co.uk/findings">
 <meta property="og:image" content="https://mobilityguard.co.uk/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -911,6 +911,7 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
 .rf-who{color:var(--muted);font-weight:700}
 .rf-tag{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border-radius:999px;font-weight:700;font-size:.92rem}
 .rf-tag .ic{width:19px;height:19px}
+.rf-tag-green{background:var(--tint);color:var(--green)}
 .rf-tag-red{background:color-mix(in srgb,var(--red) 14%,transparent);color:var(--red)}
 .rf-tag-blue{background:var(--tint-blue);color:var(--navy)}
 .rf-tag-amber{background:color-mix(in srgb,var(--amber) 16%,transparent);color:var(--amber)}
@@ -934,6 +935,8 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
 .rf-line-b{stroke:var(--navy)}
 .rf-line-a{stroke:var(--amber)}
 .rf-dot{fill:var(--red);stroke:var(--bg);stroke-width:2.5}
+.rf-dot-g{fill:var(--green)}
+.rf-case:not(.band) .rf-dot{stroke:var(--surface)}
 .rf-note{font-family:var(--font-body);font-size:13px;font-weight:700;fill:var(--ink)}
 .rf-red-t{font-family:var(--font-body);font-size:13.5px;font-weight:700;fill:var(--red)}
 .rf-row-t{font-family:var(--font-display);font-size:16px;font-weight:600;fill:var(--ink)}
@@ -1006,7 +1009,7 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
           <div><dt>Why it matters</dt><dd>Lead-acid batteries that are never fully charged lose capacity over months (sulphation). Range shrinks and the batteries need replacing early, and nobody notices until the scooter stops short.</dd></div>
           <div><dt>What we did</dt><dd>The Charger fault alert went to the dealer within days. We advised swapping to a proper 60 V lead-acid charger.</dd></div>
         </dl>
-        <p class="rf-status"><b>Status:</b> charger swap advised. We'll add the next charge here once it's done.</p>
+        <p class="rf-status"><b>Status:</b> fixed. The charger has been swapped. <a href="#charger-after">See the first charge on the new one.</a></p>
       </div>
       <figure class="rf-fig">
         <svg class="rf-chart" viewBox="0 0 640 262" role="img" aria-labelledby="c1t c1d">
@@ -1031,6 +1034,41 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
       <figure class="rf-real">
         <img src="images/finding-charger-real.webp" alt="Screenshot of the MobilityGuard dealer portal battery chart for this scooter. The pack voltage, in red, jumps to about 69 V at plug-in just before 11:00, then runs flat at about 68.5 V across the orange charging bar until it is unplugged just before 20:00." width="1445" height="447" loading="lazy">
         <figcaption>The real screen from our dealer portal: same charge, over three days. Red is the pack voltage, the orange bar is time on charge. The chart's top line is 72 V, and the charge never gets near it.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CASE 1: AFTER -->
+  <section class="rf-case" id="charger-after">
+    <div class="wrap rf-grid rf-flip">
+      <div class="rf-copy">
+        <span class="rf-tag rf-tag-green"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Fixed · new charger fitted</span>
+        <h2>After the swap: the charge finishes</h2>
+        <p class="rf-who">Same scooter, same batteries. The first charge on a proper 60 V lead-acid charger, 20 November.</p>
+        <dl class="rf-steps">
+          <div><dt>The full-charge push</dt><dd>Within two minutes of plugging in, the pack was at 72.1 V and it kept climbing to 72.7 V, about 14.5 V per battery. The old charger never got past 69.0 V.</dd></div>
+          <div><dt>Then it eased off by itself</dt><dd>After 1 h 12 min at the top, the charger dropped to 68.3 V (about 13.65 V per battery) to keep the batteries topped up. That's the level the old charger sat at all along: it only ever did the "keep topped up" step, never the push before it.</dd></div>
+          <div><dt>What MobilityGuard saw</dt><dd>A complete charge, recognised as full. No Charger fault alert since the swap.</dd></div>
+          <div><dt>To be fair</dt><dd>This is one charge, and a top-up after a 20-minute ride, so the batteries weren't low. We're watching the next ones, including a charge from low.</dd></div>
+        </dl>
+        <p class="rf-status"><b>Status:</b> fixed. One charge so far on the new charger, and it did exactly what a lead-acid charger should.</p>
+      </div>
+      <figure class="rf-fig">
+        <svg class="rf-chart" viewBox="0 0 640 262" role="img" aria-labelledby="c2t c2d">
+          <title id="c2t">First real charge on the new charger, 20 November</title>
+          <desc id="c2d">Plugged in at 16:43 at 63.3 V. Pack voltage reaches 72.1 V within two minutes and climbs slowly to 72.7 V, inside the 72 to 73.5 V band where a lead-acid charge should finish. At 17:55 the charger drops itself to 68.3 V to keep the batteries topped up. Unplugged at 18:23; the pack then rests at 65.6 V half an hour later.</desc>
+          <g class="rf-grid-l"><line x1="50" x2="620" y1="210" y2="210"/><line x1="50" x2="620" y1="178.3" y2="178.3"/><line x1="50" x2="620" y1="146.7" y2="146.7"/><line x1="50" x2="620" y1="115" y2="115"/><line x1="50" x2="620" y1="83.3" y2="83.3"/><line x1="50" x2="620" y1="51.7" y2="51.7"/><line x1="50" x2="620" y1="20" y2="20"/></g>
+          <g class="rf-ax" text-anchor="end"><text x="42" y="214">62 V</text><text x="42" y="182">64 V</text><text x="42" y="151">66 V</text><text x="42" y="119">68 V</text><text x="42" y="87">70 V</text><text x="42" y="56">72 V</text><text x="42" y="24">74 V</text></g>
+          <g class="rf-ax" text-anchor="middle"><text x="131.4" y="240">17:00</text><text x="253.6" y="240">17:30</text><text x="375.7" y="240">18:00</text><text x="497.9" y="240">18:30</text><text x="610" y="240">19:00</text></g>
+          <rect class="rf-good" x="50" y="27.9" width="570" height="23.8"/>
+          <text class="rf-good-t" x="612" y="44" text-anchor="end">Full-charge band (72-73.5 V)</text>
+          <polyline class="rf-line rf-line-g" points="56.4,196.8 60.5,190.2 62.0,161.2 62.1,136.1 62.1,126.9 64.6,88.6 68.7,50.4 72.7,49.0 80.9,47.7 97.2,46.4 111.6,45.1 152.5,43.8 183.1,42.4 264.7,42.4 274.9,41.1 354.4,41.1 357.3,50.4 357.4,60.9 357.5,83.3 357.7,103.1 365.9,111.0 389.1,111.0 461.8,120.3 468.0,134.8 589.9,153.3"/>
+          <circle class="rf-dot rf-dot-g" cx="62" cy="161.2" r="5"/><text class="rf-note" x="72" y="200">Plugged in 16:43</text>
+          <text class="rf-ok" x="90" y="78">1 h 12 min at 72.2-72.7 V</text>
+          <circle class="rf-dot rf-dot-g" cx="357.4" cy="103.1" r="5"/><text class="rf-note" x="378" y="100">Eases off to 68.3 V by itself</text>
+          <circle class="rf-dot rf-dot-g" cx="468" cy="134.8" r="5"/><text class="rf-note" x="600" y="176" text-anchor="end">Unplugged 18:23</text>
+        </svg>
+        <figcaption>The first charge on the new charger, from the same tracker, 20 November. Compare the flat 68.4 V line above.</figcaption>
       </figure>
     </div>
   </section>
