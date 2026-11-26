@@ -894,6 +894,19 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
 @media (max-width:1000px){.ou-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:820px){.ou-feat{grid-template-columns:minmax(0,1fr);gap:22px}}
 @media (max-width:560px){.ou-grid{grid-template-columns:minmax(0,1fr)}}
+/* ---- golf carts (made-up carts) ---- */
+.gc-sec{border-top:1px solid var(--line)}
+.gc-sec .sec-head{margin-bottom:24px}
+.gc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 44px;align-items:center}
+.gc-board{border-radius:22px;background:#0f1828;color:#e8f0f8;border:1px solid var(--line);box-shadow:0 24px 50px -30px rgba(13,43,62,.5);padding:18px;display:grid;gap:14px}
+.gc-cart{width:100%;height:auto;display:block;max-width:340px;margin:0 auto}
+.gc-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.gc-tiles div{border-radius:10px;background:#172536;padding:8px 4px 7px;text-align:center;font-size:.8rem;line-height:1.2;border-top:4px solid #10b981}
+.gc-tiles div b{display:block;font-size:1rem;font-variant-numeric:tabular-nums}
+.gc-tiles .a{border-top-color:#f59e0b}.gc-tiles .r{border-top-color:#ef4444}
+.gc-tiles small{color:#a7b5c8}
+@media (max-width:820px){.gc-grid{grid-template-columns:minmax(0,1fr)}.gc-board{order:2}}
+@media (max-width:420px){.gc-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -1073,6 +1086,77 @@ main#top:not(.page) > section:not(.hero):not(#dayout){content-visibility:auto;co
           <p class="fl-note" id="fl-n"></p>
           <a class="btn" href="#contact" data-kind="business">Talk to us about a fleet trial</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOLF CARTS -->
+  <section id="golf-carts" class="gc-sec">
+    <div class="wrap gc-grid">
+      <div class="gc-board" role="img" aria-label="Made-up example: six golf carts with traffic lights. Four are green, Cart 3 is amber because its batteries are wearing, and Cart 6 is red because it wasn't put on charge.">
+        <svg class="gc-cart" viewBox="0 0 320 190" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <linearGradient id="gc-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b7280"/><stop offset=".45" stop-color="#374151"/><stop offset="1" stop-color="#111827"/></linearGradient>
+              <linearGradient id="gc-roof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f2937"/><stop offset="1" stop-color="#0b1220"/></linearGradient>
+              <linearGradient id="gc-seat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cbd5e1"/></linearGradient>
+              <radialGradient id="gc-rim"><stop offset="0" stop-color="#f1f5f9"/><stop offset="1" stop-color="#94a3b8"/></radialGradient>
+            </defs>
+            <ellipse cx="165" cy="174" rx="140" ry="7" fill="#000" opacity=".35"/>
+            <!-- golf bag on the rear rack -->
+            <path d="M262 64c0-6 6-10 14-10h8c8 0 12 5 12 11v52h-34z" fill="#0b0f14" stroke="#334155" stroke-width="2"/>
+            <path d="M270 58v-8M280 56v-10M288 58v-7" stroke="#94a3b8" stroke-width="3"/>
+            <path d="M262 82h34" stroke="#334155" stroke-width="2"/>
+            <path d="M256 124h46v-26" stroke="#9ca3af" stroke-width="3"/>
+            <!-- roof struts -->
+            <path d="M112 112 120 26" stroke="#9ca3af" stroke-width="5"/>
+            <path d="M258 116 254 28" stroke="#9ca3af" stroke-width="5"/>
+            <!-- roof -->
+            <path d="M92 22c2-6 8-9 16-9h172c8 0 12 4 13 10l1 3H92z" fill="url(#gc-roof)" stroke="#475569" stroke-width="1.5"/>
+            <path d="M96 27h196" stroke="#d1d5db" stroke-width="3"/>
+            <!-- windscreen -->
+            <path d="M101 98 109 34l14 2-8 62z" fill="#bfdbfe" opacity=".22" stroke="#cbd5e1" stroke-width="1.5"/>
+            <!-- body -->
+            <path d="M34 140c0-10 4-18 12-24l18-12c8-5 16-6 26-6h40l10 10h120c12 0 20 6 22 16l2 16H34z" fill="url(#gc-body)" stroke="#6b7280" stroke-width="1.5"/>
+            <path d="M46 116c12-8 26-12 44-12h36" stroke="#e5e7eb" stroke-width="2" opacity=".55"/>
+            <path d="M34 140h250l4 12H40z" fill="#0b1220"/>
+            <path d="M150 122h126" stroke="#cbd5e1" stroke-width="2" opacity=".7"/>
+            <rect x="40" y="122" width="12" height="6" rx="2" fill="#e5e7eb"/>
+            <!-- battery badge -->
+            <rect x="176" y="128" width="40" height="11" rx="3" fill="#10b981"/>
+            <text x="196" y="136.6" text-anchor="middle" font-size="8.5" font-weight="700" fill="#06121b" font-family="system-ui,sans-serif">48 V</text>
+            <!-- seats -->
+            <rect x="152" y="104" width="96" height="14" rx="6" fill="url(#gc-seat)" stroke="#94a3b8" stroke-width="1"/>
+            <path d="M206 104c-4-12-3-24 2-34 2-4 6-6 10-6h20c5 0 8 3 8 8l-2 32z" fill="url(#gc-seat)" stroke="#94a3b8" stroke-width="1"/>
+            <path d="M226 68v34" stroke="#94a3b8" stroke-width="1.2"/>
+            <path d="M196 106c4-10 10-14 18-14h14" stroke="#cbd5e1" stroke-width="4"/>
+            <!-- steering -->
+            <path d="M128 106 142 74" stroke="#9ca3af" stroke-width="5"/>
+            <ellipse cx="146" cy="70" rx="15" ry="5" transform="rotate(-22 146 70)" stroke="#cbd5e1" stroke-width="4"/>
+            <!-- wheel arches + wheels -->
+            <circle cx="78" cy="148" r="30" fill="#0f1828"/>
+            <circle cx="244" cy="148" r="30" fill="#0f1828"/>
+            <g>
+              <circle cx="78" cy="148" r="25" fill="#111827" stroke="#374151" stroke-width="3"/>
+              <circle cx="78" cy="148" r="14" fill="url(#gc-rim)"/>
+              <path d="M78 136v24M66 148h24M70 140l16 16M86 140l-16 16" stroke="#64748b" stroke-width="2"/>
+              <circle cx="78" cy="148" r="4" fill="#334155"/>
+            </g>
+            <g>
+              <circle cx="244" cy="148" r="25" fill="#111827" stroke="#374151" stroke-width="3"/>
+              <circle cx="244" cy="148" r="14" fill="url(#gc-rim)"/>
+              <path d="M244 136v24M232 148h24M236 140l16 16M252 140l-16 16" stroke="#64748b" stroke-width="2"/>
+              <circle cx="244" cy="148" r="4" fill="#334155"/>
+            </g>
+          </svg>
+        <div class="gc-tiles" aria-hidden="true"><div class=""><small>Cart</small><b>1</b><small>92%</small></div><div class=""><small>Cart</small><b>2</b><small>88%</small></div><div class="a"><small>Cart</small><b>3</b><small>71%</small></div><div class=""><small>Cart</small><b>4</b><small>95%</small></div><div class=""><small>Cart</small><b>5</b><small>90%</small></div><div class="r"><small>Cart</small><b>6</b><small>38%</small></div></div>
+      </div>
+      <div>
+        <div class="sec-head">
+          <span class="eyebrow">Golf clubs and resorts</span>
+          <h2>Electric golf carts too</h2>
+          <p class="lede">A golf cart is a big battery on wheels, just like a mobility scooter. The same tracker puts every cart on the traffic lights: which ones are charged, which batteries are wearing out, and where they are.</p>
+        </div>
+        <a class="btn" href="#contact" data-kind="business">Ask about golf carts</a>
       </div>
     </div>
   </section>
